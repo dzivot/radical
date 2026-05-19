@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Playbook — Radical Reading Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --azure: #0c323d;
+    --azure-light: #174958;
+    --slate: #43545e;
+    --coral: #eb5a53;
+    --amber: #e5a930;
+    --mint: #0fac8c;
+    --mint-bg: #e1f5ee;
+    --mint-text: #085041;
+    --amber-bg: #fdf3d9;
+    --amber-text: #7a4a00;
+    --coral-bg: #fdecea;
+    --coral-text: #a83228;
+    --purple-bg: #eeedfe;
+    --purple-text: #3c3489;
+    --border: #e2e8eb;
+    --bg: #f8f9fa;
+    --white: #ffffff;
+    --text: #1a2b30;
+    --muted: #5e7880;
+    --hint: #8faab3;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    background: var(--azure);
+    padding: 28px 24px 24px;
+  }
+  .header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    background: var(--amber);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--azure);
+    font-weight: 400;
+    flex-shrink: 0;
+  }
+  .brand-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .header p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* Main */
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 24px 60px;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 6px;
+  }
+  .tab {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    color: var(--muted);
+    transition: all .15s;
+    text-align: center;
+  }
+  .tab.active {
+    background: var(--azure);
+    color: #ffffff;
+  }
+
+  /* Section label */
+  .section { margin-bottom: 20px; }
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--hint);
+    margin-bottom: 10px;
+    padding-left: 2px;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .card-small {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .card-small h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+  .card-small p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* Row items inside cards */
+  .row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 16px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .row:last-child { border-bottom: none; }
+
+  /* Badges */
+  .badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .badge-lark { background: var(--mint-bg); color: var(--mint-text); }
+  .badge-david { background: var(--amber-bg); color: var(--amber-text); }
+  .badge-both { background: var(--purple-bg); color: var(--purple-text); }
+  .badge-primary { background: #dbeeff; color: #0a4a7a; }
+  .badge-high { background: var(--amber-bg); color: var(--amber-text); }
+  .badge-low { background: #f1efea; color: #5a5652; }
+
+  .row-content {}
+  .row-text { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.4; }
+  .row-note { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.45; }
+
+  /* Rule number */
+  .rule-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Highlight callout */
+  .callout {
+    background: var(--azure);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+  .callout-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .callout p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+  .callout strong { color: rgba(255,255,255,0.95); font-weight: 600; }
+
+  /* Week cards */
+  .week-card {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .week-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 18px;
+    cursor: pointer;
+    user-select: none;
+    transition: background .12s;
+  }
+  .week-header:hover { background: var(--bg); }
+  .week-left { display: flex; align-items: center; gap: 12px; }
+  .week-bubble {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--azure);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .week-info {}
+  .week-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .week-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+  .chevron {
+    width: 20px;
+    height: 20px;
+    color: var(--hint);
+    transition: transform .2s;
+    flex-shrink: 0;
+  }
+  .chevron.open { transform: rotate(180deg); }
+  .week-body {
+    display: none;
+    border-top: 0.5px solid var(--border);
+  }
+  .week-body.open { display: block; }
+
+  /* Don't list */
+  .dont-card {
+    background: var(--white);
+    border: 0.5px solid #f5c1c1;
+    border-left: 3px solid var(--coral);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .dont-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 16px;
+    border-bottom: 0.5px solid #fdecea;
+  }
+  .dont-row:last-child { border-bottom: none; }
+  .dont-x {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--coral-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--coral);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Inline code */
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    padding: 1px 5px;
+    border-radius: 4px;
+    color: var(--slate);
+  }
+
+  /* Footer */
+  .footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 40px;
+    font-size: 11px;
+    color: var(--hint);
+    border-top: 0.5px solid var(--border);
+    padding-top: 20px;
+  }
+
+  /* Hashtag pills */
+  .tag-bank { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px 16px; }
+  .tag-pill { font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 20px; border: 0.5px solid var(--border); background: var(--bg); color: var(--slate); white-space: nowrap; }
+  .tag-t1 { background: var(--mint-bg); color: var(--mint-text); border-color: #9fe1cb; }
+  .tag-t2 { background: var(--amber-bg); color: var(--amber-text); border-color: #fac775; }
+  .tag-t3 { background: var(--bg); color: var(--muted); border-color: var(--border); }
+
+  /* Metric cards */
+  .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .metric-card { background: var(--white); border: 0.5px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+  .metric-card.track { border-left: 3px solid var(--mint); }
+  .metric-card.skip { border-left: 3px solid var(--border); opacity: .7; }
+  .metric-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+  .metric-label.track { color: var(--mint-text); }
+  .metric-label.skip { color: var(--hint); }
+  .metric-item { font-size: 12px; color: var(--text); padding: 4px 0; border-bottom: 0.5px solid var(--border); line-height: 1.4; }
+  .metric-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .metric-item small { display: block; color: var(--muted); font-size: 11px; margin-top: 1px; }
+  .metric-item.skip-item { color: var(--muted); text-decoration: line-decoration; }
+
+  /* Format cards */
+  .format-card { background: var(--white); border: 0.5px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 8px; display: flex; gap: 14px; align-items: flex-start; }
+  .format-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .format-body {}
+  .format-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; display: flex; align-items: center; gap: 8px; }
+  .format-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .status-pill { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; letter-spacing: .03em; }
+  .status-now { background: var(--mint-bg); color: var(--mint-text); }
+  .status-later { background: var(--amber-bg); color: var(--amber-text); }
+  .status-no { background: #f1efea; color: var(--hint); }
+
+  /* Insight callout */
+  .insight { background: var(--azure); border-radius: 10px; padding: 13px 16px; margin-top: 10px; }
+  .insight p { font-size: 12px; color: rgba(255,255,255,.75); line-height: 1.55; }
+  .insight strong { color: var(--amber); font-weight: 600; }
+
+  /* Collapsible insta sections */
+  .insta-section { background: var(--white); border: 0.5px solid var(--border); border-radius: 12px; margin-bottom: 8px; overflow: hidden; }
+  .insta-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; cursor: pointer; user-select: none; }
+  .insta-header:hover { background: var(--bg); }
+  .insta-title { font-size: 13px; font-weight: 600; color: var(--text); }
+  .insta-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
+  .insta-body { display: none; border-top: 0.5px solid var(--border); padding: 14px 16px; }
+  .insta-body.open { display: block; }
+
+  /* LinkedIn blue accent */
+  .li-blue-bg { background: #e8f0fe; }
+  .li-blue-text { color: #1a56a0; }
+  .badge-li { background: #e8f0fe; color: #1a56a0; font-size: 10px; font-weight: 600; padding: 3px 9px; border-radius: 5px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; letter-spacing:.04em; text-transform:uppercase; }
+  .copy-block { background: var(--bg); border: 0.5px solid var(--border); border-left: 3px solid var(--azure); border-radius: 0 10px 10px 0; padding: 13px 15px; margin-top: 8px; font-size: 13px; color: var(--text); line-height: 1.6; font-style: italic; }
+  .copy-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--hint); margin-bottom: 6px; font-style: normal; }
+
+  @media (max-width: 540px) {
+    .tabs { flex-wrap: wrap; }
+    .tab { flex: 1 1 calc(50% - 8px); font-size: 12px; padding: 9px 8px; }
+  }
+
+  @media (max-width: 480px) {
+    .header { padding: 20px 16px; }
+    .main { padding: 16px 16px 40px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .metric-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 22px; }
+    .footer { padding: 20px 16px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark">R</div>
+      <div class="brand-name">Radical Reading Co.</div>
+    </div>
+    <h1>Social Media Playbook</h1>
+    <p>Summer 2026 — David &amp; Lark edition</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="tabs" role="tablist">
+    <button class="tab active" onclick="showTab('ongoing')" role="tab">Ongoing rules</button>
+    <button class="tab" onclick="showTab('surge')" role="tab">Summer Surge</button>
+    <button class="tab" onclick="showTab('insta')" role="tab">Instagram technical</button>
+    <button class="tab" onclick="showTab('linkedin')" role="tab">LinkedIn</button>
+  </div>
+
+  <!-- ONGOING TAB -->
+  <div id="tab-ongoing">
+
+    <div class="section">
+      <p class="section-label">Platform hierarchy</p>
+      <div class="card">
+        <div class="row">
+          <span class="badge badge-primary">Instagram</span>
+          <div class="row-content">
+            <div class="row-text">Primary platform — 3 posts/week maximum</div>
+            <div class="row-note">This is where parents vet you. Feed quality beats feed volume every time.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="badge badge-high">FB groups</span>
+          <div class="row-content">
+            <div class="row-text">Highest-ROI channel — Lark posts as herself, not as the brand</div>
+            <div class="row-note">East End Parents, Beaches parent groups, school-specific groups. One genuine post outperforms a week of Instagram content.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="badge badge-low">FB page</span>
+          <div class="row-content">
+            <div class="row-text">Mirrors Instagram — set it and don't stress it</div>
+            <div class="row-note">75 followers is fine. It exists for credibility, not growth.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Lark's standing rules</p>
+      <div class="card">
+        <div class="row">
+          <div class="rule-num">1</div>
+          <div class="row-content">
+            <div class="row-text">3 posts per week maximum — never more</div>
+            <div class="row-note">Consistency beats volume. Missing a post is fine. Going to 5 in a week burns you out.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="rule-num">2</div>
+          <div class="row-content">
+            <div class="row-text">If a caption sounds like a press release, rewrite it</div>
+            <div class="row-note">Read it aloud. Would you say this to a parent at pickup? If not, it's too corporate.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="rule-num">3</div>
+          <div class="row-content">
+            <div class="row-text">Leave 2–3 genuine comments per week on followed accounts</div>
+            <div class="row-note">Not likes — comments. One real sentence. This is what builds the algorithm relationship.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="rule-num">4</div>
+          <div class="row-content">
+            <div class="row-text">In FB groups: be helpful first, always — promotion comes weeks later</div>
+            <div class="row-note">Answer reading questions. Be the TDSB teacher who actually knows things. Trust before product.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="rule-num">5</div>
+          <div class="row-content">
+            <div class="row-text">When in doubt about a post, text David before publishing</div>
+            <div class="row-note">10-second check. Never second-guess live.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">David's standing tasks</p>
+      <div class="card">
+        <div class="row">
+          <span class="badge badge-david">David</span>
+          <div class="row-content">
+            <div class="row-text">Batch-create that week's graphics in Canva — 30 min/week</div>
+            <div class="row-note">Use the Red Pen template. Prep 3 graphics per sitting.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="badge badge-david">David</span>
+          <div class="row-content">
+            <div class="row-text">Draft caption copy for Lark to approve via text</div>
+            <div class="row-note">Her voice, your production. Never post without her sign-off.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="badge badge-david">David</span>
+          <div class="row-content">
+            <div class="row-text">Schedule approved posts using Instagram's native scheduler</div>
+            <div class="row-note">Best times for Toronto parent demographic: Tue/Thu 8–9am, Sun 7–8pm.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="badge badge-david">David</span>
+          <div class="row-content">
+            <div class="row-text">Track one number weekly: follower count</div>
+            <div class="row-note">Note it somewhere. You're not optimizing for it yet — just watching the trend.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="badge badge-david">David</span>
+          <div class="row-content">
+            <div class="row-text">Never follow more than 10 new accounts in one day</div>
+            <div class="row-note">The algorithm reads bulk following as bot behaviour.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Content buckets — rotate through these</p>
+      <div class="card-grid">
+        <div class="card-small">
+          <h4>Truth Bomb</h4>
+          <p>Red Pen graphic + one Radical truth. No face required. David creates, Lark approves.</p>
+        </div>
+        <div class="card-small">
+          <h4>Lark's voice</h4>
+          <p>Caption-forward. Something real she observed. Minimal graphic. Highest trust-builder.</p>
+        </div>
+        <div class="card-small">
+          <h4>Education</h4>
+          <p>Summer slide, Matthew Effect, SoR concepts. Evergreen content that keeps getting found.</p>
+        </div>
+        <div class="card-small">
+          <h4>Conversion</h4>
+          <p>Summer Surge / program-specific. Maximum one per week. Honest urgency only — never manufactured.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Image rules — quick reference</p>
+      <div class="card">
+        <div class="row">
+          <div class="row-content">
+            <div class="row-text">Always use Two-Layer alt text</div>
+            <div class="row-note">Accessibility description first, then brand meaning interpretation. E.g. "A school-issued tablet showing the Lexia Core5 login screen, overlaid with a padlock — illustrating why Toronto and TDSB families can't access Lexia from home."</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-content">
+            <div class="row-text">Rename every file before uploading</div>
+            <div class="row-note">Keyword-rich slug: <code>lexia-core5-tdsb-access-locked.jpg</code> not <code>IMG_4823.jpg</code></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-content">
+            <div class="row-text">Export sizes</div>
+            <div class="row-note">Instagram feed: 1080×1080px &nbsp;·&nbsp; Blog hero / Open Graph: 1200×630px</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Don't post this</p>
+      <div class="dont-card">
+        <div class="dont-row">
+          <div class="dont-x">✕</div>
+          <div class="row-content">
+            <div class="row-text">Calendar and holiday content</div>
+            <div class="row-note">Happy Easter. Happy March Break. Happy Back to School. Every local tutoring company posts this — which is exactly why we don't. It fills the feed with content that has nothing to do with why parents follow us, and it signals we've run out of things to say. The Easter tulips post is the example. When in doubt, ask: could a physiotherapy clinic post this? If yes, don't.</div>
+          </div>
+        </div>
+        <div class="dont-row">
+          <div class="dont-x">✕</div>
+          <div class="row-content">
+            <div class="row-text">Stock-photo-style children</div>
+            <div class="row-note">Smiling kid with a book. Backpack. Apple on a desk. It looks like every other education brand and undermines the editorial, clinical credibility in every other post. If an image could be on a competitor's page, it doesn't belong on ours.</div>
+          </div>
+        </div>
+        <div class="dont-row">
+          <div class="dont-x">✕</div>
+          <div class="row-content">
+            <div class="row-text">Vague inspiration with no edge</div>
+            <div class="row-note">"Every child can learn to read!" True. Harmless. Forgettable. No information, no point of view, no reason to follow us. If a post could have been written by anyone, it wasn't written by Lark.</div>
+          </div>
+        </div>
+        <div class="dont-row">
+          <div class="dont-x">✕</div>
+          <div class="row-content">
+            <div class="row-text">Reposting without adding Lark's voice</div>
+            <div class="row-note">Sharing someone else's content with no commentary signals that we don't have anything of our own to say. If we reshare something, Lark's one-sentence reaction — the insider's take — is the post. The reshare is just the evidence.</div>
+          </div>
+        </div>
+        <div class="dont-row">
+          <div class="dont-x">✕</div>
+          <div class="row-content">
+            <div class="row-text">Softening the brand to avoid offending teachers or the board</div>
+            <div class="row-note">Lark is inside the system and calling it out. That tension is the whole brand. Posts that hedge, qualify, and reassure everyone that school is actually great just cancel the thing that makes Radical Reading worth following. We respect teachers. We do not protect the system.</div>
+          </div>
+        </div>
+        <div class="dont-row">
+          <div class="dont-x">✕</div>
+          <div class="row-content">
+            <div class="row-text">Manufactured urgency or false scarcity</div>
+            <div class="row-note">"Only 2 spots left!" when there are 14. Parents notice, and it destroys the one thing we're building — trust. If spots are genuinely low, say so with the real number. Honest urgency only.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SUMMER SURGE TAB -->
+  <div id="tab-surge" style="display:none">
+
+    <div class="callout">
+      <div class="callout-title">★ The Facebook group play</div>
+      <p>Lark joins 3–4 Danforth/East End parent groups <strong>as herself</strong>, not as the brand. Weeks 1–2: answer reading questions, be helpful, zero mention of Radical Reading. Week 3: one natural mention when the context is genuinely right. <strong>This single activity will outperform all Instagram posts combined for actual conversions.</strong></p>
+    </div>
+
+    <div id="weeks-container"></div>
+
+  </div>
+
+  <!-- INSTAGRAM TECHNICAL TAB -->
+  <div id="tab-insta" style="display:none">
+
+    <div class="section">
+      <p class="section-label">Account setup — confirm these are done</p>
+      <div class="card">
+        <div class="row"><div class="dont-x" style="background:var(--mint-bg);color:var(--mint-text);">✓</div><div class="row-content"><div class="row-text">Business account confirmed</div><div class="row-note">Gives you Insights, scheduling, Meta Business Suite access, and the Facebook Page connection. Do not switch to Creator — Business is correct for your setup.</div></div></div>
+        <div class="row"><div class="dont-x" style="background:var(--mint-bg);color:var(--mint-text);">✓</div><div class="row-content"><div class="row-text">Instagram connected to Facebook Page in Meta Business Suite</div><div class="row-note">Enables cross-posting, unified inbox, and native scheduling from one dashboard. Check at business.facebook.com → Settings → Accounts.</div></div></div>
+        <div class="row"><div class="dont-x" style="background:var(--amber-bg);color:var(--amber-text);">!</div><div class="row-content"><div class="row-text">Link in bio points to Summer Surge enrollment page for now</div><div class="row-note">One link only on Instagram. Point it directly at the Summer Surge product page until July 1. After launch, switch to Instagram's native multi-link tool (free, built-in — no Linktree needed).</div></div></div>
+        <div class="row"><div class="dont-x" style="background:var(--amber-bg);color:var(--amber-text);">!</div><div class="row-content"><div class="row-text">Every post referencing a URL must say "link in bio"</div><div class="row-note">Instagram doesn't make links clickable in captions. If you mention a URL — the blog post, the enrollment page — end with "link in bio." Every time, without exception.</div></div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">How the algorithm ranks your posts</p>
+      <div class="insta-section">
+        <div class="insta-header" onclick="toggleInsta('algo')">
+          <div><div class="insta-title">Engagement signals — in order of importance</div><div class="insta-sub">Tap to expand</div></div>
+          <svg id="ich-algo" class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div id="ib-algo" class="insta-body">
+          <div class="row" style="padding-top:0"><div class="rule-num" style="background:var(--mint-bg);color:var(--mint-text);border-color:#9fe1cb">1</div><div class="row-content"><div class="row-text">Saves — the highest-value action on any post</div><div class="row-note">When someone saves a post, Instagram reads it as "this was worth keeping." Saves trigger wider distribution more reliably than anything else. Design educational posts to be save-worthy: checklists, explainers, reference content parents return to.</div></div></div>
+          <div class="row"><div class="rule-num" style="background:var(--mint-bg);color:var(--mint-text);border-color:#9fe1cb">2</div><div class="row-content"><div class="row-text">Shares — "this was worth sending to someone"</div><div class="row-note">Shares to Stories and DMs are the second-highest signal. The most share-worthy Radical Reading posts are ones that make a parent think "I need to send this to another parent." The Lexia/TDSB content is a natural share trigger.</div></div></div>
+          <div class="row"><div class="rule-num">3</div><div class="row-content"><div class="row-text">Comments — especially in the first 60 minutes</div><div class="row-note">Comments signal active conversation. A specific question in the caption invites real replies. Lark replies to every comment within 30 minutes of posting.</div></div></div>
+          <div class="row"><div class="rule-num">4</div><div class="row-content"><div class="row-text">Time spent on post</div><div class="row-note">Carousel posts naturally increase time-on-post because people swipe through. This is why carousels outperform single images for educational content.</div></div></div>
+          <div class="row"><div class="rule-num" style="color:var(--hint);border-color:var(--border)">5</div><div class="row-content"><div class="row-text">Likes — low signal, mostly ignore</div><div class="row-note">Nearly worthless as an algorithmic signal now. Don't optimise for them and don't be discouraged by a post with few likes but strong saves.</div></div></div>
+          <div class="insight"><p>Instagram first shows your post to a small test group — roughly your most engaged existing followers. If that group engages well, distribution expands. This is why <strong>the first 60 minutes after posting matters</strong>, and why posting when your audience is active is critical.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Post formats — what to use and when</p>
+      <div class="format-card">
+        <div class="format-icon" style="background:var(--mint-bg)">⊞</div>
+        <div class="format-body">
+          <div class="format-name">Carousel <span class="status-pill status-now">Use now</span></div>
+          <div class="format-desc">2–10 images, swipe-through. The save magnet. Use for: track explainer, summer slide, Matthew Effect, parent FAQ, any educational content with multiple points. First slide must stop the scroll — treat it like a headline.</div>
+        </div>
+      </div>
+      <div class="format-card">
+        <div class="format-icon" style="background:#eef2ff">▣</div>
+        <div class="format-body">
+          <div class="format-name">Single image <span class="status-pill status-now">Use now</span></div>
+          <div class="format-desc">Best for Truth Bombs — one sharp message, one Red Pen graphic. Also for the Summer Surge announcement and conversion posts where one image says everything.</div>
+        </div>
+      </div>
+      <div class="format-card">
+        <div class="format-icon" style="background:var(--amber-bg)">◎</div>
+        <div class="format-body">
+          <div class="format-name">Stories <span class="status-pill status-later">David now / Lark later</span></div>
+          <div class="format-desc">Disappear in 24 hours — lowest brand risk on the platform. David posts: reshares of feed posts, "link in bio" reminders, Summer Surge countdown. Lark's on-ramp when ready: a text-slide Story, no camera required. Replies to Stories are highly weighted by the algorithm.</div>
+        </div>
+      </div>
+      <div class="format-card">
+        <div class="format-icon" style="background:#f1efea">▷</div>
+        <div class="format-body">
+          <div class="format-name">Reels <span class="status-pill status-no">Not yet</span></div>
+          <div class="format-desc">Highest algorithmic reach of any format. Requires video — a comfort barrier for Lark right now. Revisit in the fall when there's traction. A 30-second iPhone clip in good window light is enough when the time comes.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Hashtag system — 8 to 15 tags per post, always rotated</p>
+      <div class="insta-section">
+        <div class="insta-header" onclick="toggleInsta('tags')">
+          <div><div class="insta-title">3-tier strategy + full hashtag bank</div><div class="insta-sub">Tap to expand</div></div>
+          <svg id="ich-tags" class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div id="ib-tags" class="insta-body">
+          <div class="row" style="padding-top:0;border-bottom:none">
+            <div class="row-content">
+              <div class="row-note" style="margin-bottom:14px">Use 3 tiers per post, 8–15 tags total. Never use identical tags on every post — the algorithm deprioritises accounts that repeat the same set. Pick from this bank and mix.</div>
+              <div style="margin-bottom:14px">
+                <div style="font-size:11px;font-weight:600;color:var(--mint-text);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px">Tier 1 — Niche, high-intent (pick 4–5 per post)</div>
+                <div style="display:flex;flex-wrap:wrap;gap:5px">
+                  <span class="tag-pill tag-t1">#scienceofreading</span><span class="tag-pill tag-t1">#torontoparents</span><span class="tag-pill tag-t1">#tdsb</span><span class="tag-pill tag-t1">#torontokids</span><span class="tag-pill tag-t1">#earlyreading</span><span class="tag-pill tag-t1">#eastendtoronto</span><span class="tag-pill tag-t1">#danforthtoronto</span><span class="tag-pill tag-t1">#lexiacore5</span>
+                </div>
+              </div>
+              <div style="margin-bottom:14px">
+                <div style="font-size:11px;font-weight:600;color:var(--amber-text);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px">Tier 2 — Mid-size community (pick 3–4 per post)</div>
+                <div style="display:flex;flex-wrap:wrap;gap:5px">
+                  <span class="tag-pill tag-t2">#dyslexiaawareness</span><span class="tag-pill tag-t2">#ontarioeducation</span><span class="tag-pill tag-t2">#phonics</span><span class="tag-pill tag-t2">#literacymatters</span><span class="tag-pill tag-t2">#structuredliteracy</span><span class="tag-pill tag-t2">#righttoreading</span><span class="tag-pill tag-t2">#dyslexiacanada</span><span class="tag-pill tag-t2">#readingintervention</span>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;font-weight:600;color:var(--hint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px">Tier 3 — Broad category signal (pick 2–3 per post)</div>
+                <div style="display:flex;flex-wrap:wrap;gap:5px">
+                  <span class="tag-pill tag-t3">#readingforkids</span><span class="tag-pill tag-t3">#kidslearning</span><span class="tag-pill tag-t3">#parentingtips</span><span class="tag-pill tag-t3">#learningtoread</span><span class="tag-pill tag-t3">#educationmatters</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">The first 60 minutes — engagement seeding</p>
+      <div class="card">
+        <div class="row"><div class="rule-num">1</div><div class="row-content"><div class="row-text">Post at the right time</div><div class="row-note">Toronto parent demographic: Tuesday and Thursday 8–9am, Sunday 7–8pm. Confirm against your own Insights once you have 30+ days of data — your specific audience may differ slightly.</div></div></div>
+        <div class="row"><div class="rule-num">2</div><div class="row-content"><div class="row-text">Ask a specific question in every caption</div><div class="row-note">Not "what do you think?" — something answerable. "Did your child's school ever mention Lexia to you?" or "Which track sounds like your kid — IGNITE, SURGE, or BRIDGE?" Specific questions get specific replies.</div></div></div>
+        <div class="row"><div class="rule-num">3</div><div class="row-content"><div class="row-text">Reply to every comment within 30 minutes</div><div class="row-note">Even a one-word reply counts. It signals to the algorithm the post is generating conversation and triggers another round of distribution. David can cover this if Lark isn't available at post time.</div></div></div>
+        <div class="row"><div class="rule-num">4</div><div class="row-content"><div class="row-text">Engage with 2–3 other accounts right after posting</div><div class="row-note">Log in as the brand account and leave a genuine comment on a followed account's recent post. Being active on the platform immediately after posting signals the account is live.</div></div></div>
+        <div class="row"><div class="rule-num">5</div><div class="row-content"><div class="row-text">David can seed from a personal account</div><div class="row-note">A genuine comment from a personal account in the first 15 minutes helps trigger the test-group expansion. Not "great post!" — an actual reaction.</div></div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Instagram Insights — what to track</p>
+      <div class="metric-grid">
+        <div class="metric-card track">
+          <div class="metric-label track">Track — monthly (account level)</div>
+          <div class="metric-item">Follower count <small>Note on the last Sunday of each month.</small></div>
+          <div class="metric-item">Accounts reached <small>Unique accounts who saw anything from you.</small></div>
+          <div class="metric-item">Profile visits <small>How many people checked you out. The vetting signal.</small></div>
+          <div class="metric-item">Website taps <small>Clicks on your bio link. Your conversion signal.</small></div>
+          <div class="metric-item">Follower location <small>Confirm East Toronto parents are your actual audience.</small></div>
+        </div>
+        <div class="metric-card track">
+          <div class="metric-label track">Track — per post (at 48 hours)</div>
+          <div class="metric-item">Saves <small>Most important single metric. Track obsessively.</small></div>
+          <div class="metric-item">Shares <small>Second most important.</small></div>
+          <div class="metric-item">Comments <small>Third.</small></div>
+          <div class="metric-item">Follows from post <small>Did this post bring in new followers?</small></div>
+          <div class="metric-item">Reach <small>Unique accounts who saw this post.</small></div>
+        </div>
+      </div>
+      <div class="metric-grid" style="margin-top:10px">
+        <div class="metric-card skip">
+          <div class="metric-label skip">Don't bother tracking</div>
+          <div class="metric-item" style="color:var(--muted)">Likes <small>Too low-signal to be meaningful.</small></div>
+          <div class="metric-item" style="color:var(--muted)">Raw impressions <small>Only meaningful relative to reach — alone it tells you nothing.</small></div>
+        </div>
+        <div class="metric-card" style="background:var(--azure);border-color:var(--azure)">
+          <div class="metric-label" style="color:var(--amber)">The one number to watch</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.9);line-height:1.6;padding:4px 0">Profile visits ÷ website taps<br><span style="color:rgba(255,255,255,.6);font-size:12px">Your bio conversion rate. 50 visits, 3 taps = 6%. Lower means the profile itself needs work, not the posts.</span></div>
+        </div>
+      </div>
+      <div style="background:var(--bg);border:0.5px solid var(--border);border-radius:10px;padding:13px 15px;margin-top:10px">
+        <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px">Monthly check-in ritual — 15 minutes</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.55">Last Sunday of each month. Open Insights, note follower count, reached accounts, profile visits, website taps. Look at the top 3 posts by saves. Ask: what did those posts have in common? Do more of that.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LINKEDIN TAB -->
+  <div id="tab-linkedin" style="display:none">
+
+    <div class="callout" style="margin-bottom:20px">
+      <div class="callout-title">LinkedIn is a different job than Instagram</div>
+      <p>Instagram talks directly to parents who might enroll. LinkedIn reaches <strong>educators, SLPs, and dyslexia advocates</strong> who refer families — and journalists and policy people who can amplify Lark's voice. One well-placed LinkedIn post reaches an audience Instagram never will. When those professionals share it, it lands in exactly the right parent communities.</p>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Immediate profile updates — do these this week</p>
+      <div class="card">
+
+        <div class="row">
+          <span class="badge badge-lark">Lark</span>
+          <div class="row-content">
+            <div class="row-text">Update your headline</div>
+            <div class="row-note">The headline is the most-read line on LinkedIn — it appears in search results, notifications, and everywhere your name shows. Current headline only references DDON and TDSB. Radical Reading needs to be here.</div>
+            <div class="copy-block">
+              <div class="copy-label">Paste this</div>
+              Literacy Interventionist &amp; Special Education Teacher, TDSB &nbsp;|&nbsp; Co-founder, Radical Reading Co. &nbsp;|&nbsp; Science of Reading Advocate
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <span class="badge badge-lark">Lark</span>
+          <div class="row-content">
+            <div class="row-text">Add radicalreading.co to your contact links</div>
+            <div class="row-note">Go to Edit Profile → Contact info → Website. Add radicalreading.co as the first link. Keep decodingdyslexiaon.org as a second link — that history is credibility, not something to erase.</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <span class="badge badge-lark">Lark</span>
+          <div class="row-content">
+            <div class="row-text">Add Radical Reading Co. as a current Experience entry</div>
+            <div class="row-note">Go to Experience → Add position. This creates the connection to the Company Page (David will set that up) and makes Radical Reading visible on your profile.</div>
+            <div class="copy-block">
+              <div class="copy-label">Paste this</div>
+              <strong style="font-style:normal;font-weight:600">Title:</strong> Co-founder &amp; Director of Education<br>
+              <strong style="font-style:normal;font-weight:600">Company:</strong> Radical Reading Co.<br>
+              <strong style="font-style:normal;font-weight:600">Date:</strong> January 2026 – Present<br>
+              <strong style="font-style:normal;font-weight:600">Description:</strong> Bringing Lexia® Core5® — the gold-standard, science-of-reading program used in 20,000+ schools — directly to Ontario families. Providing clinical oversight, progress monitoring, and expert guidance that closes the gap between what the school system offers and what children actually need.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <span class="badge badge-lark">Lark</span>
+          <div class="row-content">
+            <div class="row-text">Update your About section to include Radical Reading</div>
+            <div class="row-note">Add this to the end of your existing About section — or replace it entirely if it's thin. It bridges your advocacy history to what you're building now.</div>
+            <div class="copy-block">
+              <div class="copy-label">Add to About section</div>
+              After years of advocating for evidence-based reading instruction — including serving as President of Decoding Dyslexia Ontario and presenting at the OHRC's Right to Read inquiry launch — I co-founded Radical Reading Co. to put clinical-grade reading tools directly in the hands of Ontario families. We bring Lexia® Core5®, the gold-standard science-of-reading program, home to families who shouldn't have to wait for the system to catch up.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <span class="badge badge-david">David</span>
+          <div class="row-content">
+            <div class="row-text">Set up a Radical Reading Co. LinkedIn Company Page</div>
+            <div class="row-note">Go to linkedin.com/company/setup/new. Takes 20 minutes. Adds legitimacy to Lark's Experience entry, gives the brand a professional presence, and creates a page Lark can tag in posts. Use the same logo and brand description as the website.</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <span class="badge badge-david">David</span>
+          <div class="row-content">
+            <div class="row-text">Add the blog post to Lark's Featured section once it's live</div>
+            <div class="row-note">Featured sits near the top of the profile — prime real estate. The Lexia/TDSB post is exactly the kind of insider, credentialed content her LinkedIn audience will engage with. Go to Edit Profile → Add section → Featured → Add link.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">What to post — and what not to</p>
+      <div class="card">
+        <div class="row">
+          <div class="dont-x" style="background:var(--mint-bg);color:var(--mint-text);">✓</div>
+          <div class="row-content">
+            <div class="row-text">Insider educator perspective</div>
+            <div class="row-note">Things Lark sees inside the system that parents and policy people don't. The Lexia fidelity problem. The gap between the Right to Read recommendations and what's actually happening in classrooms. This is her unique voice — use it.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="dont-x" style="background:var(--mint-bg);color:var(--mint-text);">✓</div>
+          <div class="row-content">
+            <div class="row-text">Blog posts — with native commentary, not just a link</div>
+            <div class="row-note">LinkedIn deprioritises posts that are only a link. Always lead with 2–3 sentences of Lark's original commentary before the URL. The post intro below is ready to use for the first blog share.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="dont-x" style="background:var(--mint-bg);color:var(--mint-text);">✓</div>
+          <div class="row-content">
+            <div class="row-text">Right to Read and Ontario literacy policy updates</div>
+            <div class="row-note">Lark is embedded in this movement. When there are developments, she's one of the first people who should be commenting publicly. Keeps her visible in the policy and advocate layer her network cares about.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="dont-x" style="background:var(--mint-bg);color:var(--mint-text);">✓</div>
+          <div class="row-content">
+            <div class="row-text">Honest Radical Reading milestones</div>
+            <div class="row-note">When Summer Surge fills. When the first families complete the program. When there's a real outcome to share. Not promotional — just honest professional updates from someone building something meaningful.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="dont-x">✕</div>
+          <div class="row-content">
+            <div class="row-text">Product promotions or enrollment CTAs</div>
+            <div class="row-note">LinkedIn's educator and professional audience disengages immediately from anything that reads like an ad. The referral value comes from Lark being seen as a credible thought leader. Radical Reading mentions should always feel organic, never salesy.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Cadence</p>
+      <div class="card-single">
+        <div style="font-size:13px;color:var(--text);line-height:1.6">Once a week is ideal. Once every two weeks is fine. <strong style="font-weight:600">Substance over volume</strong> — a single well-written post from a credentialed educator lands far better than frequent lightweight content. LinkedIn rewards depth in a way Instagram doesn't.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">The immediate opportunity — sharing the blog post</p>
+      <div class="insta-section">
+        <div class="insta-header" onclick="toggleInsta('liblog')">
+          <div><div class="insta-title">Ready-to-use post intro for the Lexia/TDSB article</div><div class="insta-sub">Tap to expand — paste this when the post goes live</div></div>
+          <svg id="ich-liblog" class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div id="ib-liblog" class="insta-body">
+          <div class="copy-block" style="margin:0">
+            <div class="copy-label">Lark posts this on LinkedIn when the blog goes live</div>
+            I've been sitting on this one for a while.<br><br>
+            As a TDSB special education teacher, I see the Lexia access problem from both sides. The board has licences. Most kids — especially mainstream students — never touch the program. And when the data does get flagged, the follow-through can take weeks.<br><br>
+            Here's the honest version of why most Toronto kids never use the reading program their school board is already paying for — and what families can do about it.<br><br>
+            [link to blog post]
+          </div>
+          <div style="font-size:12px;color:var(--muted);padding:12px 0 0">This framing — from the inside, honest, not a pitch — will get shares from her educator network that no ad could buy. Those shares reach parent communities directly.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Summary — action items at a glance</p>
+      <div class="card">
+        <div class="row"><span class="badge badge-lark">Lark</span><div class="row-content"><div class="row-text">Update headline</div><div class="row-note">Copy above. 5 minutes.</div></div></div>
+        <div class="row"><span class="badge badge-lark">Lark</span><div class="row-content"><div class="row-text">Add radicalreading.co to contact links</div><div class="row-note">Edit Profile → Contact info. 2 minutes.</div></div></div>
+        <div class="row"><span class="badge badge-lark">Lark</span><div class="row-content"><div class="row-text">Add Radical Reading Co. experience entry</div><div class="row-note">Copy above. 5 minutes. Do after David sets up the Company Page so you can link to it.</div></div></div>
+        <div class="row"><span class="badge badge-lark">Lark</span><div class="row-content"><div class="row-text">Update About section</div><div class="row-note">Add the paragraph above to your existing About. 3 minutes.</div></div></div>
+        <div class="row"><span class="badge badge-david">David</span><div class="row-content"><div class="row-text">Set up Radical Reading LinkedIn Company Page</div><div class="row-note">linkedin.com/company/setup/new. 20 minutes. Do this first so Lark can link to it from Experience.</div></div></div>
+        <div class="row"><span class="badge badge-david">David</span><div class="row-content"><div class="row-text">Add blog post to Lark's Featured section once live</div><div class="row-note">Edit Profile → Featured → Add link.</div></div></div>
+        <div class="row"><span class="badge badge-lark">Lark</span><div class="row-content"><div class="row-text">Share blog post with the ready-to-use intro above</div><div class="row-note">When the blog goes live. This is the highest-value single post you can make on LinkedIn right now.</div></div></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Radical Reading Co. Social Media Playbook &nbsp;·&nbsp; Summer 2026 &nbsp;·&nbsp; radicalreading.co</p>
+</div>
+
+<script>
+const weeks = [
+  {
+    num: 1,
+    name: "Re-establish presence",
+    sub: "Signal the accounts are alive and have a point of view",
+    tasks: [
+      { owner: "David", text: "Create Truth Bomb graphic", note: "\"Your child's school probably has Lexia. Your child probably can't access it. We fixed that.\" — Red Pen style, link to blog post in bio." },
+      { owner: "David", text: "Reformat Summer Surge flyer for Instagram portrait (1080×1350px)" },
+      { owner: "David", text: "Create Stat card", note: "The 25% fidelity stat from the Lexia Canada report — Red Pen style." },
+      { owner: "Lark", text: "Approve 3 captions via text", note: "10 minutes total. David drafts, you edit to your voice." },
+      { owner: "Lark", text: "Join 3–4 Danforth/East End Facebook parent groups", note: "As yourself. Introduce yourself if asked — TDSB teacher, parent, East End. Nothing about Radical Reading yet." },
+    ]
+  },
+  {
+    num: 2,
+    name: "Find Lark's voice",
+    sub: "Make the account feel human, not branded",
+    tasks: [
+      { owner: "Lark", text: "Write one genuine caption about something you observed recently", note: "One paragraph, honest, specific. No jargon. A child whose Lexia flag sat unactioned for three weeks. Something real." },
+      { owner: "Lark", text: "Start being helpful in FB groups — no promotion yet", note: "Answer a reading question. Recommend a resource. Be the insider who actually knows things." },
+      { owner: "David", text: "Create Summer Slide explainer graphic", note: "What the summer slide is, in plain language. Evergreen — it will keep getting found." },
+      { owner: "David", text: "Create Track explainer graphic", note: "IGNITE / SURGE / BRIDGE — who each is for in one sentence. The post a parent shares with another parent." },
+    ]
+  },
+  {
+    num: 3,
+    name: "Plant Lark as a real person",
+    sub: "One photo. The trust anchor for the whole account.",
+    tasks: [
+      { owner: "Lark", text: "The photo post", note: "One good photo — warm, real, not staged. Kitchen table, not lab coat. Two-sentence caption in your own voice: why you built this. Most important post of the six weeks." },
+      { owner: "Lark", text: "First natural mention of Radical Reading in one FB group", note: "Only when the context is genuinely right. Not forced. \"I actually built something for this exact situation...\"" },
+      { owner: "David", text: "Create Parent FAQ graphic", note: "\"The three questions every parent asks before enrolling.\" Lark writes the answers in her own words." },
+      { owner: "Both", text: "Spots update — if comfortable", note: "\"We're at X families for Summer Surge. 20 spots total.\" Skip if the number feels too exposing. Substitute another Truth Bomb." },
+    ]
+  },
+  {
+    num: 4,
+    name: "Sustain and convert",
+    sub: "Keep the feed alive, drive Summer Surge enrollments",
+    tasks: [
+      { owner: "David", text: "1 Truth Bomb graphic" },
+      { owner: "David", text: "1 Summer Surge conversion post", note: "Direct but not pushy. \"Here's what three months of 15 minutes a day actually does.\"" },
+      { owner: "Lark", text: "1 voice caption — something genuine from the week" },
+      { owner: "Lark", text: "Keep FB group presence active", note: "2–3 helpful comments or replies. No hard selling." },
+    ]
+  },
+  {
+    num: 5,
+    name: "Build honest urgency",
+    sub: "The urgency is real — use it",
+    tasks: [
+      { owner: "David", text: "Honest spots update if numbers allow", note: "Only post if it's true and specific. \"X of 20 spots filled.\" Manufactured scarcity is never on-brand." },
+      { owner: "David", text: "Share the Lexia/TDSB blog post", note: "Format a pull quote as a graphic. Link in bio. Most shareable content you have." },
+      { owner: "Lark", text: "1 voice caption — what she's seeing as summer approaches" },
+      { owner: "Lark", text: "Active in FB groups — urgency is natural here too" },
+    ]
+  },
+  {
+    num: 6,
+    name: "Final push",
+    sub: "Close the remaining spots",
+    tasks: [
+      { owner: "Lark", text: "One personal reflection post", note: "\"Here's what I've seen in these first weeks of Summer Surge...\" Real, specific, no spin. The most converting thing Lark can post." },
+      { owner: "Lark", text: "Last FB group push", note: "A genuine final mention where appropriate. \"Last few spots if anyone is still considering.\"" },
+      { owner: "David", text: "Final Summer Surge conversion post", note: "Clean, direct, honest count. \"X spots remaining. July 1 start. Here's the link.\"" },
+      { owner: "David", text: "\"Last spots\" post — only if literally true", note: "Do not manufacture scarcity. If spots are genuinely low, say so plainly." },
+    ]
+  }
+];
+
+function showTab(t) {
+  ['ongoing','surge','insta','linkedin'].forEach(id => {
+    document.getElementById('tab-' + id).style.display = t === id ? 'block' : 'none';
+  });
+  document.querySelectorAll('.tab').forEach((b, i) => {
+    b.classList.toggle('active', i === ['ongoing','surge','insta','linkedin'].indexOf(t));
+  });
+}
+
+function toggleInsta(id) {
+  const body = document.getElementById('ib-' + id);
+  const chev = document.getElementById('ich-' + id);
+  body.classList.toggle('open');
+  chev.classList.toggle('open');
+}
+
+function toggleWeek(n) {
+  const body = document.getElementById('wb-' + n);
+  const chev = document.getElementById('ch-' + n);
+  body.classList.toggle('open');
+  chev.classList.toggle('open');
+}
+
+const container = document.getElementById('weeks-container');
+weeks.forEach(w => {
+  const badgeClass = { Lark: 'badge-lark', David: 'badge-david', Both: 'badge-both' };
+  const tasksHTML = w.tasks.map(t => `
+    <div class="row">
+      <span class="badge ${badgeClass[t.owner]}">${t.owner}</span>
+      <div class="row-content">
+        <div class="row-text">${t.text}</div>
+        ${t.note ? `<div class="row-note">${t.note}</div>` : ''}
+      </div>
+    </div>`).join('');
+
+  const el = document.createElement('div');
+  el.className = 'week-card';
+  el.innerHTML = `
+    <div class="week-header" onclick="toggleWeek(${w.num})">
+      <div class="week-left">
+        <div class="week-bubble">${w.num}</div>
+        <div class="week-info">
+          <div class="week-name">${w.name}</div>
+          <div class="week-sub">${w.sub}</div>
+        </div>
+      </div>
+      <svg id="ch-${w.num}" class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+    <div id="wb-${w.num}" class="week-body">${tasksHTML}</div>`;
+  container.appendChild(el);
+});
+</script>
+</body>
+</html>

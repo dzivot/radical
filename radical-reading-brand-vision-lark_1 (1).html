@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Radical Reading Vision — Lark Barker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --azure: #0c323d;
+  --azure-mid: #174958;
+  --coral: #eb5a53;
+  --amber: #e5a930;
+  --mint: #0fac8c;
+  --slate: #43545e;
+  --muted: #7a9099;
+  --border: #dde4e7;
+  --bg: #faf9f7;
+  --white: #ffffff;
+  --text: #1a2b30;
+  --warm: #f5f2ee;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ── */
+.header {
+  background: var(--azure);
+  padding: 48px 32px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(229,169,48,.07);
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 30%;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: rgba(235,90,83,.05);
+}
+.header-inner { max-width: 680px; margin: 0 auto; position: relative; }
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+.brand-mark {
+  width: 32px; height: 32px;
+  background: var(--amber);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  color: var(--azure);
+  flex-shrink: 0;
+}
+.brand-name {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+}
+.header-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 14px;
+}
+.header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.header-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+/* ── Body ── */
+.body { max-width: 680px; margin: 0 auto; padding: 0 32px 80px; }
+
+/* ── Section ── */
+.section {
+  padding: 48px 0 0;
+  border-top: 0.5px solid var(--border);
+  margin-top: 48px;
+}
+.section:first-child { border-top: none; margin-top: 40px; }
+.section-num {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 400;
+  color: var(--azure);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+/* ── Prose ── */
+.prose p {
+  font-size: 15px;
+  color: var(--slate);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.prose p:last-child { margin-bottom: 0; }
+.prose strong {
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ── Pull quote ── */
+.pull {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(19px, 3vw, 24px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--azure);
+  line-height: 1.4;
+  border-left: 3px solid var(--amber);
+  padding: 4px 0 4px 24px;
+  margin: 28px 0;
+}
+
+/* ── Accent block ── */
+.accent {
+  background: var(--azure);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin: 28px 0;
+}
+.accent p {
+  font-size: 15px;
+  color: rgba(255,255,255,.8);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.accent p:last-child { margin-bottom: 0; }
+.accent strong { color: var(--amber); font-weight: 500; }
+
+/* ── Voice examples ── */
+.voice-intro {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.voice-intro em { font-style: normal; color: var(--slate); font-weight: 500; }
+.voice-grid { display: flex; flex-direction: column; gap: 12px; }
+.voice-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.voice-col {
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.voice-col.before {
+  background: var(--warm);
+  border: 0.5px solid var(--border);
+}
+.voice-col.after {
+  background: var(--azure);
+}
+.voice-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.voice-col.before .voice-label { color: var(--muted); }
+.voice-col.after .voice-label { color: var(--amber); }
+.voice-text {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.voice-col.before .voice-text { color: var(--slate); }
+.voice-col.after .voice-text { color: rgba(255,255,255,.9); }
+
+/* ── Closing ── */
+.closing {
+  background: var(--warm);
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  margin-top: 48px;
+  text-align: center;
+}
+.closing h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--azure);
+  margin-bottom: 12px;
+}
+.closing p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+/* ── Footer ── */
+.footer {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 32px 40px;
+  font-size: 11px;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+}
+
+@media (max-width: 560px) {
+  .header { padding: 32px 20px 28px; }
+  .body { padding: 0 20px 60px; }
+  .voice-pair { grid-template-columns: 1fr; }
+  .footer { padding: 20px 20px 40px; }
+  .accent { padding: 18px 20px; }
+  .closing { padding: 22px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <div class="brand-mark">R</div>
+      <div class="brand-name">Radical Reading Co.</div>
+    </div>
+    <p class="header-eyebrow">Brand Vision &amp; Voice — Lark Barker</p>
+    <h1>Your leadership was always right.<br>Now you have a platform.</h1>
+    <p class="header-sub">A clear articulation of what Radical Reading is, who you are within it, and why this is the work you were always building toward.</p>
+  </div>
+</div>
+
+<div class="body">
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <p class="section-num">01</p>
+    <h2>What you know</h2>
+    <div class="prose">
+      <p>You have been inside the science of reading longer than it was fashionable to be there. You have sat with children whose schools told their parents to wait and see — and you knew, with clinical certainty, that waiting was costing them years they would not get back.</p>
+      <p>You have advocated, testified, pushed, and often paid the social price of being right before the room was ready to hear it. You watched others arrive at conclusions you reached years earlier and claim them as discoveries. You kept going anyway — not because it was easy, but because the children needed help NOW.</p>
+      <p>This history is not just backstory. It is the entire foundation of what Radical Reading stands for.</p>
+    </div>
+
+    <div class="pull">"The children couldn't wait for the system to change. They still can't."</div>
+
+    <div class="prose">
+      <p>Your decade in structured literacy and special education, your years building capacity at Decoding Dyslexia Ontario, your work on the Right to Read inquiry — none of that is behind you. It is the foundation for the next part of your journey. IT makes everything Radical Reading says credible. It is why parents should trust us with their children's reading brains, and why we should never treat it as just marketing backstory.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <p class="section-num">02</p>
+    <h2>What we're here to do</h2>
+    <div class="prose">
+      <p>Radical Reading exists because the gap between what the science of reading can do for children and what most children actually receive is still unconscionable — and closing it shouldn't require a formal diagnosis, a sympathetic teacher, or a parent who knows which battles to fight.</p>
+      <p>The children you have always fought hardest for — the ones with dyslexia, the ones formally identified, the ones whose families have been in the system for years — they are still here. That fight continues. But there is a larger group of children quietly falling behind in classrooms designed for averages, whose gaps will compound unseen until Grade 4 makes them undeniable.</p>
+    </div>
+
+    <div class="accent">
+      <p>The formally identified child has advocates. The quietly struggling child, or even the "good enough" child often has no one fighting for them at all.</p>
+      <p><strong>Radical Reading is for all the children.</strong> Expanding who we fight for is not abandoning anyone. It is building the capacity you have always believed was possible — at a scale that changes more lives.</p>
+    </div>
+
+    <div class="prose">
+      <p>This is the through-line from your advocacy work to Radical Reading: you have always believed that more children could get the help they need if someone would just remove the institutional barriers and put the right tools directly in their hands. That is exactly what we are doing.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3 — NEW -->
+  <div class="section">
+    <p class="section-num">03</p>
+    <h2>Every child. Right-sized. In the window that matters.</h2>
+    <div class="prose">
+      <p>Your instinct — that Radical Reading should be there for every child who needs to learn to read — is exactly right. Hold onto that. It is the ethical centre of everything we do.</p>
+      <p>And here is the insight that makes it more powerful, not less: <strong>if you want to help every child learn to read, the place to start is the window where the brain is most ready to be wired for it.</strong> The early years are not a limitation on the vision. They are where intervention does the most good for the most children, with the greatest efficiency and the longest-lasting results. Starting here is not a smaller version of your ideal. It is the most powerful possible expression of it.</p>
+      <p>What you have built — without perhaps seeing it this way yet — is a clinical architecture that proves the commitment. Every parent who arrives at Radical Reading with a child in the critical window can see their child clearly in what we offer. Not every child crammed into the same program and called universal. Every child met exactly where they are, with exactly the level of support their brain needs right now. No more. No less.</p>
+    </div>
+
+    <div class="pull">"Precision is not the opposite of universality. It is what makes universality real."</div>
+
+    <div class="accent">
+      <p>The child who is just beginning to read needs something different from the child who is wobbling, who needs something different from the child with serious dyslexia who needs intensive clinical work. A program that tries to be all things to all children serves none of them as well as they deserve.</p>
+      <p><strong>Right-sizing the support is the radical act.</strong> It is exactly what the system has always failed to do — too much for some, nothing for others, no systematic triage, no early catch, no efficient allocation of clinical resources to the children who genuinely need them most.</p>
+      <p>Radical Reading is built to do what you always believed the system should do: <strong>catch every child early, give each one exactly what they need, and reserve the deepest clinical resources for the children who cannot move forward without them.</strong></p>
+    </div>
+
+    <div class="prose">
+      <p>This is capacity building made real. Not one child at a time in a resource room. Not one policy recommendation in a report that takes years to implement. A scalable architecture that serves the full spectrum — from the child who just needs the right foundation at the right moment, all the way to the child whose brain needs the most intensive rewiring available.</p>
+      <p>The reading clinic you have always imagined — where every child gets exactly the help they need — is what you have built. For now, we have built our deepest expertise around the critical window, where the return on intervention is highest. That is not the ceiling. It is the foundation.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <p class="section-num">04</p>
+    <h2>On Lexia</h2>
+    <div class="prose">
+      <p>Lexia Core5 is the most rigorously evidence-based adaptive reading tool available. You know this from experience. You have seen what it does when the clinical fidelity is actually there.</p>
+      <p>You have also been right that a powerful tool applied without expert oversight produces poor results and unfair outcomes. Lexia without fidelity isn't Lexia. It is a licence that sits unused, or worse — applied as a checkbox intervention for children who needed something more.</p>
+    </div>
+
+    <div class="pull">"You are not selling Lexia. You are providing what Lexia is so often missing in school systems — the clinical layer."</div>
+
+    <div class="prose">
+      <p>Your critique of how Lexia has been misapplied is not a contradiction of what we are building. It is the founding argument. Radical Reading is the fidelity. The expert oversight. The person who actually knows what the data means and acts on it — not in weeks, but immediately.</p>
+      <p>Colleagues who dismiss Lexia entirely are responding to this same evidence of misapplication. The difference is that you see the distinction between the tool and the implementation. You were ahead of that conversation too. You still are.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section">
+    <p class="section-num">05</p>
+    <h2>Who you are in this brand</h2>
+    <div class="prose">
+      <p>The Radical Reading voice is not a persona you are being asked to perform. It is a specific, authentic version of who you already are — the version that shows up when you are talking to a parent who has been told her Grade 2 daughter just needs more time, or a teacher who genuinely wants to help but doesn't know where to start.</p>
+      <p>In those moments you are direct. You are credentialed. You tell people the truth other professionals soften into uselessness. You explain the science without condescension. You refuse to trade honesty for comfort.</p>
+    </div>
+
+    <div class="accent">
+      <p>We call this the <strong>Expert Sister.</strong></p>
+      <p>Not the clinical authority who speaks from behind institutional distance. Not the soft-voiced encourager. The person at the kitchen table who happens to know exactly what is happening in your child's brain — and tells you plainly, because you deserve to know.</p>
+      <p>You have been that person your whole career. <strong>Radical Reading just gives it a name and a platform.</strong></p>
+    </div>
+
+    <div class="prose">
+      <p>The sharpness in the brand voice comes from urgency, not cynicism. The reading window is real and it is finite. Educating more and more parents is the advocacy piece of our brand. Parents who know this act differently than parents who don't. Our job is to make sure they know.</p>
+      <p>You are the reason they will believe us.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 6 — VOICE IN PRACTICE -->
+  <div class="section">
+    <p class="section-num">06</p>
+    <h2>Your voice in practice</h2>
+
+    <p class="voice-intro">Both columns below are <em>your</em> voice — just different registers for different contexts. The advocacy register belongs in policy rooms, professional networks, and formal communications. The Radical register is for parents at the kitchen table who need the truth, plainly.</p>
+
+    <div class="voice-grid">
+
+      <div class="voice-pair">
+        <div class="voice-col before">
+          <div class="voice-label">Advocacy register</div>
+          <div class="voice-text">"Many children with reading difficulties have not been properly identified by the school system and deserve access to evidence-based interventions."</div>
+        </div>
+        <div class="voice-col after">
+          <div class="voice-label">Radical voice</div>
+          <div class="voice-text">"The school probably doesn't know your child is struggling. Here's how to find out — and what to do about it."</div>
+        </div>
+      </div>
+
+      <div class="voice-pair">
+        <div class="voice-col before">
+          <div class="voice-label">Advocacy register</div>
+          <div class="voice-text">"Lexia Core5 can be an effective tool when implemented correctly within an appropriate clinical framework."</div>
+        </div>
+        <div class="voice-col after">
+          <div class="voice-label">Radical voice</div>
+          <div class="voice-text">"Lexia is the gold standard. It works when someone actually knows what they're doing with it. We do."</div>
+        </div>
+      </div>
+
+      <div class="voice-pair">
+        <div class="voice-col before">
+          <div class="voice-label">Advocacy register</div>
+          <div class="voice-text">"The system is complicated and most educators are working hard within significant resource constraints."</div>
+        </div>
+        <div class="voice-col after">
+          <div class="voice-label">Radical voice</div>
+          <div class="voice-text">"The system is complicated by design. You don't have to navigate it alone — and you don't have to wait for it."</div>
+        </div>
+      </div>
+
+      <div class="voice-pair">
+        <div class="voice-col before">
+          <div class="voice-label">Advocacy register</div>
+          <div class="voice-text">"Early intervention is associated with significantly better outcomes for children with reading difficulties."</div>
+        </div>
+        <div class="voice-col after">
+          <div class="voice-label">Radical voice</div>
+          <div class="voice-text">"The window is open right now. We are not being dramatic about that. It matters that you act this summer."</div>
+        </div>
+      </div>
+
+      <div class="voice-pair">
+        <div class="voice-col before">
+          <div class="voice-label">Advocacy register</div>
+          <div class="voice-text">"Every child has the right to learn to read, regardless of their identified learning needs or socioeconomic background."</div>
+        </div>
+        <div class="voice-col after">
+          <div class="voice-label">Radical voice</div>
+          <div class="voice-text">"Your child can learn to read. Not eventually — now. The science exists. We have the tools. Let's start."</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 7 — DOS AND DON'TS -->
+  <div class="section">
+    <p class="section-num">07</p>
+    <h2>The things that are always true</h2>
+    <div class="prose">
+      <p>These are not rules imposed from outside. They are articulations of what you already believe — made explicit so they're easy to return to when something feels off.</p>
+    </div>
+
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px">
+
+      <div style="display:flex;gap:14px;padding:16px;background:var(--white);border:0.5px solid var(--border);border-radius:10px;align-items:flex-start">
+        <div style="width:22px;height:22px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;flex-shrink:0;margin-top:1px">✓</div>
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px">Honest urgency, always</div>
+          <div style="font-size:13px;color:var(--slate);line-height:1.6">The reading window is real. Saying so clearly is not scaremongering — it is the truth parents need to hear. We never manufacture urgency. We never have to.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:14px;padding:16px;background:var(--white);border:0.5px solid var(--border);border-radius:10px;align-items:flex-start">
+        <div style="width:22px;height:22px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;flex-shrink:0;margin-top:1px">✓</div>
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px">Lark's credentials are load-bearing</div>
+          <div style="font-size:13px;color:var(--slate);line-height:1.6">The TDSB teacher credential, the Right to Read work, the Decoding Dyslexia history — these are not optional footnotes. They are the reason parents should trust us over every other reading program they've seen advertised.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:14px;padding:16px;background:var(--white);border:0.5px solid var(--border);border-radius:10px;align-items:flex-start">
+        <div style="width:22px;height:22px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;flex-shrink:0;margin-top:1px">✓</div>
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px">We respect teachers. We do not protect the system.</div>
+          <div style="font-size:13px;color:var(--slate);line-height:1.6">The teachers inside the system are mostly doing heroic work under impossible conditions. The system that constrains them is a different conversation. We can hold both truths at once — and we should.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:14px;padding:16px;background:var(--white);border:0.5px solid var(--border);border-radius:10px;align-items:flex-start">
+        <div style="width:22px;height:22px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;flex-shrink:0;margin-top:1px">✕</div>
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px">Never soften the message to protect anyone's comfort</div>
+          <div style="font-size:13px;color:var(--slate);line-height:1.6">Not the school's. Not a colleague's. Not the community's. The parents who need this information deserve the direct version. Softening it to avoid professional friction costs children the clarity they need to act.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:14px;padding:16px;background:var(--white);border:0.5px solid var(--border);border-radius:10px;align-items:flex-start">
+        <div style="width:22px;height:22px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;flex-shrink:0;margin-top:1px">✕</div>
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px">Never perform enthusiasm you don't feel</div>
+          <div style="font-size:13px;color:var(--slate);line-height:1.6">Happy Easter. Motivational quotes. Generic celebration content. None of it. If the post could have been written by anyone, it wasn't written by you. If it has nothing to do with reading, children, or the science that drives what we do — it doesn't belong on our platforms.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:14px;padding:16px;background:var(--white);border:0.5px solid var(--border);border-radius:10px;align-items:flex-start">
+        <div style="width:22px;height:22px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;flex-shrink:0;margin-top:1px">✕</div>
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px">Never wait to feel ready</div>
+          <div style="font-size:13px;color:var(--slate);line-height:1.6">The version of yourself that is ready to speak publicly, confidently, about what you know — she already exists. She shows up every time you sit with a parent who needs the truth. Radical Reading is just the same conversation, with more people in the room.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h3>This is the platform you earned.</h3>
+    <p>Everything you built — the knowledge, the credentials, the hard-won right to say things plainly — was always pointing here. Not to the system. Not to a committee. Directly to the families who need what you know.</p>
+    <p style="margin-top:12px">The children can't wait for the system to catch up. They never could. That's why you're here.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Radical Reading Co. Brand Vision &nbsp;·&nbsp; For Lark Barker &nbsp;·&nbsp; radicalreading.co</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radical Reading — Messaging Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1C3557;
+  --navy-light: #243F67;
+  --amber: #E8A020;
+  --amber-light: #FDF3E0;
+  --cream: #F7F4EE;
+  --white: #FFFFFF;
+  --text: #1A1A1A;
+  --muted: #6B7280;
+  --border: #E5DDD0;
+  --science: #2563EB;
+  --science-bg: #EFF6FF;
+  --window: #059669;
+  --window-bg: #ECFDF5;
+  --system: #7C3AED;
+  --system-bg: #F5F3FF;
+  --solution: #D97706;
+  --solution-bg: #FFFBEB;
+  --stakes: #DC2626;
+  --stakes-bg: #FEF2F2;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Outfit', sans-serif; background: var(--cream); color: var(--text); font-size: 15px; line-height: 1.6; }
+
+/* ── HEADER ── */
+.header { background: var(--navy); padding: 24px 32px 20px; }
+.header-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.brand { display: flex; align-items: center; }
+.header-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+/* ── TAB NAV ── */
+.tab-nav { background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.07); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+.tab-nav-inner { max-width: 1120px; margin: 0 auto; display: flex; padding: 0 32px; overflow-x: auto; scrollbar-width: none; }
+.tab-nav-inner::-webkit-scrollbar { display: none; }
+.tab-btn { background: none; border: none; color: rgba(255,255,255,0.45); font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 18px; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.18s; white-space: nowrap; }
+.tab-btn:hover { color: rgba(255,255,255,0.75); }
+.tab-btn.active { color: var(--amber); border-bottom-color: var(--amber); }
+
+/* ── LAYOUT ── */
+.main { max-width: 1120px; margin: 0 auto; padding: 30px 32px 40px; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── SECTION HEADERS ── */
+.section-header { margin-bottom: 22px; }
+.section-kicker { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 5px; }
+.section-title { font-family: 'Zilla Slab', serif; font-size: 36px; color: var(--navy); line-height: 1.2; letter-spacing: -0.03em; }
+.section-desc { font-size: 13.5px; color: var(--muted); margin-top: 5px; max-width: 560px; }
+.section-rule { border: none; border-top: 2px solid var(--border); margin: 28px 0; }
+
+/* ── FILTER PILLS ── */
+.filter-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 26px; }
+.filter-btn { padding: 5px 13px; border-radius: 20px; border: 1.5px solid; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.15s; background: white; font-family: 'Outfit', sans-serif; letter-spacing: 0.04em; }
+.filter-btn[data-theme="all"] { border-color: var(--navy); color: var(--navy); }
+.filter-btn[data-theme="science"] { border-color: var(--science); color: var(--science); }
+.filter-btn[data-theme="window"] { border-color: var(--window); color: var(--window); }
+.filter-btn[data-theme="system"] { border-color: var(--system); color: var(--system); }
+.filter-btn[data-theme="solution"] { border-color: var(--solution); color: var(--solution); }
+.filter-btn[data-theme="stakes"] { border-color: var(--stakes); color: var(--stakes); }
+.filter-btn.active[data-theme="all"] { background: var(--navy); color: white; }
+.filter-btn.active[data-theme="science"] { background: var(--science); color: white; }
+.filter-btn.active[data-theme="window"] { background: var(--window); color: white; }
+.filter-btn.active[data-theme="system"] { background: var(--system); color: white; }
+.filter-btn.active[data-theme="solution"] { background: var(--solution); color: white; }
+.filter-btn.active[data-theme="stakes"] { background: var(--stakes); color: white; }
+
+/* ── SOUNDBITE CARDS ── */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px; }
+.sb-card { background: white; border-radius: 11px; padding: 18px 18px 18px 22px; border: 1px solid var(--border); border-left: 4px solid; position: relative; transition: transform 0.14s, box-shadow 0.14s; }
+.sb-card:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(0,0,0,0.08); }
+.sb-card[data-theme="science"] { border-left-color: var(--science); }
+.sb-card[data-theme="window"] { border-left-color: var(--window); }
+.sb-card[data-theme="system"] { border-left-color: var(--system); }
+.sb-card[data-theme="solution"] { border-left-color: var(--solution); }
+.sb-card[data-theme="stakes"] { border-left-color: var(--stakes); }
+.sb-card.hidden { display: none; }
+.sb-star { position: absolute; top: 13px; right: 13px; color: var(--amber); font-size: 14px; }
+.sb-theme { font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 9px; }
+.sb-card[data-theme="science"] .sb-theme { color: var(--science); }
+.sb-card[data-theme="window"] .sb-theme { color: var(--window); }
+.sb-card[data-theme="system"] .sb-theme { color: var(--system); }
+.sb-card[data-theme="solution"] .sb-theme { color: var(--solution); }
+.sb-card[data-theme="stakes"] .sb-theme { color: var(--stakes); }
+.sb-quote { font-family: 'Zilla Slab', serif; font-size: 16px; line-height: 1.42; color: var(--navy); margin-bottom: 13px; }
+.sb-why { font-size: 12px; color: var(--muted); line-height: 1.55; border-top: 1px solid var(--border); padding-top: 11px; }
+.sb-why-label { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text); display: block; margin-bottom: 3px; }
+
+/* ── QUICK REF ── */
+.quick-ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; margin-bottom: 28px; }
+.qr-card { background: var(--navy); border-radius: 11px; padding: 18px 20px; }
+.qr-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--amber); margin-bottom: 8px; }
+.qr-text { font-family: 'Zilla Slab', serif; font-size: 15px; line-height: 1.45; color: white; }
+.qr-ctx { margin-top: 10px; font-size: 11px; color: rgba(255,255,255,0.42); line-height: 1.4; }
+
+/* ── CONTEXT ACCORDIONS ── */
+.ctx-card { background: white; border-radius: 11px; border: 1px solid var(--border); margin-bottom: 10px; overflow: hidden; }
+.ctx-head { padding: 16px 20px; cursor: pointer; display: flex; align-items: center; gap: 13px; transition: background 0.14s; }
+.ctx-head:hover { background: #FAFAF8; }
+.ctx-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+.ctx-icon.parent { background: #EEF4FF; }
+.ctx-icon.pro { background: #F0FDF4; }
+.ctx-title { font-family: 'Zilla Slab', serif; font-size: 17px; color: var(--navy); line-height: 1.2; }
+.ctx-sub { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+.ctx-chev { margin-left: auto; color: var(--muted); transition: transform 0.2s; font-size: 16px; flex-shrink: 0; }
+.ctx-card.open .ctx-chev { transform: rotate(180deg); }
+.ctx-body { display: none; padding: 0 20px 20px; border-top: 1px solid var(--border); }
+.ctx-card.open .ctx-body { display: block; }
+.ctx-section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding: 14px 0 8px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+
+/* ── QA BLOCKS ── */
+.qa-block { margin-bottom: 16px; }
+.qa-q { font-size: 13px; font-weight: 700; color: var(--navy); background: #EEF2F8; padding: 7px 12px; border-radius: 6px; margin-bottom: 7px; }
+.qa-a { font-size: 14px; line-height: 1.65; color: var(--text); }
+
+/* ── SOUNDBITE CALLOUT ── */
+.sb-callout { display: block; background: var(--amber-light); border-left: 3px solid var(--amber); padding: 7px 11px; border-radius: 0 7px 7px 0; font-style: italic; font-size: 13.5px; margin: 8px 0; color: var(--navy); font-family: 'Zilla Slab', serif; line-height: 1.4; }
+
+/* ── WAYPOINTS ── */
+.waypoints { display: flex; flex-direction: column; gap: 11px; padding-top: 4px; }
+.waypoint { display: flex; gap: 12px; align-items: flex-start; }
+.wp-num { width: 26px; height: 26px; border-radius: 50%; background: var(--amber); color: white; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.wp-text { font-size: 14px; line-height: 1.6; flex: 1; }
+.wp-text strong { font-weight: 600; }
+
+/* ── PEACE STEPS ── */
+.peace-wrap { display: flex; flex-direction: column; gap: 0; margin-top: 4px; }
+.peace-step { display: flex; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--border); }
+.peace-step:last-child { border-bottom: none; }
+.peace-circle { width: 38px; height: 38px; border-radius: 50%; background: var(--navy); color: white; font-family: 'Zilla Slab', serif; font-size: 19px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.peace-right { flex: 1; }
+.peace-lbl { font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 4px; }
+.peace-text { font-size: 14px; line-height: 1.6; }
+
+/* ── PITCH STEPS ── */
+.pitch-steps { margin-top: 4px; }
+.ps-row { display: flex; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+.ps-row:last-child { border-bottom: none; }
+.ps-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); width: 88px; flex-shrink: 0; padding-top: 2px; line-height: 1.4; }
+.ps-content { font-size: 14px; line-height: 1.65; flex: 1; }
+
+/* ── PRO CONTEXT BADGE ── */
+.pro-badge { display: inline-flex; align-items: center; gap: 5px; background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 20px; padding: 3px 10px; font-size: 10px; font-weight: 700; color: #166534; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+
+/* ── OBJECTIONS ── */
+.obj-item { background: white; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+.obj-head { padding: 14px 18px; cursor: pointer; display: flex; align-items: center; gap: 11px; transition: background 0.14s; }
+.obj-head:hover { background: #FAFAF8; }
+.obj-num { width: 27px; height: 27px; border-radius: 50%; background: var(--cream); border: 1.5px solid var(--border); font-size: 11px; font-weight: 700; color: var(--muted); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s; }
+.obj-item.open .obj-num { background: var(--navy); color: white; border-color: var(--navy); }
+.obj-q { font-size: 13.5px; font-weight: 600; color: var(--navy); flex: 1; line-height: 1.35; }
+.obj-chev { color: var(--muted); transition: transform 0.2s; font-size: 15px; flex-shrink: 0; }
+.obj-item.open .obj-chev { transform: rotate(180deg); }
+.obj-body { display: none; padding: 4px 18px 18px 56px; font-size: 13.5px; line-height: 1.7; color: var(--text); }
+.obj-item.open .obj-body { display: block; }
+
+/* ── BRAND VISION ── */
+.vision-cards { display: flex; flex-direction: column; gap: 18px; }
+.vis-card { background: white; border-radius: 12px; border: 1px solid var(--border); border-top: 4px solid var(--navy); padding: 22px 24px; }
+.vis-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
+.vis-text { font-size: 14.5px; line-height: 1.75; color: var(--text); }
+.vis-text p { margin-bottom: 10px; }
+.vis-text p:last-child { margin-bottom: 0; }
+
+/* ── CLOSE CTA ── */
+.close-cta { background: var(--navy); border-radius: 10px; padding: 16px 18px; margin-top: 14px; font-size: 14px; color: white; line-height: 1.5; }
+.close-cta strong { color: var(--amber); display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+
+/* ── FOOTER ── */
+.doc-footer { max-width: 1120px; margin: 0 auto; padding: 18px 32px 36px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); font-size: 11.5px; color: var(--muted); flex-wrap: wrap; gap: 8px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .main { padding: 20px 16px 36px; }
+  .tab-nav-inner { padding: 0 16px; }
+  .tab-btn { padding: 12px 12px; font-size: 11px; letter-spacing: 0.06em; }
+  .header { padding: 18px 16px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .quick-ref-grid { grid-template-columns: 1fr; }
+  .obj-body { padding-left: 18px; }
+  .doc-footer { padding: 16px 16px 30px; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNjYwIiB6b29tQW5kUGFuPSJtYWduaWZ5IiB2aWV3Qm94PSIwIDAgNDk1IDE2MC40OTk5OTUiIGhlaWdodD0iMjE0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0IiB2ZXJzaW9uPSIxLjAiPjxkZWZzPjxnLz48Y2xpcFBhdGggaWQ9IjY5MWU3OGMwOTEiPjxwYXRoIGQ9Ik0gMSAwLjA1NDY4NzUgTCAxNDAgMC4wNTQ2ODc1IEwgMTQwIDE1OSBMIDEgMTU5IFogTSAxIDAuMDU0Njg3NSAiIGNsaXAtcnVsZT0ibm9uemVybyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSI4MDFlYmZmNjIxIj48cGF0aCBkPSJNIDE1NCAwIEwgNDk0LjIzMDQ2OSAwIEwgNDk0LjIzMDQ2OSAxNjAgTCAxNTQgMTYwIFogTSAxNTQgMCAiIGNsaXAtcnVsZT0ibm9uemVybyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSJkY2UzY2Q0OGJiIj48cmVjdCB4PSIwIiB3aWR0aD0iMzQxIiB5PSIwIiBoZWlnaHQ9IjE2MCIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSIyMTg5MTNkOGRiIj48cGF0aCBkPSJNIDE1NiAxMjQgTCA0OTQuMjMwNDY5IDEyNCBMIDQ5NC4yMzA0NjkgMTYwIEwgMTU2IDE2MCBaIE0gMTU2IDEyNCAiIGNsaXAtcnVsZT0ibm9uemVybyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSI5ODljYTJhZTUzIj48cmVjdCB4PSIwIiB3aWR0aD0iMzM5IiB5PSIwIiBoZWlnaHQ9IjM2Ii8+PC9jbGlwUGF0aD48L2RlZnM+PGcgY2xpcC1wYXRoPSJ1cmwoIzY5MWU3OGMwOTEpIj48cGF0aCBmaWxsPSIjZjViNTNkIiBkPSJNIDEwNy40OTIxODggMC4zMjQyMTkgQyA5OS4yMDMxMjUgMS4xMDU0NjkgODcuNDUzMTI1IDQuNDgwNDY5IDgxLjg5MDYyNSA3LjU1ODU5NCBDIDc4LjAzOTA2MiA5Ljc1NzgxMiA3Mi43MjI2NTYgMTUuMjgxMjUgNzAuNDMzNTk0IDE5LjU3ODEyNSBDIDY5LjUwNzgxMiAyMS4yODkwNjIgNjguMjg1MTU2IDI0LjM3MTA5NCA2Ny43MDMxMjUgMjYuMzc1IEMgNjcuMDY2NDA2IDI4LjM3NSA2Ni4zODY3MTkgMjkuOTg4MjgxIDY2LjA5Mzc1IDI5Ljk0MTQwNiBDIDY1LjgwMDc4MSAyOS44NDM3NSA2NC41MzEyNSAyOS4xNjAxNTYgNjMuMjY1NjI1IDI4LjM3NSBDIDU4LjA0Njg3NSAyNS4xOTkyMTkgNTAuNjgzNTk0IDIzLjkyOTY4OCA0NC4xOTkyMTkgMjUuMTAxNTYyIEMgMzMuNTE5NTMxIDI3LjAwNzgxMiAyNS4xMjg5MDYgMzQuMDkzNzUgMTguOTg0Mzc1IDQ2LjMxMjUgQyAxNC42OTUzMTIgNTQuOTYwOTM4IDEzLjE4MzU5NCA2MS4yMTg3NSAxMy40NzY1NjIgNjkuMDM5MDYyIEMgMTMuNzY5NTMxIDc1LjI5Mjk2OSAxNS4wMzUxNTYgNzkuMjAzMTI1IDE3Ljk2MDkzOCA4Mi44MjAzMTIgTCAxOS42Njc5NjkgODQuODcxMDk0IEwgMTYuMzA0Njg4IDg1LjE2NDA2MiBDIDEyLjQwMjM0NCA4NS41MDc4MTIgMTAuNjk1MzEyIDg2LjI4OTA2MiA4LjU1MDc4MSA4OC42ODM1OTQgQyA1LjA4OTg0NCA5Mi42NDQ1MzEgMS44MjAzMTIgMTAxLjYzMjgxMiAxLjMzMjAzMSAxMDguNDc2NTYyIEMgMC4wMTU2MjUgMTI4LjQ2NDg0NCAxNy43NjU2MjUgMTU2LjQ2ODc1IDMzLjEyODkwNiAxNTguNzE0ODQ0IEMgMzQuNDkyMTg4IDE1OC45MTQwNjIgNTguODc1IDE1OS4wMTE3MTkgODcuNDAyMzQ0IDE1OC45MTQwNjIgTCAxMzkuMTkxNDA2IDE1OC44MTY0MDYgTCAxMzkuMTkxNDA2IDEwMC4xNjc5NjkgTCAxMzYuMTY3OTY5IDEwMi40MTc5NjkgQyAxMjcuOTI1NzgxIDEwOC40NzY1NjIgMTE3LjE0ODQzOCAxMTIuMjg5MDYyIDEwNi4yNzM0MzggMTEyLjk3MjY1NiBDIDEwNC4zNzEwOTQgMTEzLjEyMTA5NCAxMDQuMjczNDM4IDExMy4yMTg3NSAxMDIuMjc3MzQ0IDExNy4xMjg5MDYgQyA5OS45MzM1OTQgMTIxLjYyNSA5Ny44ODY3MTkgMTI4LjU2MjUgOTcuNDQ5MjE5IDEzMy42NDQ1MzEgQyA5Ni45MTAxNTYgMTM5LjIxODc1IDk1LjM1MTU2MiAxNDEuMjIyNjU2IDkxLjUgMTQxLjIyMjY1NiBDIDg5LjY5NTMxMiAxNDEuMjIyNjU2IDg5LjA1ODU5NCAxNDAuOTI1NzgxIDg3LjY5NTMxMiAxMzkuNTU4NTk0IEMgODYuMTMyODEyIDEzNy45OTYwOTQgODYuMDM5MDYyIDEzNy43MDMxMjUgODYuMDM5MDYyIDEzNC41MjczNDQgQyA4Ni4wMzkwNjIgMTMwLjEyODkwNiA4Ny40NTMxMjUgMTIzLjQ4MDQ2OSA4OS41OTc2NTYgMTE3Ljc2MTcxOSBDIDkwLjU3NDIxOSAxMTUuMjIyNjU2IDkxLjI1MzkwNiAxMTMuMDcwMzEyIDkxLjIwNzAzMSAxMTIuOTcyNjU2IEMgOTEuMTA5Mzc1IDExMi44NzUgODguMTgzNTk0IDExMi40ODQzNzUgODQuNzY5NTMxIDExMi4xNDQ1MzEgQyA4MS4zMDg1OTQgMTExLjc1IDczLjU1NDY4OCAxMTAuNjI4OTA2IDY3LjUwNzgxMiAxMDkuNjk5MjE5IEMgNjEuNDYwOTM4IDEwOC43Njk1MzEgNTIuODI4MTI1IDEwNy42NDQ1MzEgNDguMjQ2MDk0IDEwNy4yMDcwMzEgQyA0My43MTA5MzggMTA2LjgxNjQwNiAzOS4yMjI2NTYgMTA2LjMyODEyNSAzOC4zNDM3NSAxMDYuMjMwNDY5IEMgMzQuMzQ3NjU2IDEwNS42NDA2MjUgMzIuMDA3ODEyIDEwMC41NTg1OTQgMzQuMzQ3NjU2IDk3LjU3ODEyNSBDIDM2LjQ0NTMxMiA5NC45NDE0MDYgMzcuNTY2NDA2IDk0LjY5NTMxMiA0NC44MzIwMzEgOTUuMjgxMjUgQyA0OC40NDE0MDYgOTUuNTc0MjE5IDUzLjcwNzAzMSA5Ni4xMTMyODEgNTYuNTgyMDMxIDk2LjUwMzkwNiBDIDU5LjQ2MDkzOCA5Ni45NDE0MDYgNjEuODk4NDM4IDk3LjE4NzUgNjEuOTk2MDk0IDk3LjA0Mjk2OSBDIDYyLjA5Mzc1IDk2Ljk0MTQwNiA2MS42NTYyNSA5Ni4yNTc4MTIgNjEuMDE5NTMxIDk1LjQ3NjU2MiBDIDU1LjQ2MDkzOCA4OC43MzQzNzUgNTQuNTM1MTU2IDg1LjIxNDg0NCA1Ny40NjA5MzggODIuMjgxMjUgQyA1OC44NzUgODAuODYzMjgxIDU5LjQ2MDkzOCA4MC42MjEwOTQgNjEuNDEwMTU2IDgwLjYyMTA5NCBDIDY0LjA5Mzc1IDgwLjYyMTA5NCA2NS4wNzAzMTIgODEuNDUzMTI1IDY5LjU1NDY4OCA4Ny43NTM5MDYgQyA3Mi45MTc5NjkgOTIuNDQ5MjE5IDgwLjE4MzU5NCA5OS43NzczNDQgODEuODkwNjI1IDEwMC4yNjU2MjUgQyA4NC45NjQ4NDQgMTAxLjA0Njg3NSA5Ni40NzI2NTYgMTAxLjczNDM3NSAxMDMuMDU0Njg4IDEwMS40ODgyODEgQyAxMTMuNzM0Mzc1IDEwMS4wOTc2NTYgMTIwLjk1MzEyNSA5OC44OTg0MzggMTI4LjI2NTYyNSA5My45NjA5MzggQyAxMzEuMzg2NzE5IDkxLjgxMjUgMTM3Ljc3NzM0NCA4NS44MDA3ODEgMTM4LjY1NjI1IDg0LjE4NzUgQyAxMzkuMTQwNjI1IDgzLjIxMDkzOCAxMzguOTk2MDk0IDgzLjExMzI4MSAxMzUuODc1IDgyLjU3NDIxOSBDIDEyMi41NjI1IDgwLjI3NzM0NCAxMTAuMTc1NzgxIDcxLjE4NzUgMTA0LjEyODkwNiA1OS4yMTQ4NDQgQyAxMDMuNTQyOTY5IDU4LjA4OTg0NCAxMDMuMDA3ODEyIDU3LjE2NDA2MiAxMDIuODU5Mzc1IDU3LjE2NDA2MiBDIDEwMi43NjE3MTkgNTcuMTY0MDYyIDEwMC44NjMyODEgNTcuNjAxNTYyIDk4LjYxNzE4OCA1OC4xODc1IEMgOTAuNzY1NjI1IDYwLjE0NDUzMSA3NC44NzEwOTQgNTkuOTQ5MjE5IDcwLjgyNDIxOSA1Ny44NDc2NTYgQyA2OC4wOTM3NSA1Ni40Mjk2ODggNjcuMjYxNzE5IDUyLjc2NTYyNSA2OC45Njg3NSA0OS45Mjk2ODggQyA3MC41MzEyNSA0Ny4zODY3MTkgNzEuNjAxNTYyIDQ3LjE0NDUzMSA3OC4wMzkwNjIgNDcuODc1IEMgODQuMzc4OTA2IDQ4LjU2MjUgOTAuMzI4MTI1IDQ4LjI2NTYyNSA5NS44ODY3MTkgNDYuOTQ5MjE5IEMgOTkuMTU2MjUgNDYuMTY3OTY5IDk5LjQ0NTMxMiA0Ni4wMTk1MzEgOTkuMzUxNTYyIDQ0Ljk0NTMxMiBDIDk5LjMwMDc4MSA0NC4yNjE3MTkgOTkuMjAzMTI1IDQwLjgzOTg0NCA5OS4yMDMxMjUgMzcuMzcxMDk0IEMgOTkuMTU2MjUgMjkuODQzNzUgOTkuNjkxNDA2IDI3LjY0NDUzMSAxMDIuMDgyMDMxIDI2LjAzMTI1IEMgMTA0LjUxOTUzMSAyNC4zNzEwOTQgMTA2LjYxNzE4OCAyNC41NjY0MDYgMTA4Ljg1OTM3NSAyNi41NzAzMTIgTCAxMTAuNjY0MDYyIDI4LjI3NzM0NCBMIDExMC41MTU2MjUgMzUuMDIzNDM4IEMgMTEwLjMyMDMxMiA0Mi44NDM3NSAxMTEuMjUgNDcuNTgyMDMxIDExNC4wNzgxMjUgNTMuNDk2MDk0IEMgMTE4LjEyNSA2MS44NTU0NjkgMTI1Ljg3ODkwNiA2OC4yMDcwMzEgMTM0Ljg5ODQzOCA3MC42NTIzNDQgQyAxMzkuNjc5Njg4IDcxLjkyMTg3NSAxMzkuMTkxNDA2IDc1LjE5NTMxMiAxMzkuMTkxNDA2IDQyLjM1NTQ2OSBMIDEzOS4xOTE0MDYgMTMuMzc1IEwgMTM3LjkyMTg3NSAxMC44MzIwMzEgQyAxMzYuNTA3ODEyIDcuOTQ5MjE5IDEzMy4xOTE0MDYgNC44MjAzMTIgMTI5LjY3OTY4OCAzLjA2MjUgQyAxMjUgMC42Njc5NjkgMTE1LjY4MzU5NCAtMC41MDc4MTIgMTA3LjQ5MjE4OCAwLjMyNDIxOSBaIE0gMTA3LjQ5MjE4OCAwLjMyNDIxOSAiIGZpbGwtb3BhY2l0eT0iMSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PC9nPjxnIGNsaXAtcGF0aD0idXJsKCM4MDFlYmZmNjIxKSI+PGcgdHJhbnNmb3JtPSJtYXRyaXgoMSwgMCwgMCwgMSwgMTU0LCAwKSI+PGcgY2xpcC1wYXRoPSJ1cmwoI2RjZTNjZDQ4YmIpIj48ZyBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuOTgyODYsIDExNi42NzgzNjUpIj48Zz48cGF0aCBkPSJNIDQuNSAtOTQuMTg3NSBMIDI3LjAxNTYyNSAtOTQuMTg3NSBMIDI3LjAxNTYyNSAtODMuNzY1NjI1IEMgMjguMTI4OTA2IC04Ny40NTMxMjUgMzAuMDgyMDMxIC05MC4zMDA3ODEgMzIuODc1IC05Mi4zMTI1IEMgMzUuNjY0MDYyIC05NC4zMzIwMzEgMzkuMTE3MTg4IC05NS4zNDM3NSA0My4yMzQzNzUgLTk1LjM0Mzc1IEwgNDMuMjM0Mzc1IC03Ni41NjI1IEMgNDAuMDU0Njg4IC03Ni41NjI1IDM2LjU1NDY4OCAtNzYuMTA5Mzc1IDMyLjczNDM3NSAtNzUuMjAzMTI1IEMgMjguOTIxODc1IC03NC4zMDQ2ODggMjcuMDE1NjI1IC03My4yNTc4MTIgMjcuMDE1NjI1IC03Mi4wNjI1IEwgMjcuMDE1NjI1IDAgTCA0LjUgMCBaIE0gNC41IC05NC4xODc1ICIvPjwvZz48L2c+PC9nPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDIuNDE0NjQzLCAxMTYuNjc4MzY1KSI+PGc+PHBhdGggZD0iTSAyMS42MDkzNzUgMS4wMzEyNSBDIDE0LjMyODEyNSAxLjAzMTI1IDkuMzMyMDMxIC0xLjM5MDYyNSA2LjYyNSAtNi4yMzQzNzUgQyAzLjkyNTc4MSAtMTEuMDg1OTM4IDIuNTc4MTI1IC0xOC4wMTU2MjUgMi41NzgxMjUgLTI3LjAxNTYyNSBDIDIuNTc4MTI1IC0zNC4zOTg0MzggMy41MzkwNjIgLTQwLjA2MjUgNS40Njg3NSAtNDQgQyA3LjM5NDUzMSAtNDcuOTQ1MzEyIDEwLjA3MDMxMiAtNTAuODQzNzUgMTMuNSAtNTIuNjg3NSBDIDE2LjkzNzUgLTU0LjUzMTI1IDIyLjE3MTg3NSAtNTYuNTY2NDA2IDI5LjIwMzEyNSAtNTguNzk2ODc1IEwgMzUuMzkwNjI1IC02MC44NTkzNzUgTCAzNS4zOTA2MjUgLTcwLjUxNTYyNSBDIDM1LjM5MDYyNSAtNzMuMDAzOTA2IDM0Ljg5NDUzMSAtNzQuOTEwMTU2IDMzLjkwNjI1IC03Ni4yMzQzNzUgQyAzMi45MTQwNjIgLTc3LjU2NjQwNiAzMS43MzQzNzUgLTc4LjIzNDM3NSAzMC4zNTkzNzUgLTc4LjIzNDM3NSBDIDI5LjE2MDE1NiAtNzguMjM0Mzc1IDI4LjEwOTM3NSAtNzcuNjc1NzgxIDI3LjIwMzEyNSAtNzYuNTYyNSBDIDI2LjMwNDY4OCAtNzUuNDQ1MzEyIDI1Ljg1OTM3NSAtNzMuOTQ1MzEyIDI1Ljg1OTM3NSAtNzIuMDYyNSBMIDI1Ljg1OTM3NSAtNjYuMzkwNjI1IEwgMy45ODQzNzUgLTY2LjM5MDYyNSBMIDMuOTg0Mzc1IC02OS40ODQzNzUgQyAzLjk4NDM3NSAtNzguNzQyMTg4IDYuMTQ4NDM4IC04NS4zNDc2NTYgMTAuNDg0Mzc1IC04OS4yOTY4NzUgQyAxNC44MTY0MDYgLTkzLjI0MjE4OCAyMS44NzUgLTk1LjIxODc1IDMxLjY1NjI1IC05NS4yMTg3NSBDIDM5LjQ1NzAzMSAtOTUuMjE4NzUgNDUuODAwNzgxIC05My4xNzk2ODggNTAuNjg3NSAtODkuMTA5Mzc1IEMgNTUuNTgyMDMxIC04NS4wMzUxNTYgNTguMDMxMjUgLTc5LjI2NTYyNSA1OC4wMzEyNSAtNzEuNzk2ODc1IEwgNTguMDMxMjUgMCBMIDM1LjY0MDYyNSAwIEwgMzUuNjQwNjI1IC0xMS4xODc1IEMgMzQuNTIzNDM4IC03LjMzMjAzMSAzMi43NDIxODggLTQuMzMyMDMxIDMwLjI5Njg3NSAtMi4xODc1IEMgMjcuODU5Mzc1IC0wLjAzOTA2MjUgMjQuOTYwOTM4IDEuMDMxMjUgMjEuNjA5Mzc1IDEuMDMxMjUgWiBNIDMwLjUgLTE2LjQ2ODc1IEMgMzIuMjA3MDMxIC0xNi40Njg3NSAzMy40MjU3ODEgLTE3LjE3NTc4MSAzNC4xNTYyNSAtMTguNTkzNzUgQyAzNC44ODI4MTIgLTIwLjAwNzgxMiAzNS4yNSAtMjEuNzQyMTg4IDM1LjI1IC0yMy43OTY4NzUgTCAzNS4yNSAtNTAuMDQ2ODc1IEMgMzEuOTA2MjUgLTQ4Ljc2NTYyNSAyOS40NDE0MDYgLTQ3LjEzMjgxMiAyNy44NTkzNzUgLTQ1LjE1NjI1IEMgMjYuMjczNDM4IC00My4xODc1IDI1LjQ4NDM3NSAtNDAuNDQxNDA2IDI1LjQ4NDM3NSAtMzYuOTIxODc1IEwgMjUuNDg0Mzc1IC0yNC44MjgxMjUgQyAyNS40ODQzNzUgLTE5LjI1MzkwNiAyNy4xNTYyNSAtMTYuNDY4NzUgMzAuNSAtMTYuNDY4NzUgWiBNIDMwLjUgLTE2LjQ2ODc1ICIvPjwvZz48L2c+PC9nPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAxLjczMTYwNSwgMTE2LjY3ODM2NSkiPjxnPjxwYXRoIGQ9Ik0gMjMuMDMxMjUgMS4wMzEyNSBDIDE3LjUzOTA2MiAxLjAzMTI1IDEzLjM5ODQzOCAtMC4yNzM0MzggMTAuNjA5Mzc1IC0yLjg5MDYyNSBDIDcuODI4MTI1IC01LjUwMzkwNiA1Ljk4NDM3NSAtOC45NzY1NjIgNS4wNzgxMjUgLTEzLjMxMjUgQyA0LjE3OTY4OCAtMTcuNjQ0NTMxIDMuNzM0Mzc1IC0yMy4yMDMxMjUgMy43MzQzNzUgLTI5Ljk4NDM3NSBMIDMuOTg0Mzc1IC03Mi40Mzc1IEMgMy45ODQzNzUgLTc5LjEzMjgxMiA1LjY3NTc4MSAtODQuNjAxNTYyIDkuMDYyNSAtODguODQzNzUgQyAxMi40NTcwMzEgLTkzLjA5Mzc1IDE3LjI0MjE4OCAtOTUuMjE4NzUgMjMuNDIxODc1IC05NS4yMTg3NSBDIDI5LjUwMzkwNiAtOTUuMjE4NzUgMzQuMDUwNzgxIC05My4yMDMxMjUgMzcuMDYyNSAtODkuMTcxODc1IEwgMzcuMDYyNSAtMTExLjE3MTg3NSBMIDU5LjU3ODEyNSAtMTExLjE3MTg3NSBMIDU5LjU3ODEyNSAwIEwgMzcuMDYyNSAwIEwgMzcuMDYyNSAtMTAuMDMxMjUgQyAzNS43Njk1MzEgLTYuMzQzNzUgMzQuMDMxMjUgLTMuNTc4MTI1IDMxLjg0Mzc1IC0xLjczNDM3NSBDIDI5LjY1NjI1IDAuMTA5Mzc1IDI2LjcxODc1IDEuMDMxMjUgMjMuMDMxMjUgMS4wMzEyNSBaIE0gMzEuNjU2MjUgLTE2LjU5Mzc1IEMgMzMuODgyODEyIC0xNi41OTM3NSAzNS4zNDM3NSAtMTcuNjg3NSAzNi4wMzEyNSAtMTkuODc1IEMgMzYuNzE4NzUgLTIyLjA2MjUgMzcuMDYyNSAtMjUgMzcuMDYyNSAtMjguNjg3NSBMIDM3LjA2MjUgLTY4LjA2MjUgQyAzNy4wNjI1IC03MC44MTI1IDM2LjY3MTg3NSAtNzMuMTI4OTA2IDM1Ljg5MDYyNSAtNzUuMDE1NjI1IEMgMzUuMTE3MTg4IC03Ni44OTg0MzggMzMuNzUgLTc3Ljg0Mzc1IDMxLjc4MTI1IC03Ny44NDM3NSBDIDI5LjU1MDc4MSAtNzcuODQzNzUgMjguMDcwMzEyIC03Ni45NjA5MzggMjcuMzQzNzUgLTc1LjIwMzEyNSBDIDI2LjYxMzI4MSAtNzMuNDUzMTI1IDI2LjI1IC03MS4wNzAzMTIgMjYuMjUgLTY4LjA2MjUgTCAyNi4yNSAtMjguNDM3NSBDIDI2LjI1IC0yMC41MzkwNjIgMjguMDUwNzgxIC0xNi41OTM3NSAzMS42NTYyNSAtMTYuNTkzNzUgWiBNIDMxLjY1NjI1IC0xNi41OTM3NSAiLz48L2c+PC9nPjwvZz48ZyBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE2Mi45Nzg2MjYsIDExNi42NzgzNjUpIj48Zz48cGF0aCBkPSJNIDQuMzc1IC0xMDAuNSBMIDQuMzc1IC0xMTYuMTg3NSBMIDI2Ljg5MDYyNSAtMTE2LjE4NzUgTCAyNi44OTA2MjUgLTEwMC41IFogTSA0LjM3NSAwIEwgNC4zNzUgLTk0LjE4NzUgTCAyNi44OTA2MjUgLTk0LjE4NzUgTCAyNi44OTA2MjUgMCBaIE0gNC4zNzUgMCAiLz48L2c+PC9nPjwvZz48ZyBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5MS40MTQ2NzMsIDExNi42NzgzNjUpIj48Zz48cGF0aCBkPSJNIDMyLjgxMjUgMS4wMzEyNSBDIDIyLjUxOTUzMSAxLjAzMTI1IDE1LjA5NzY1NiAtMS41ODIwMzEgMTAuNTQ2ODc1IC02LjgxMjUgQyA2LjAwMzkwNiAtMTIuMDUwNzgxIDMuNzM0Mzc1IC0yMC4wNzAzMTIgMy43MzQzNzUgLTMwLjg3NSBMIDMuNzM0Mzc1IC01OS45Njg3NSBDIDMuNzM0Mzc1IC02OC4xMTMyODEgNC42MDkzNzUgLTc0LjczODI4MSA2LjM1OTM3NSAtNzkuODQzNzUgQyA4LjExNzE4OCAtODQuOTQ1MzEyIDExLjA3ODEyNSAtODguNzg1MTU2IDE1LjIzNDM3NSAtOTEuMzU5Mzc1IEMgMTkuMzk4NDM4IC05My45Mjk2ODggMjUuMTcxODc1IC05NS4yMTg3NSAzMi41NDY4NzUgLTk1LjIxODc1IEMgNDAuNjE3MTg4IC05NS4yMTg3NSA0Ny4xNzk2ODggLTkzLjExMzI4MSA1Mi4yMzQzNzUgLTg4LjkwNjI1IEMgNTcuMjk2ODc1IC04NC43MDcwMzEgNTkuODI4MTI1IC03OC44MzIwMzEgNTkuODI4MTI1IC03MS4yODEyNSBMIDU5LjgyODEyNSAtNTYuODc1IEwgMzYuOTIxODc1IC01Ni44NzUgTCAzNi45MjE4NzUgLTcwLjEyNSBDIDM2LjkyMTg3NSAtNzIuNjEzMjgxIDM2LjU3ODEyNSAtNzQuNTE5NTMxIDM1Ljg5MDYyNSAtNzUuODQzNzUgQyAzNS4yMTA5MzggLTc3LjE3NTc4MSAzMy44ODI4MTIgLTc3Ljg0Mzc1IDMxLjkwNjI1IC03Ny44NDM3NSBDIDI4LjIxODc1IC03Ny44NDM3NSAyNi4zNzUgLTc1LjIyNjU2MiAyNi4zNzUgLTcwIEwgMjYuMzc1IC0yNC4zMTI1IEMgMjYuMzc1IC0yMi4xNzU3ODEgMjYuODIwMzEyIC0yMC4zNTE1NjIgMjcuNzE4NzUgLTE4Ljg0Mzc1IEMgMjguNjI1IC0xNy4zNDM3NSAyOS45NzY1NjIgLTE2LjU5Mzc1IDMxLjc4MTI1IC0xNi41OTM3NSBDIDMzLjU4MjAzMSAtMTYuNTkzNzUgMzQuOTI5Njg4IC0xNy4zMjAzMTIgMzUuODI4MTI1IC0xOC43ODEyNSBDIDM2LjczNDM3NSAtMjAuMjM4MjgxIDM3LjE0NDUzMSAtMjIuMTI4OTA2IDM3LjA2MjUgLTI0LjQ1MzEyNSBMIDM2LjkyMTg3NSAtNDAuMjgxMjUgTCA1OS44MjgxMjUgLTQwLjI4MTI1IEwgNTkuODI4MTI1IC0yMy43OTY4NzUgQyA1OS44MjgxMjUgLTE2LjA3ODEyNSA1Ny4zMTY0MDYgLTEwLjAwNzgxMiA1Mi4yOTY4NzUgLTUuNTkzNzUgQyA0Ny4yODUxNTYgLTEuMTc1NzgxIDQwLjc4OTA2MiAxLjAzMTI1IDMyLjgxMjUgMS4wMzEyNSBaIE0gMzIuODEyNSAxLjAzMTI1ICIvPjwvZz48L2c+PC9nPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjUxLjc2MTAxMSwgMTE2LjY3ODM2NSkiPjxnPjxwYXRoIGQ9Ik0gMjEuNjA5Mzc1IDEuMDMxMjUgQyAxNC4zMjgxMjUgMS4wMzEyNSA5LjMzMjAzMSAtMS4zOTA2MjUgNi42MjUgLTYuMjM0Mzc1IEMgMy45MjU3ODEgLTExLjA4NTkzOCAyLjU3ODEyNSAtMTguMDE1NjI1IDIuNTc4MTI1IC0yNy4wMTU2MjUgQyAyLjU3ODEyNSAtMzQuMzk4NDM4IDMuNTM5MDYyIC00MC4wNjI1IDUuNDY4NzUgLTQ0IEMgNy4zOTQ1MzEgLTQ3Ljk0NTMxMiAxMC4wNzAzMTIgLTUwLjg0Mzc1IDEzLjUgLTUyLjY4NzUgQyAxNi45Mzc1IC01NC41MzEyNSAyMi4xNzE4NzUgLTU2LjU2NjQwNiAyOS4yMDMxMjUgLTU4Ljc5Njg3NSBMIDM1LjM5MDYyNSAtNjAuODU5Mzc1IEwgMzUuMzkwNjI1IC03MC41MTU2MjUgQyAzNS4zOTA2MjUgLTczLjAwMzkwNiAzNC44OTQ1MzEgLTc0LjkxMDE1NiAzMy45MDYyNSAtNzYuMjM0Mzc1IEMgMzIuOTE0MDYyIC03Ny41NjY0MDYgMzEuNzM0Mzc1IC03OC4yMzQzNzUgMzAuMzU5Mzc1IC03OC4yMzQzNzUgQyAyOS4xNjAxNTYgLTc4LjIzNDM3NSAyOC4xMDkzNzUgLTc3LjY3NTc4MSAyNy4yMDMxMjUgLTc2LjU2MjUgQyAyNi4zMDQ2ODggLTc1LjQ0NTMxMiAyNS44NTkzNzUgLTczLjk0NTMxMiAyNS44NTkzNzUgLTcyLjA2MjUgTCAyNS44NTkzNzUgLTY2LjM5MDYyNSBMIDMuOTg0Mzc1IC02Ni4zOTA2MjUgTCAzLjk4NDM3NSAtNjkuNDg0Mzc1IEMgMy45ODQzNzUgLTc4Ljc0MjE4OCA2LjE0ODQzOCAtODUuMzQ3NjU2IDEwLjQ4NDM3NSAtODkuMjk2ODc1IEMgMTQuODE2NDA2IC05My4yNDIxODggMjEuODc1IC05NS4yMTg3NSAzMS42NTYyNSAtOTUuMjE4NzUgQyAzOS40NTcwMzEgLTk1LjIxODc1IDQ1LjgwMDc4MSAtOTMuMTc5Njg4IDUwLjY4NzUgLTg5LjEwOTM3NSBDIDU1LjU4MjAzMSAtODUuMDM1MTU2IDU4LjAzMTI1IC03OS4yNjU2MjUgNTguMDMxMjUgLTcxLjc5Njg3NSBMIDU4LjAzMTI1IDAgTCAzNS42NDA2MjUgMCBMIDM1LjY0MDYyNSAtMTEuMTg3NSBDIDM0LjUyMzQzOCAtNy4zMzIwMzEgMzIuNzQyMTg4IC00LjMzMjAzMSAzMC4yOTY4NzUgLTIuMTg3NSBDIDI3Ljg1OTM3NSAtMC4wMzkwNjI1IDI0Ljk2MDkzOCAxLjAzMTI1IDIxLjYwOTM3NSAxLjAzMTI1IFogTSAzMC41IC0xNi40Njg3NSBDIDMyLjIwNzAzMSAtMTYuNDY4NzUgMzMuNDI1NzgxIC0xNy4xNzU3ODEgMzQuMTU2MjUgLTE4LjU5Mzc1IEMgMzQuODgyODEyIC0yMC4wMDc4MTIgMzUuMjUgLTIxLjc0MjE4OCAzNS4yNSAtMjMuNzk2ODc1IEwgMzUuMjUgLTUwLjA0Njg3NSBDIDMxLjkwNjI1IC00OC43NjU2MjUgMjkuNDQxNDA2IC00Ny4xMzI4MTIgMjcuODU5Mzc1IC00NS4xNTYyNSBDIDI2LjI3MzQzOCAtNDMuMTg3NSAyNS40ODQzNzUgLTQwLjQ0MTQwNiAyNS40ODQzNzUgLTM2LjkyMTg3NSBMIDI1LjQ4NDM3NSAtMjQuODI4MTI1IEMgMjUuNDg0Mzc1IC0xOS4yNTM5MDYgMjcuMTU2MjUgLTE2LjQ2ODc1IDMwLjUgLTE2LjQ2ODc1IFogTSAzMC41IC0xNi40Njg3NSAiLz48L2c+PC9nPjwvZz48ZyBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMxMS4wNzc5NzMsIDExNi42NzgzNjUpIj48Zz48cGF0aCBkPSJNIDQuNSAwIEwgNC41IC0xMTEuMTcxODc1IEwgMjcuNDA2MjUgLTExMS4xNzE4NzUgTCAyNy40MDYyNSAwIFogTSA0LjUgMCAiLz48L2c+PC9nPjwvZz48L2c+PC9nPjwvZz48ZyBjbGlwLXBhdGg9InVybCgjMjE4OTEzZDhkYikiPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEsIDAsIDAsIDEsIDE1NiwgMTI0KSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzk4OWNhMmFlNTMpIj48ZyBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuNzMwODc3LCAzMi40MTg2OTkpIj48Zz48cGF0aCBkPSJNIDIuOTIxODc1IDAgTCAyLjkyMTg3NSAtMjIuNTE1NjI1IEwgMTIuODkwNjI1IC0yMi41MTU2MjUgQyAxNC4yODUxNTYgLTIyLjUxNTYyNSAxNS41NTA3ODEgLTIyLjE5NTMxMiAxNi42ODc1IC0yMS41NjI1IEMgMTcuODIwMzEyIC0yMC45MjU3ODEgMTguNzE4NzUgLTIwLjA3MDMxMiAxOS4zNzUgLTE5IEMgMjAuMDMxMjUgLTE3LjkyNTc4MSAyMC4zNTkzNzUgLTE2LjcwNzAzMSAyMC4zNTkzNzUgLTE1LjM0Mzc1IEMgMjAuMzU5Mzc1IC0xMy45ODgyODEgMjAuMDMxMjUgLTEyLjc1NzgxMiAxOS4zNzUgLTExLjY1NjI1IEMgMTguNzE4NzUgLTEwLjU1MDc4MSAxNy44MjAzMTIgLTkuNjc1NzgxIDE2LjY4NzUgLTkuMDMxMjUgQyAxNS41NTA3ODEgLTguMzk0NTMxIDE0LjI4NTE1NiAtOC4wNzgxMjUgMTIuODkwNjI1IC04LjA3ODEyNSBMIDcuNTkzNzUgLTguMDc4MTI1IEwgNy41OTM3NSAwIFogTSAxNS42ODc1IDAgTCA5Ljk2ODc1IC0xMC4xNTYyNSBMIDE0LjkyMTg3NSAtMTAuOTY4NzUgTCAyMS4yODEyNSAwLjAzMTI1IFogTSA3LjU5Mzc1IC0xMiBMIDEyLjY3MTg3NSAtMTIgQyAxMy4yNDIxODggLTEyIDEzLjc1IC0xMi4xMjg5MDYgMTQuMTg3NSAtMTIuMzkwNjI1IEMgMTQuNjMyODEyIC0xMi42NjAxNTYgMTQuOTcyNjU2IC0xMy4wMzUxNTYgMTUuMjAzMTI1IC0xMy41MTU2MjUgQyAxNS40NDE0MDYgLTE0LjAwMzkwNiAxNS41NjI1IC0xNC41NDY4NzUgMTUuNTYyNSAtMTUuMTQwNjI1IEMgMTUuNTYyNSAtMTUuNzg1MTU2IDE1LjQyMTg3NSAtMTYuMzQzNzUgMTUuMTQwNjI1IC0xNi44MTI1IEMgMTQuODY3MTg4IC0xNy4yODkwNjIgMTQuNDYwOTM4IC0xNy42NjAxNTYgMTMuOTIxODc1IC0xNy45MjE4NzUgQyAxMy4zOTA2MjUgLTE4LjE5MTQwNiAxMi43Njk1MzEgLTE4LjMyODEyNSAxMi4wNjI1IC0xOC4zMjgxMjUgTCA3LjU5Mzc1IC0xOC4zMjgxMjUgWiBNIDcuNTkzNzUgLTEyICIvPjwvZz48L2c+PC9nPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzYuOTM3ODExLCAzMi40MTg2OTkpIj48Zz48cGF0aCBkPSJNIDIuOTIxODc1IDAgTCAyLjkyMTg3NSAtMjIuNTE1NjI1IEwgMTguMTQwNjI1IC0yMi41MTU2MjUgTCAxOC4xNDA2MjUgLTE4LjI2NTYyNSBMIDcuNjU2MjUgLTE4LjI2NTYyNSBMIDcuNjU2MjUgLTQuMjUgTCAxOC4zNTkzNzUgLTQuMjUgTCAxOC4zNTkzNzUgMCBaIE0gNS4xNzE4NzUgLTkuNDIxODc1IEwgNS4xNzE4NzUgLTEzLjUzMTI1IEwgMTYuNTkzNzUgLTEzLjUzMTI1IEwgMTYuNTkzNzUgLTkuNDIxODc1IFogTSA1LjE3MTg3NSAtOS40MjE4NzUgIi8+PC9nPjwvZz48L2c+PGcgZmlsbD0iI2ZmZmZmZiIgZmlsbC1vcGFjaXR5PSIxIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3MS4wNTUxODMsIDMyLjQxODY5OSkiPjxnPjxwYXRoIGQ9Ik0gMC4yMTg3NSAwIEwgOS4wNjI1IC0yMi41MTU2MjUgTCAxMy4zNzUgLTIyLjUxNTYyNSBMIDIyLjE1NjI1IDAgTCAxNy4yMDMxMjUgMCBMIDEyLjY3MTg3NSAtMTIuMTI1IEMgMTIuNTQ2ODc1IC0xMi40Njg3NSAxMi4zOTA2MjUgLTEyLjkwNjI1IDEyLjIwMzEyNSAtMTMuNDM3NSBDIDEyLjAyMzQzOCAtMTMuOTc2NTYyIDExLjgzNTkzOCAtMTQuNTQ2ODc1IDExLjY0MDYyNSAtMTUuMTQwNjI1IEMgMTEuNDQxNDA2IC0xNS43NDIxODggMTEuMjU3ODEyIC0xNi4zMTY0MDYgMTEuMDkzNzUgLTE2Ljg1OTM3NSBDIDEwLjkyNTc4MSAtMTcuNDEwMTU2IDEwLjc5Njg3NSAtMTcuODY3MTg4IDEwLjcwMzEyNSAtMTguMjM0Mzc1IEwgMTEuNTc4MTI1IC0xOC4yMzQzNzUgQyAxMS40NTMxMjUgLTE3Ljc2NTYyNSAxMS4zMDQ2ODggLTE3LjI2NTYyNSAxMS4xNDA2MjUgLTE2LjczNDM3NSBDIDEwLjk4NDM3NSAtMTYuMjEwOTM4IDEwLjgxNjQwNiAtMTUuNjc1NzgxIDEwLjY0MDYyNSAtMTUuMTI1IEMgMTAuNDcyNjU2IC0xNC41ODIwMzEgMTAuMjg5MDYyIC0xNC4wNTA3ODEgMTAuMDkzNzUgLTEzLjUzMTI1IEMgOS45MDYyNSAtMTMuMDE5NTMxIDkuNzIyNjU2IC0xMi41MTk1MzEgOS41NDY4NzUgLTEyLjAzMTI1IEwgNS4wMTU2MjUgMCBaIE0gNC4zNDM3NSAtNC43MzQzNzUgTCA1LjkyMTg3NSAtOC41NzgxMjUgTCAxNi4yMzQzNzUgLTguNTc4MTI1IEwgMTcuODQzNzUgLTQuNzM0Mzc1IFogTSA0LjM0Mzc1IC00LjczNDM3NSAiLz48L2c+PC9nPjwvZz48ZyBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwNy4xMzM1MjgsIDMyLjQxODY5OSkiPjxnPjxwYXRoIGQ9Ik0gMi45MjE4NzUgMCBMIDIuOTIxODc1IC0yMi41MTU2MjUgTCAxMi4xNTYyNSAtMjIuNTE1NjI1IEMgMTMuODAwNzgxIC0yMi41MTU2MjUgMTUuMjk2ODc1IC0yMi4yMzgyODEgMTYuNjQwNjI1IC0yMS42ODc1IEMgMTcuOTg0Mzc1IC0yMS4xNDQ1MzEgMTkuMTQwNjI1IC0yMC4zNzUgMjAuMTA5Mzc1IC0xOS4zNzUgQyAyMS4wODU5MzggLTE4LjM3NSAyMS44MzIwMzEgLTE3LjE4NzUgMjIuMzQzNzUgLTE1LjgxMjUgQyAyMi44NjMyODEgLTE0LjQ0NTMxMiAyMy4xMjUgLTEyLjkyNTc4MSAyMy4xMjUgLTExLjI1IEMgMjMuMTI1IC05LjYwMTU2MiAyMi44NjMyODEgLTguMDg1OTM4IDIyLjM0Mzc1IC02LjcwMzEyNSBDIDIxLjgzMjAzMSAtNS4zMTY0MDYgMjEuMDkzNzUgLTQuMTI1IDIwLjEyNSAtMy4xMjUgQyAxOS4xNjQwNjIgLTIuMTMyODEyIDE4LjAwNzgxMiAtMS4zNjMyODEgMTYuNjU2MjUgLTAuODEyNSBDIDE1LjMwMDc4MSAtMC4yNjk1MzEgMTMuODAwNzgxIDAgMTIuMTU2MjUgMCBaIE0gNy43NSAtMy41IEwgNy4yMzQzNzUgLTQuMzQzNzUgTCAxMiAtNC4zNDM3NSBDIDEyLjk1NzAzMSAtNC4zNDM3NSAxMy44MjAzMTIgLTQuNTA3ODEyIDE0LjU5Mzc1IC00Ljg0Mzc1IEMgMTUuMzYzMjgxIC01LjE3NTc4MSAxNi4wMTk1MzEgLTUuNjMyODEyIDE2LjU2MjUgLTYuMjE4NzUgQyAxNy4xMTMyODEgLTYuODEyNSAxNy41MzEyNSAtNy41MzUxNTYgMTcuODEyNSAtOC4zOTA2MjUgQyAxOC4wOTM3NSAtOS4yNDIxODggMTguMjM0Mzc1IC0xMC4xOTUzMTIgMTguMjM0Mzc1IC0xMS4yNSBDIDE4LjIzNDM3NSAtMTIuMzAwNzgxIDE4LjA5Mzc1IC0xMy4yNSAxNy44MTI1IC0xNC4wOTM3NSBDIDE3LjUzMTI1IC0xNC45NDUzMTIgMTcuMTEzMjgxIC0xNS42NzE4NzUgMTYuNTYyNSAtMTYuMjY1NjI1IEMgMTYuMDE5NTMxIC0xNi44NjcxODggMTUuMzYzMjgxIC0xNy4zMzU5MzggMTQuNTkzNzUgLTE3LjY3MTg3NSBDIDEzLjgyMDMxMiAtMTguMDAzOTA2IDEyLjk1NzAzMSAtMTguMTcxODc1IDEyIC0xOC4xNzE4NzUgTCA3LjE0MDYyNSAtMTguMTcxODc1IEwgNy43NSAtMTguOTM3NSBaIE0gNy43NSAtMy41ICIvPjwvZz48L2c+PC9nPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTQ0LjkxNTQyOSwgMzIuNDE4Njk5KSI+PGc+PHBhdGggZD0iTSAyLjM0Mzc1IDAgTCAyLjM0Mzc1IC00LjE0MDYyNSBMIDYuMTA5Mzc1IC00LjE0MDYyNSBMIDYuMTA5Mzc1IC0xOC4zNTkzNzUgTCAyLjM0Mzc1IC0xOC4zNTkzNzUgTCAyLjM0Mzc1IC0yMi41MTU2MjUgTCAxNC43MDMxMjUgLTIyLjUxNTYyNSBMIDE0LjcwMzEyNSAtMTguMzU5Mzc1IEwgMTAuOTM3NSAtMTguMzU5Mzc1IEwgMTAuOTM3NSAtNC4xNDA2MjUgTCAxNC43MDMxMjUgLTQuMTQwNjI1IEwgMTQuNzAzMTI1IDAgWiBNIDIuMzQzNzUgMCAiLz48L2c+PC9nPjwvZz48ZyBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NS42NTczNTIsIDMyLjQxODY5OSkiPjxnPjxwYXRoIGQ9Ik0gMi45MjE4NzUgMCBMIDIuOTIxODc1IC0yMi41MTU2MjUgTCA3LjIzNDM3NSAtMjIuNTE1NjI1IEwgMTkuNjcxODc1IC01LjY4NzUgTCAxOC43ODEyNSAtNS42ODc1IEMgMTguNjk1MzEyIC02LjM1MTU2MiAxOC42MTcxODggLTcgMTguNTQ2ODc1IC03LjYyNSBDIDE4LjQ4NDM3NSAtOC4yNTc4MTIgMTguNDI1NzgxIC04LjkwNjI1IDE4LjM3NSAtOS41NjI1IEMgMTguMzIwMzEyIC0xMC4yMTg3NSAxOC4yODEyNSAtMTAuODk0NTMxIDE4LjI1IC0xMS41OTM3NSBDIDE4LjIxODc1IC0xMi4yODkwNjIgMTguMTkxNDA2IC0xMy4wMzEyNSAxOC4xNzE4NzUgLTEzLjgxMjUgQyAxOC4xNDg0MzggLTE0LjU5Mzc1IDE4LjE0MDYyNSAtMTUuNDQ1MzEyIDE4LjE0MDYyNSAtMTYuMzc1IEwgMTguMTQwNjI1IC0yMi41MTU2MjUgTCAyMi44NTkzNzUgLTIyLjUxNTYyNSBMIDIyLjg1OTM3NSAwIEwgMTguNDg0Mzc1IDAgTCA1Ljc4MTI1IC0xNi45ODQzNzUgTCA3LjAxNTYyNSAtMTYuOTUzMTI1IEMgNy4xMTcxODggLTE1LjgzNTkzOCA3LjIwNzAzMSAtMTQuODgyODEyIDcuMjgxMjUgLTE0LjA5Mzc1IEMgNy4zNTE1NjIgLTEzLjMxMjUgNy40MTQwNjIgLTEyLjYyODkwNiA3LjQ2ODc1IC0xMi4wNDY4NzUgQyA3LjUzMTI1IC0xMS40NzI2NTYgNy41NzAzMTIgLTEwLjk3MjY1NiA3LjU5Mzc1IC0xMC41NDY4NzUgQyA3LjYxMzI4MSAtMTAuMTE3MTg4IDcuNjI4OTA2IC05LjcxMDkzOCA3LjY0MDYyNSAtOS4zMjgxMjUgQyA3LjY0ODQzOCAtOC45NDE0MDYgNy42NTYyNSAtOC41MzUxNTYgNy42NTYyNSAtOC4xMDkzNzUgTCA3LjY1NjI1IDAgWiBNIDIuOTIxODc1IDAgIi8+PC9nPjwvZz48L2c+PGcgZmlsbD0iI2ZmZmZmZiIgZmlsbC1vcGFjaXR5PSIxIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMTUuMTQzMzEzLCAzMi40MTg2OTkpIj48Zz48cGF0aCBkPSJNIDEzLjI1IDAuMzI4MTI1IEMgMTEuNTA3ODEyIDAuMzI4MTI1IDkuOTE0MDYyIDAuMDMxMjUgOC40Njg3NSAtMC41NjI1IEMgNy4wMTk1MzEgLTEuMTU2MjUgNS43Njk1MzEgLTEuOTcyNjU2IDQuNzE4NzUgLTMuMDE1NjI1IEMgMy42NzU3ODEgLTQuMDY2NDA2IDIuODY3MTg4IC01LjMwMDc4MSAyLjI5Njg3NSAtNi43MTg3NSBDIDEuNzM0Mzc1IC04LjEzMjgxMiAxLjQ1MzEyNSAtOS42NjQwNjIgMS40NTMxMjUgLTExLjMxMjUgQyAxLjQ1MzEyNSAtMTIuOTY4NzUgMS43NDIxODggLTE0LjQ5MjE4OCAyLjMyODEyNSAtMTUuODkwNjI1IEMgMi45MjE4NzUgLTE3LjI5Njg3NSAzLjc1NzgxMiAtMTguNTE5NTMxIDQuODQzNzUgLTE5LjU2MjUgQyA1LjkyNTc4MSAtMjAuNjAxNTYyIDcuMTk1MzEyIC0yMS40MTAxNTYgOC42NTYyNSAtMjEuOTg0Mzc1IEMgMTAuMTEzMjgxIC0yMi41NjY0MDYgMTEuNzA3MDMxIC0yMi44NTkzNzUgMTMuNDM3NSAtMjIuODU5Mzc1IEMgMTQuNjMyODEyIC0yMi44NTkzNzUgMTUuNzgxMjUgLTIyLjY5NTMxMiAxNi44NzUgLTIyLjM3NSBDIDE3Ljk2ODc1IC0yMi4wNTA3ODEgMTguOTYwOTM4IC0yMS42MDkzNzUgMTkuODU5Mzc1IC0yMS4wNDY4NzUgQyAyMC43NjU2MjUgLTIwLjQ5MjE4OCAyMS41MTk1MzEgLTE5Ljg1OTM3NSAyMi4xMjUgLTE5LjE0MDYyNSBMIDE5LjE0MDYyNSAtMTUuOTg0Mzc1IEMgMTguNTc4MTI1IC0xNi41MTU2MjUgMTcuOTkyMTg4IC0xNi45Njg3NSAxNy4zOTA2MjUgLTE3LjM0Mzc1IEMgMTYuNzk2ODc1IC0xNy43MTg3NSAxNi4xNjAxNTYgLTE4LjAwMzkwNiAxNS40ODQzNzUgLTE4LjIwMzEyNSBDIDE0LjgwNDY4OCAtMTguNDEwMTU2IDE0LjExMzI4MSAtMTguNTE1NjI1IDEzLjQwNjI1IC0xOC41MTU2MjUgQyAxMi4zOTQ1MzEgLTE4LjUxNTYyNSAxMS40Njg3NSAtMTguMzMyMDMxIDEwLjYyNSAtMTcuOTY4NzUgQyA5Ljc4MTI1IC0xNy42MDE1NjIgOS4wMzUxNTYgLTE3LjA5NzY1NiA4LjM5MDYyNSAtMTYuNDUzMTI1IEMgNy43NDIxODggLTE1LjgxNjQwNiA3LjI0MjE4OCAtMTUuMDU0Njg4IDYuODkwNjI1IC0xNC4xNzE4NzUgQyA2LjUzNTE1NiAtMTMuMjk2ODc1IDYuMzU5Mzc1IC0xMi4zNDM3NSA2LjM1OTM3NSAtMTEuMzEyNSBDIDYuMzU5Mzc1IC0xMC4zMTI1IDYuNTQ2ODc1IC05LjM2MzI4MSA2LjkyMTg3NSAtOC40Njg3NSBDIDcuMzA0Njg4IC03LjU4MjAzMSA3LjgyMDMxMiAtNi44MTI1IDguNDY4NzUgLTYuMTU2MjUgQyA5LjEyNSAtNS41IDkuODkwNjI1IC00Ljk4NDM3NSAxMC43NjU2MjUgLTQuNjA5Mzc1IEMgMTEuNjQ4NDM4IC00LjIzNDM3NSAxMi41OTc2NTYgLTQuMDQ2ODc1IDEzLjYwOTM3NSAtNC4wNDY4NzUgQyAxNC4zMzU5MzggLTQuMDQ2ODc1IDE1LjAxNTYyNSAtNC4xNDg0MzggMTUuNjQwNjI1IC00LjM1OTM3NSBDIDE2LjI3MzQzOCAtNC41NzgxMjUgMTYuODMyMDMxIC00Ljg4MjgxMiAxNy4zMTI1IC01LjI4MTI1IEMgMTcuODAwNzgxIC01LjY4NzUgMTguMTc1NzgxIC02LjE1NjI1IDE4LjQzNzUgLTYuNjg3NSBDIDE4LjcwNzAzMSAtNy4yMjY1NjIgMTguODQzNzUgLTcuNzk2ODc1IDE4Ljg0Mzc1IC04LjM5MDYyNSBMIDE4Ljg0Mzc1IC05LjE3MTg3NSBMIDE5LjQ4NDM3NSAtOC4yNjU2MjUgTCAxMy4wNjI1IC04LjI2NTYyNSBMIDEzLjA2MjUgLTEyLjI4MTI1IEwgMjMuNDY4NzUgLTEyLjI4MTI1IEMgMjMuNDg4MjgxIC0xMi4wNTA3ODEgMjMuNTE1NjI1IC0xMS43NjU2MjUgMjMuNTQ2ODc1IC0xMS40MjE4NzUgQyAyMy41ODU5MzggLTExLjA3ODEyNSAyMy42MTMyODEgLTEwLjczODI4MSAyMy42MjUgLTEwLjQwNjI1IEMgMjMuNjMyODEyIC0xMC4wNzAzMTIgMjMuNjQwNjI1IC05LjgwNDY4OCAyMy42NDA2MjUgLTkuNjA5Mzc1IEMgMjMuNjQwNjI1IC04LjE0ODQzOCAyMy4zNzUgLTYuODEyNSAyMi44NDM3NSAtNS41OTM3NSBDIDIyLjMyMDMxMiAtNC4zNzUgMjEuNTkzNzUgLTMuMzIwMzEyIDIwLjY1NjI1IC0yLjQzNzUgQyAxOS43MjY1NjIgLTEuNTYyNSAxOC42Mjg5MDYgLTAuODc4OTA2IDE3LjM1OTM3NSAtMC4zOTA2MjUgQyAxNi4wOTc2NTYgMC4wODU5Mzc1IDE0LjcyNjU2MiAwLjMyODEyNSAxMy4yNSAwLjMyODEyNSBaIE0gMTMuMjUgMC4zMjgxMjUgIi8+PC9nPjwvZz48L2c+PGcgZmlsbD0iI2ZmZmZmZiIgZmlsbC1vcGFjaXR5PSIxIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNTMuODI1NTc0LCAzMi40MTg2OTkpIj48Zz48cGF0aCBkPSJNIDMuOTg0Mzc1IDAuMzU5Mzc1IEMgMy4xNDg0MzggMC4zNTkzNzUgMi41MDM5MDYgMC4xMjUgMi4wNDY4NzUgLTAuMzQzNzUgQyAxLjU5NzY1NiAtMC44MjAzMTIgMS4zNzUgLTEuNSAxLjM3NSAtMi4zNzUgQyAxLjM3NSAtMy4xNjQwNjIgMS42MTMyODEgLTMuODEyNSAyLjA5Mzc1IC00LjMxMjUgQyAyLjU4MjAzMSAtNC44MjAzMTIgMy4yMTA5MzggLTUuMDc4MTI1IDMuOTg0Mzc1IC01LjA3ODEyNSBDIDQuNzk2ODc1IC01LjA3ODEyNSA1LjQyNTc4MSAtNC44NDM3NSA1Ljg3NSAtNC4zNzUgQyA2LjMzMjAzMSAtMy45MDYyNSA2LjU2MjUgLTMuMjM4MjgxIDYuNTYyNSAtMi4zNzUgQyA2LjU2MjUgLTEuNTYyNSA2LjMyMDMxMiAtMC44OTg0MzggNS44NDM3NSAtMC4zOTA2MjUgQyA1LjM3NSAwLjEwOTM3NSA0Ljc1MzkwNiAwLjM1OTM3NSAzLjk4NDM3NSAwLjM1OTM3NSBaIE0gMy45ODQzNzUgMC4zNTkzNzUgIi8+PC9nPjwvZz48L2c+PGcgZmlsbD0iI2ZmZmZmZiIgZmlsbC1vcGFjaXR5PSIxIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNzQuODI2NTY5LCAzMi40MTg2OTkpIj48Zz48cGF0aCBkPSJNIDEyLjc5Njg3NSAwLjMyODEyNSBDIDExLjE0ODQzOCAwLjMyODEyNSA5LjYzMjgxMiAwLjA0Njg3NSA4LjI1IC0wLjUxNTYyNSBDIDYuODYzMjgxIC0xLjA4NTkzOCA1LjY2MDE1NiAtMS44OTQ1MzEgNC42NDA2MjUgLTIuOTM3NSBDIDMuNjI4OTA2IC0zLjk3NjU2MiAyLjg0Mzc1IC01LjIxMDkzOCAyLjI4MTI1IC02LjY0MDYyNSBDIDEuNzI2NTYyIC04LjA2NjQwNiAxLjQ1MzEyNSAtOS42MjUgMS40NTMxMjUgLTExLjMxMjUgQyAxLjQ1MzEyNSAtMTIuOTY4NzUgMS43MzgyODEgLTE0LjQ5MjE4OCAyLjMxMjUgLTE1Ljg5MDYyNSBDIDIuODk0NTMxIC0xNy4yOTY4NzUgMy43MDcwMzEgLTE4LjUxOTUzMSA0Ljc1IC0xOS41NjI1IEMgNS44MDA3ODEgLTIwLjYwMTU2MiA3LjAzNTE1NiAtMjEuNDEwMTU2IDguNDUzMTI1IC0yMS45ODQzNzUgQyA5Ljg2NzE4OCAtMjIuNTY2NDA2IDExLjQwNjI1IC0yMi44NTkzNzUgMTMuMDYyNSAtMjIuODU5Mzc1IEMgMTQuMTI1IC0yMi44NTkzNzUgMTUuMTc1NzgxIC0yMi43MTA5MzggMTYuMjE4NzUgLTIyLjQyMTg3NSBDIDE3LjI1NzgxMiAtMjIuMTQwNjI1IDE4LjIxMDkzOCAtMjEuNzE4NzUgMTkuMDc4MTI1IC0yMS4xNTYyNSBDIDE5Ljk1MzEyNSAtMjAuNjAxNTYyIDIwLjY5NTMxMiAtMTkuOTQxNDA2IDIxLjMxMjUgLTE5LjE3MTg3NSBMIDE4LjI5Njg3NSAtMTUuODI4MTI1IEMgMTcuODA0Njg4IC0xNi4zMzU5MzggMTcuMjgxMjUgLTE2Ljc4MTI1IDE2LjcxODc1IC0xNy4xNTYyNSBDIDE2LjE2NDA2MiAtMTcuNTMxMjUgMTUuNTgyMDMxIC0xNy44MTY0MDYgMTQuOTY4NzUgLTE4LjAxNTYyNSBDIDE0LjM1MTU2MiAtMTguMjIyNjU2IDEzLjcwMzEyNSAtMTguMzI4MTI1IDEzLjAxNTYyNSAtMTguMzI4MTI1IEMgMTIuMDk3NjU2IC0xOC4zMjgxMjUgMTEuMjM4MjgxIC0xOC4xNTYyNSAxMC40Mzc1IC0xNy44MTI1IEMgOS42MzI4MTIgLTE3LjQ2ODc1IDguOTI5Njg4IC0xNi45ODgyODEgOC4zMjgxMjUgLTE2LjM3NSBDIDcuNzIyNjU2IC0xNS43Njk1MzEgNy4yNDIxODggLTE1LjAzMTI1IDYuODkwNjI1IC0xNC4xNTYyNSBDIDYuNTM1MTU2IC0xMy4yODkwNjIgNi4zNTkzNzUgLTEyLjMzMjAzMSA2LjM1OTM3NSAtMTEuMjgxMjUgQyA2LjM1OTM3NSAtMTAuMjA3MDMxIDYuNTMxMjUgLTkuMjM4MjgxIDYuODc1IC04LjM3NSBDIDcuMjE4NzUgLTcuNTA3ODEyIDcuNzAzMTI1IC02Ljc2OTUzMSA4LjMyODEyNSAtNi4xNTYyNSBDIDguOTUzMTI1IC01LjUzOTA2MiA5LjY5NTMxMiAtNS4wNjY0MDYgMTAuNTYyNSAtNC43MzQzNzUgQyAxMS40MjU3ODEgLTQuNDEwMTU2IDEyLjM4MjgxMiAtNC4yNSAxMy40Mzc1IC00LjI1IEMgMTQuMTI1IC00LjI1IDE0Ljc4OTA2MiAtNC4zNDM3NSAxNS40Mzc1IC00LjUzMTI1IEMgMTYuMDgyMDMxIC00LjcyNjU2MiAxNi42NzU3ODEgLTUgMTcuMjE4NzUgLTUuMzQzNzUgQyAxNy43Njk1MzEgLTUuNjg3NSAxOC4yNTc4MTIgLTYuMDgyMDMxIDE4LjY4NzUgLTYuNTMxMjUgTCAyMS4wNjI1IC0yLjc2NTYyNSBDIDIwLjUzMTI1IC0yLjE3OTY4OCAxOS44MjgxMjUgLTEuNjU2MjUgMTguOTUzMTI1IC0xLjE4NzUgQyAxOC4wODU5MzggLTAuNzE4NzUgMTcuMTE3MTg4IC0wLjM0NzY1NiAxNi4wNDY4NzUgLTAuMDc4MTI1IEMgMTQuOTcyNjU2IDAuMTkxNDA2IDEzLjg5MDYyNSAwLjMyODEyNSAxMi43OTY4NzUgMC4zMjgxMjUgWiBNIDEyLjc5Njg3NSAwLjMyODEyNSAiLz48L2c+PC9nPjwvZz48ZyBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMxMC42Nzk4NzgsIDMyLjQxODY5OSkiPjxnPjxwYXRoIGQ9Ik0gMTIuOTIxODc1IDAuMzI4MTI1IEMgMTEuMjUzOTA2IDAuMzI4MTI1IDkuNzIyNjU2IDAuMDM1MTU2MiA4LjMyODEyNSAtMC41NDY4NzUgQyA2LjkyOTY4OCAtMS4xMjg5MDYgNS43MTA5MzggLTEuOTM3NSA0LjY3MTg3NSAtMi45Njg3NSBDIDMuNjQwNjI1IC00LjAwNzgxMiAyLjg0Mzc1IC01LjI0MjE4OCAyLjI4MTI1IC02LjY3MTg3NSBDIDEuNzI2NTYyIC04LjA5NzY1NiAxLjQ1MzEyNSAtOS42NDQ1MzEgMS40NTMxMjUgLTExLjMxMjUgQyAxLjQ1MzEyNSAtMTMuMDA3ODEyIDEuNzI2NTYyIC0xNC41NjY0MDYgMi4yODEyNSAtMTUuOTg0Mzc1IEMgMi44NDM3NSAtMTcuMzk4NDM4IDMuNjQwNjI1IC0xOC42MjUgNC42NzE4NzUgLTE5LjY1NjI1IEMgNS43MTA5MzggLTIwLjY5NTMxMiA2LjkyOTY4OCAtMjEuNTAzOTA2IDguMzI4MTI1IC0yMi4wNzgxMjUgQyA5LjcyMjY1NiAtMjIuNjYwMTU2IDExLjI0MjE4OCAtMjIuOTUzMTI1IDEyLjg5MDYyNSAtMjIuOTUzMTI1IEMgMTQuNTY2NDA2IC0yMi45NTMxMjUgMTYuMDkzNzUgLTIyLjY2MDE1NiAxNy40Njg3NSAtMjIuMDc4MTI1IEMgMTguODUxNTYyIC0yMS41MDM5MDYgMjAuMDY2NDA2IC0yMC42OTE0MDYgMjEuMTA5Mzc1IC0xOS42NDA2MjUgQyAyMi4xNDg0MzggLTE4LjU5NzY1NiAyMi45NDUzMTIgLTE3LjM2NzE4OCAyMy41IC0xNS45NTMxMjUgQyAyNC4wNjI1IC0xNC41MzUxNTYgMjQuMzQzNzUgLTEyLjk4ODI4MSAyNC4zNDM3NSAtMTEuMzEyNSBDIDI0LjM0Mzc1IC05LjY0NDUzMSAyNC4wNjI1IC04LjEwMTU2MiAyMy41IC02LjY4NzUgQyAyMi45NDUzMTIgLTUuMjY5NTMxIDIyLjE0ODQzOCAtNC4wMzUxNTYgMjEuMTA5Mzc1IC0yLjk4NDM3NSBDIDIwLjA2NjQwNiAtMS45NDE0MDYgMTguODUxNTYyIC0xLjEyODkwNiAxNy40Njg3NSAtMC41NDY4NzUgQyAxNi4wOTM3NSAwLjAzNTE1NjIgMTQuNTc4MTI1IDAuMzI4MTI1IDEyLjkyMTg3NSAwLjMyODEyNSBaIE0gMTIuODkwNjI1IC00LjI1IEMgMTMuODU5Mzc1IC00LjI1IDE0LjczODI4MSAtNC40MjU3ODEgMTUuNTMxMjUgLTQuNzgxMjUgQyAxNi4zMjAzMTIgLTUuMTMyODEyIDE3LjAwMzkwNiAtNS42MjUgMTcuNTc4MTI1IC02LjI1IEMgMTguMTYwMTU2IC02Ljg4MjgxMiAxOC42MTcxODggLTcuNjI4OTA2IDE4Ljk1MzEyNSAtOC40ODQzNzUgQyAxOS4yODUxNTYgLTkuMzQ3NjU2IDE5LjQ1MzEyNSAtMTAuMjg5MDYyIDE5LjQ1MzEyNSAtMTEuMzEyNSBDIDE5LjQ1MzEyNSAtMTIuMzQzNzUgMTkuMjg1MTU2IC0xMy4yODUxNTYgMTguOTUzMTI1IC0xNC4xNDA2MjUgQyAxOC42MTcxODggLTE1LjAwMzkwNiAxOC4xNjAxNTYgLTE1Ljc1IDE3LjU3ODEyNSAtMTYuMzc1IEMgMTcuMDAzOTA2IC0xNy4wMDc4MTIgMTYuMzIwMzEyIC0xNy41MDM5MDYgMTUuNTMxMjUgLTE3Ljg1OTM3NSBDIDE0LjczODI4MSAtMTguMjEwOTM4IDEzLjg1OTM3NSAtMTguMzkwNjI1IDEyLjg5MDYyNSAtMTguMzkwNjI1IEMgMTEuOTUzMTI1IC0xOC4zOTA2MjUgMTEuMDgyMDMxIC0xOC4yMTA5MzggMTAuMjgxMjUgLTE3Ljg1OTM3NSBDIDkuNDg4MjgxIC0xNy41MDM5MDYgOC43ODkwNjIgLTE3LjAwNzgxMiA4LjE4NzUgLTE2LjM3NSBDIDcuNTkzNzUgLTE1Ljc1IDcuMTQwNjI1IC0xNS4wMDM5MDYgNi44MjgxMjUgLTE0LjE0MDYyNSBDIDYuNTE1NjI1IC0xMy4yODUxNTYgNi4zNTkzNzUgLTEyLjM0Mzc1IDYuMzU5Mzc1IC0xMS4zMTI1IEMgNi4zNTkzNzUgLTEwLjI4OTA2MiA2LjUxNTYyNSAtOS4zNDc2NTYgNi44MjgxMjUgLTguNDg0Mzc1IEMgNy4xNDA2MjUgLTcuNjI4OTA2IDcuNTkzNzUgLTYuODgyODEyIDguMTg3NSAtNi4yNSBDIDguNzg5MDYyIC01LjYyNSA5LjQ4ODI4MSAtNS4xMzI4MTIgMTAuMjgxMjUgLTQuNzgxMjUgQyAxMS4wODIwMzEgLTQuNDI1NzgxIDExLjk1MzEyNSAtNC4yNSAxMi44OTA2MjUgLTQuMjUgWiBNIDEyLjg5MDYyNSAtNC4yNSAiLz48L2c+PC9nPjwvZz48L2c+PC9nPjwvZz48L3N2Zz4=" alt="Radical Reading Co." style="height:60px;width:auto;display:block;">
+    </div>
+    <div class="header-tag">Messaging Cheat Sheet · Internal Use</div>
+  </div>
+</div>
+
+<!-- ══ TAB NAV ══ -->
+<div class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" data-tab="soundbites">Soundbite Bank</button>
+    <button class="tab-btn" data-tab="talking">Talking Points</button>
+    <button class="tab-btn" data-tab="objections">Objections</button>
+    <button class="tab-btn" data-tab="vision">Brand Vision</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ══════════════════════════════════════════
+     TAB 1 · SOUNDBITE BANK
+══════════════════════════════════════════ -->
+<div class="tab-panel active" id="tab-soundbites">
+  <div class="section-header">
+    <div class="section-kicker">Reference</div>
+    <div class="section-title">Soundbite Bank</div>
+    <div class="section-desc">Every confirmed line, organized by theme. ★ = high-priority; use these first.</div>
+  </div>
+
+  <div class="filter-row">
+    <button class="filter-btn active" data-theme="all">All</button>
+    <button class="filter-btn" data-theme="science">The Science</button>
+    <button class="filter-btn" data-theme="window">The Window</button>
+    <button class="filter-btn" data-theme="system">The System</button>
+    <button class="filter-btn" data-theme="solution">The Solution</button>
+    <button class="filter-btn" data-theme="stakes">The Stakes</button>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- ─ THE SCIENCE ─ -->
+    <div class="sb-card" data-theme="science">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Science</div>
+      <div class="sb-quote">"Learning to read is not natural. It's neural engineering."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Reframes reading as structural and actionable. "Engineering" implies it can be done right or wrong — and that expertise matters.</div>
+    </div>
+
+    <div class="sb-card" data-theme="science">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Science</div>
+      <div class="sb-quote">"Born to speak. Wired to read."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>The entire science argument in four words. Speech = biological destiny. Reading = intentional construction.</div>
+    </div>
+
+    <div class="sb-card" data-theme="science">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Science</div>
+      <div class="sb-quote">"Readers are built, not born."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Directly inverts a common assumption. Implicitly answers "is my child just not a reader?" — the answer is: that's not a thing.</div>
+    </div>
+
+    <div class="sb-card" data-theme="science">
+      <div class="sb-theme">The Science</div>
+      <div class="sb-quote">"Intelligence is not a substitute for decoding."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Speaks directly to parents of bright, struggling kids. Removes shame and installs diagnostic precision in five words.</div>
+    </div>
+
+    <div class="sb-card" data-theme="science">
+      <div class="sb-theme">The Science</div>
+      <div class="sb-quote">"If your child is struggling to remember simple words, it isn't a memory problem. It's a wiring problem."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Instant relief. Shifts the parent from "something wrong with my child" to "something fixable in the instruction."</div>
+    </div>
+
+    <div class="sb-card" data-theme="science">
+      <div class="sb-theme">The Science</div>
+      <div class="sb-quote">"You don't learn sight words with your eyes. You wire them with your ears."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Counterintuitive and sticky. Directly contradicts bad advice ("just drill the flashcards") many parents have already received.</div>
+    </div>
+
+    <div class="sb-card" data-theme="science">
+      <div class="sb-theme">The Science</div>
+      <div class="sb-quote">"The goal isn't sounding it out. The goal is never having to."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Redefines success. Most parents think sounding it out is the destination. This reveals it's just an early stage.</div>
+    </div>
+
+    <div class="sb-card" data-theme="science">
+      <div class="sb-theme">The Science</div>
+      <div class="sb-quote">"Telling a struggling reader to 'just read more' is like telling someone with a broken leg to 'just walk more.'"</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>A classic analogy that survives any audience. Makes well-meaning-but-wrong advice feel viscerally incorrect without blame.</div>
+    </div>
+
+    <div class="sb-card" data-theme="science">
+      <div class="sb-theme">The Science</div>
+      <div class="sb-quote">"Smart kids fake reading until Grade 4. Then the pictures disappear."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>"Fake" is provocative and accurate. The image of pictures disappearing is concrete and alarming. The line for parents who think their child is fine.</div>
+    </div>
+
+    <div class="sb-card" data-theme="science">
+      <div class="sb-theme">The Science</div>
+      <div class="sb-quote">"95% of children have the brain capacity to become strong readers. When they don't, the failure is almost always in the instruction — not the child."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Harvard-sourced. Removes shame from child and parent simultaneously. Makes reading failure feel entirely fixable.</div>
+    </div>
+
+    <!-- ─ THE WINDOW ─ -->
+    <div class="sb-card" data-theme="window">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Window</div>
+      <div class="sb-quote">"Biology doesn't wait."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Three words. Absolute. No argument possible. Works as a standalone closer on any timing conversation.</div>
+    </div>
+
+    <div class="sb-card" data-theme="window">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Window</div>
+      <div class="sb-quote">"The school says 'wait and see.' Science says act now."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>The central brand tension in one line. System vs. science. Passive vs. active. No villain needed — the contrast does the work.</div>
+    </div>
+
+    <div class="sb-card" data-theme="window">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Window</div>
+      <div class="sb-quote">"The die is pretty much cast by the end of Grade 3."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Blunt, honest, and impossible to dismiss. "Pretty much" avoids catastrophism while still landing the urgency with full force.</div>
+    </div>
+
+    <div class="sb-card" data-theme="window">
+      <div class="sb-theme">The Window</div>
+      <div class="sb-quote">"An ounce of early work is worth a pound of remediation later."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Familiar proverb structure makes it immediately memorable. Concrete framing of the cost of action vs. inaction.</div>
+    </div>
+
+    <div class="sb-card" data-theme="window">
+      <div class="sb-theme">The Window</div>
+      <div class="sb-quote">"We're not here for next Friday's spelling test. We're here for the next twenty years."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Reframes what success looks like. Repositions tutoring as the wrong tool for the right job.</div>
+    </div>
+
+    <div class="sb-card" data-theme="window">
+      <div class="sb-theme">The Window</div>
+      <div class="sb-quote">"The school runs on a schedule. Your child's brain doesn't."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>The conveyor belt argument compressed into one clean contrast. Explains the structural problem without blaming anyone.</div>
+    </div>
+
+    <!-- ─ THE SYSTEM ─ -->
+    <div class="sb-card" data-theme="system">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The System</div>
+      <div class="sb-quote">"Schools teach for group coverage. Reading requires individual mastery."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Pins the structural problem precisely. Not a teacher criticism — an architecture criticism. "Mastery" sets the standard the school can't meet by design.</div>
+    </div>
+
+    <div class="sb-card" data-theme="system">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The System</div>
+      <div class="sb-quote">"Big systems change slowly. Childhood happens now."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>The founding argument in one line. Systemic vs. personal. Abstract vs. immediate. Explains why Radical Reading exists without requiring any context.</div>
+    </div>
+
+    <div class="sb-card" data-theme="system">
+      <div class="sb-theme">The System</div>
+      <div class="sb-quote">"Teachers are heroes. But in a classroom of 30, they are outnumbered."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Protects the teacher relationship while making the structural case. Lark can say this with full credibility. Disarms the "are you attacking teachers?" reaction.</div>
+    </div>
+
+    <div class="sb-card" data-theme="system">
+      <div class="sb-theme">The System</div>
+      <div class="sb-quote">"The curriculum changed. The classroom hasn't caught up yet."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Acknowledges Ontario's real curriculum progress while preserving the urgency. Makes Lark sound current and fair — not stuck in 2019.</div>
+    </div>
+
+    <div class="sb-card" data-theme="system">
+      <div class="sb-theme">The System</div>
+      <div class="sb-quote">"The system is learning. Your child can't wait for it to graduate."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Warm but pointed. Acknowledges systemic progress without conceding the urgency. The "graduate" metaphor lands naturally with parent audiences.</div>
+    </div>
+
+    <div class="sb-card" data-theme="system">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The System</div>
+      <div class="sb-quote">"I spent ten years fighting the system to ensure every child has the right to read. I built Radical Reading so you can ensure your child actually does."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Lark's personal thesis in two sentences. "The right to read" vs "actually does" — a devastating and honest contrast.</div>
+    </div>
+
+    <div class="sb-card" data-theme="system">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The System</div>
+      <div class="sb-quote">"Don't leave reading to chance — or to the system. Make sure your child reaches full mastery, no matter what's happening in school."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>The brand mission in plain language. Not anti-school — just pro-certainty. Works across all audiences. The line every parent should leave a conversation remembering.</div>
+    </div>
+
+    <div class="sb-card" data-theme="system">
+      <div class="sb-theme">The System</div>
+      <div class="sb-quote">"Lark spent a decade fighting to fix reading instruction for all kids. Now she's here to fix it for yours."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>The most efficient credential-plus-empathy line on the site. "All kids" signals the mission. "Yours" closes the distance to personal. The pivot between them is doing enormous work.</div>
+    </div>
+
+    <!-- ─ THE SOLUTION ─ -->
+    <div class="sb-card" data-theme="solution">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Solution</div>
+      <div class="sb-quote">"The program is Lexia. The breakthrough is Radical."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Clean division of labour. Lexia = the engine. Radical = the expertise. Removes "why not just buy Lexia ourselves?" before it's asked.</div>
+    </div>
+
+    <div class="sb-card" data-theme="solution">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Solution</div>
+      <div class="sb-quote">"Lexia is the program your school should be using, but probably isn't."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Provocative but accurate. Instantly positions us as the access solution — we bring what the school should have offered.</div>
+    </div>
+
+    <div class="sb-card" data-theme="solution">
+      <div class="sb-theme">The Solution</div>
+      <div class="sb-quote">"Lexia is what your child's school should be doing. We do it instead."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>More direct version of the above. Slightly shorter, no hedge. Better verbally when you need to land it fast.</div>
+    </div>
+
+    <div class="sb-card" data-theme="solution">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Solution</div>
+      <div class="sb-quote">"Most screentime is digital candy. Lexia is digital nutrition."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Taps directly into existing parental anxiety about screens and flips it. The junk food vs. nutrition distinction is universally understood and immediately memorable.</div>
+    </div>
+
+    <div class="sb-card" data-theme="solution">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Solution</div>
+      <div class="sb-quote">"Stop tutoring your child. Start wiring them."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Confrontational in exactly the right way. "Tutoring" is the default mental model — this line rejects it and installs a new one. "Wiring" implies permanence vs. tutoring's temporary fix.</div>
+    </div>
+
+    <div class="sb-card" data-theme="solution">
+      <div class="sb-theme">The Solution</div>
+      <div class="sb-quote">"We wire young brains for potential."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Mission-statement brevity. "Potential" is expansive, not remedial. Works as a verbal closing line and brand signature.</div>
+    </div>
+
+    <!-- ─ THE STAKES ─ -->
+    <div class="sb-card" data-theme="stakes">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Stakes</div>
+      <div class="sb-quote">"Reading is not a subject. It's a life trajectory."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Reframes the entire conversation. Not "will they pass literacy?" but "what does their life look like?" Every parent has a visceral reaction to this.</div>
+    </div>
+
+    <div class="sb-card" data-theme="stakes">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Stakes</div>
+      <div class="sb-quote">"It starts with words. But it ends with the world."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Poetic and true. The contrast between the small (words) and the enormous (the world) is emotionally resonant. Best as a closing line — it lands and stays.</div>
+    </div>
+
+    <div class="sb-card" data-theme="stakes">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Stakes</div>
+      <div class="sb-quote">"Up to 60% of children don't achieve reading mastery by Grade 4. Not because they're not smart — because the code was never fully built."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>The statistic is alarming; the reframe removes blame and installs agency. The sequence matters — never lead with the number without following with the explanation.</div>
+    </div>
+
+    <div class="sb-card" data-theme="stakes">
+      <div class="sb-theme">The Stakes</div>
+      <div class="sb-quote">"When the friction disappears, the confidence appears."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Cause-and-effect in seven words. Directly answers the parent who says "I just want them to feel better about reading."</div>
+    </div>
+
+    <div class="sb-card" data-theme="stakes">
+      <span class="sb-star">★</span>
+      <div class="sb-theme">The Stakes</div>
+      <div class="sb-quote">"Your child deserves to learn to read to the best of their ability. Not simply the best a struggling system can teach them."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Specific and honest. Not just "better" — their own best vs. the system's best. A meaningful distinction that lands without manufactured outrage.</div>
+    </div>
+
+    <div class="sb-card" data-theme="stakes">
+      <div class="sb-theme">The Stakes</div>
+      <div class="sb-quote">"Confidence is engineered."</div>
+      <div class="sb-why"><span class="sb-why-label">Why it works</span>Two words. Rejects the notion that confidence is innate or luck. It's buildable and actionable — and we know exactly how to build it.</div>
+    </div>
+
+  </div><!-- /cards-grid -->
+</div><!-- /tab-soundbites -->
+
+
+<!-- ══════════════════════════════════════════
+     TAB 2 · TALKING POINTS
+══════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-talking">
+  <div class="section-header">
+    <div class="section-kicker">For Lark</div>
+    <div class="section-title">Talking Points</div>
+    <div class="section-desc">Not a script — internalize the logic, not the lines. The soundbite callouts are anchors, not cues to recite verbatim.</div>
+  </div>
+
+  <!-- QUICK REFERENCE -->
+  <div class="section-kicker" style="margin-bottom:10px;">Quick Reference — One-Liners by Context</div>
+  <div class="quick-ref-grid">
+    <div class="qr-card">
+      <div class="qr-label">A · General / Access</div>
+      <div class="qr-text">"We bring the gold-standard science-of-reading program directly to families — because every child should have it, and most schools still aren't offering it."</div>
+      <div class="qr-ctx">Best for: cold conversations, new acquaintances, general networking</div>
+    </div>
+    <div class="qr-card">
+      <div class="qr-label">B · Emotionally Engaged Parent</div>
+      <div class="qr-text">"The school says wait and see. Science says act now. We built something for parents who agree with the science."</div>
+      <div class="qr-ctx">Best for: parents showing concern, school pickup, parent events</div>
+    </div>
+    <div class="qr-card">
+      <div class="qr-label">C · Professional Context</div>
+      <div class="qr-text">"Lexia is what most Ontario schools should be doing. We do it directly with families — with the clinical fidelity it was always designed to have."</div>
+      <div class="qr-ctx">Best for: peer educators, SLPs, literacy colleagues, principals</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ─ ELEVATOR (30 SEC) ─ -->
+  <div class="ctx-card open">
+    <div class="ctx-head">
+      <div class="ctx-icon parent">🎯</div>
+      <div>
+        <div class="ctx-title">Elevator Soundbite</div>
+        <div class="ctx-sub">30 seconds · For "what do you do?" in any context</div>
+      </div>
+      <span class="ctx-chev">▾</span>
+    </div>
+    <div class="ctx-body">
+      <p style="font-size:14px;line-height:1.7;margin-top:8px;">
+        "I'm a literacy interventionist — I spent years inside Ontario's reading advocacy world and eventually built my own program because the system, even as it improves, can't move at the speed of childhood. We bring Lexia Core5 directly to families: the gold-standard adaptive reading tool Ontario schools use, with real clinical oversight. Reading has to be neurologically wired in the early years — we make sure parents don't have to leave that to chance."
+      </p>
+      <span class="sb-callout">"Big systems change slowly. Childhood happens now."</span>
+    </div>
+  </div>
+
+  <!-- ─ 60-SECOND PITCH ─ -->
+  <div class="ctx-card">
+    <div class="ctx-head">
+      <div class="ctx-icon parent">⏱</div>
+      <div>
+        <div class="ctx-title">The 60-Second Pitch</div>
+        <div class="ctx-sub">Full narrative arc · Parent events, talks, podcast openers</div>
+      </div>
+      <span class="ctx-chev">▾</span>
+    </div>
+    <div class="ctx-body">
+      <div class="ctx-section-label">Narrative Waypoints — hit these in order, in your own words</div>
+      <div class="waypoints">
+        <div class="waypoint">
+          <div class="wp-num">1</div>
+          <div class="wp-text"><strong>The hook.</strong> Reading isn't natural — it has to be built deliberately in a specific window.
+            <span class="sb-callout">"Born to speak. Wired to read."</span>
+          </div>
+        </div>
+        <div class="waypoint">
+          <div class="wp-num">2</div>
+          <div class="wp-text"><strong>Your credibility + the honest system update.</strong> Ten years in advocacy. The curriculum did change — that's real. But curriculum change is step one of ten.
+            <span class="sb-callout">"The curriculum changed. The classroom hasn't caught up yet."</span>
+          </div>
+        </div>
+        <div class="waypoint">
+          <div class="wp-num">3</div>
+          <div class="wp-text"><strong>The window.</strong> JK to Grade 3. Smart kids fake reading until Grade 4 — then the pictures disappear.
+            <span class="sb-callout">"Biology doesn't wait."</span>
+          </div>
+        </div>
+        <div class="waypoint">
+          <div class="wp-num">4</div>
+          <div class="wp-text"><strong>The stat.</strong> Up to 60% of children don't reach reading mastery. Not because they're not smart. Because the code was never fully built.</div>
+        </div>
+        <div class="waypoint">
+          <div class="wp-num">5</div>
+          <div class="wp-text"><strong>The solution.</strong> Lexia Core5 — the tool that should be in every Ontario classroom. Not digital candy. Digital nutrition. Most kids never get it.
+            <span class="sb-callout">"Lexia is what your child's school should be doing. We do it instead."</span>
+          </div>
+        </div>
+        <div class="waypoint">
+          <div class="wp-num">6</div>
+          <div class="wp-text"><strong>The personal founding truth.</strong>
+            <span class="sb-callout">"I spent ten years fighting the system so every child has the right to read. I built Radical Reading so you can ensure your child actually does."</span>
+          </div>
+        </div>
+        <div class="waypoint">
+          <div class="wp-num">7</div>
+          <div class="wp-text"><strong>The close.</strong> Fifteen minutes a day. Expert eyes on the data. The reading brain, built in the window when it matters most.
+            <span class="sb-callout">"Don't leave reading to chance — or to the system."</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─ CASUAL PARENT CHAT ─ -->
+  <div class="ctx-card">
+    <div class="ctx-head">
+      <div class="ctx-icon parent">☕</div>
+      <div>
+        <div class="ctx-title">Casual Parent Conversation</div>
+        <div class="ctx-sub">School pickup · Birthday parties · New acquaintances</div>
+      </div>
+      <span class="ctx-chev">▾</span>
+    </div>
+    <div class="ctx-body">
+      <div class="qa-block">
+        <div class="qa-q">"What is Radical Reading?"</div>
+        <div class="qa-a">It's a reading program for kids in the early years — JK to about Grade 3, though we have tracks beyond that. We bring Lexia Core5 directly to families at home — the science-of-reading tool Ontario school boards use — with real clinical oversight. The core idea is simple: <em>readers are built, not born.</em> Reading has to be neurologically wired in a specific window. We make sure it gets done properly, no matter what's happening at school.</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">"Hasn't the Ontario curriculum been fixed?"</div>
+        <div class="qa-a">Yes — and that's genuinely good news. I was part of pushing for that change, so I mean it when I say it matters. But the curriculum changing is step one of about ten. Teachers are being trained right now, schools are adapting right now, and your child is in the classroom right now. <em>The curriculum is improving. Implementation takes years. Don't leave your child's reading mastery to the implementation timeline.</em></div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">"Why not just rely on school?"</div>
+        <div class="qa-a">Teachers are doing heroic work under genuinely hard conditions — that's not the issue. The architecture is. The school runs on a schedule that can't stop for an individual child. It's designed for group coverage. Reading requires individual mastery. We don't move to the next step until the current one is fully wired. That's not something a classroom of 30 can promise.</div>
+      </div>
+      <div class="close-cta">
+        <strong>The Invite</strong>
+        "How old are your kids? I can tell you in about thirty seconds whether there's a window worth acting on."
+      </div>
+    </div>
+  </div>
+
+  <!-- ─ PARENT PROSPECT PITCH ─ -->
+  <div class="ctx-card">
+    <div class="ctx-head">
+      <div class="ctx-icon parent">🎓</div>
+      <div>
+        <div class="ctx-title">Parent Prospect Pitch</div>
+        <div class="ctx-sub">PEACE framework · When a parent is actively considering enrolling</div>
+      </div>
+      <span class="ctx-chev">▾</span>
+    </div>
+    <div class="ctx-body">
+      <div class="peace-wrap">
+        <div class="peace-step">
+          <div class="peace-circle">P</div>
+          <div class="peace-right">
+            <div class="peace-lbl">Problem</div>
+            <div class="peace-text">Most kids are getting reading instruction. Fewer are getting reading mastery. The school runs on a schedule — a conveyor belt that can't stop for an individual child. That creates gaps. In reading, gaps don't close. They compound. Up to 60% of children don't achieve reading mastery by Grade 4. Not because they're not smart — because the code was never fully built.</div>
+          </div>
+        </div>
+        <div class="peace-step">
+          <div class="peace-circle">E</div>
+          <div class="peace-right">
+            <div class="peace-lbl">Empathy</div>
+            <div class="peace-text">I know how disorienting this is. The report card says 'meeting expectations.' The teacher says they're fine. And you genuinely can't tell whether there's something to worry about. I went through this with my own son. The system is improving — I was part of pushing that change. But improvement isn't mastery. <em>Your child needs mastery.</em></div>
+          </div>
+        </div>
+        <div class="peace-step">
+          <div class="peace-circle">A</div>
+          <div class="peace-right">
+            <div class="peace-lbl">Answer</div>
+            <div class="peace-text">Radical Reading brings Lexia Core5 directly to your family — the gold-standard adaptive reading tool used in school boards across Ontario, endorsed in the Right to Read report. Not digital candy. <em>Digital nutrition.</em> Rigorous, data-driven, built to close every gap in the reading code. The program is Lexia. The breakthrough is Radical — because we add the clinical layer that makes it work the way it was designed.</div>
+          </div>
+        </div>
+        <div class="peace-step">
+          <div class="peace-circle">C</div>
+          <div class="peace-right">
+            <div class="peace-lbl">Change</div>
+            <div class="peace-text">Your child stops compensating with clever workarounds and starts actually decoding. The goal isn't sounding it out — <em>the goal is never having to.</em> When the friction disappears, the confidence appears. That shift shows up before the grades do.</div>
+          </div>
+        </div>
+        <div class="peace-step">
+          <div class="peace-circle">E</div>
+          <div class="peace-right">
+            <div class="peace-lbl">End Result</div>
+            <div class="peace-text">They hit Grade 4 ready. The wall that catches 60% of kids? They walk straight through it. Reading becomes the tool it's supposed to be — for math, for science, for everything after. <em>It starts with words. But it ends with the world.</em></div>
+          </div>
+        </div>
+      </div>
+      <div class="close-cta">
+        <strong>The Close</strong>
+        "We have three tracks depending on where your child is right now. Two minutes of questions and I'll point you to exactly the right one."
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+  <div class="section-kicker" style="margin-bottom:16px;">Professional Contexts</div>
+
+  <!-- ─ CASUAL PROFESSIONAL ─ -->
+  <div class="ctx-card">
+    <div class="ctx-head">
+      <div class="ctx-icon pro">🤝</div>
+      <div>
+        <div class="ctx-title">Casual Professional Chat</div>
+        <div class="ctx-sub">Peer teachers, SLPs, literacy colleagues · Collegial, not defensive</div>
+      </div>
+      <span class="ctx-chev">▾</span>
+    </div>
+    <div class="ctx-body">
+      <div class="qa-block">
+        <div class="qa-q">When it comes up naturally</div>
+        <div class="qa-a">I've been building something alongside my advocacy work — bringing Lexia Core5 directly to families with proper clinical fidelity. The model fills the gap that exists even as the curriculum improves: most kids still aren't getting Lexia, and where they are, training and oversight can be uneven. I'm not trying to replace what's happening in classrooms. I'm working in the space the system structurally can't reach: individual mastery, in the window, for families who don't want to leave it to chance.</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">"I've heard mixed things about Lexia…"</div>
+        <div class="qa-a">The criticism is almost always about how it's been implemented — not the tool. When Lexia is applied without clinical fidelity it underdelivers; we've all seen that. What we're providing is what Lexia was always designed to have: the clinical layer. That's not a new argument — <em>it's the founding argument.</em></div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">"Isn't this just going private?"</div>
+        <div class="qa-a">The formally identified kids have advocates — IEPs, processes, people fighting for them. The ones who are passing but not reaching their potential, quietly compensating — they often have nobody fighting for them yet. The system does what it can within its constraints. <em>Biology doesn't wait for the system's constraints.</em></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─ PRINCIPAL PITCH ─ -->
+  <div class="ctx-card">
+    <div class="ctx-head">
+      <div class="ctx-icon pro">🏫</div>
+      <div>
+        <div class="ctx-title">The Principal Pitch</div>
+        <div class="ctx-sub">Diagnosis first · For school administrators and potential on-site program partners</div>
+      </div>
+      <span class="ctx-chev">▾</span>
+    </div>
+    <div class="ctx-body">
+      <div class="pitch-steps">
+        <div class="ps-row">
+          <div class="ps-label">The Opener</div>
+          <div class="ps-content">"I want to talk to you about your Lexia implementation — because I think most of the value is being left on the table, and I don't think anyone has sat down and explained why."</div>
+        </div>
+        <div class="ps-row">
+          <div class="ps-label">The Diagnosis</div>
+          <div class="ps-content">Most boards use Lexia for Tier 2 and 3 support only — limited licences for flagged kids. That makes sense given resource constraints. But Lexia was designed as a Tier 1 tool. It belongs in every classroom, giving every child an adaptive reading path, flagging Tier 2 early, identifying Tier 3 before they've spent two years on a waitlist. Used as Tier 2 and 3 only, you're getting a fraction of the value — and none of the prevention.
+            <span class="sb-callout">"Schools teach for group coverage. Reading requires individual mastery."</span>
+          </div>
+        </div>
+        <div class="ps-row">
+          <div class="ps-label">Curriculum Acknowledgment</div>
+          <div class="ps-content">The curriculum changes are real and long overdue. But curriculum is policy. Classroom implementation takes years. The kids in your school right now are in the window right now.
+            <span class="sb-callout">"Biology doesn't wait for the implementation timeline."</span>
+          </div>
+        </div>
+        <div class="ps-row">
+          <div class="ps-label">The Offer</div>
+          <div class="ps-content">What I'm exploring with a small number of schools is an on-site model — lunchtime or after-school Lexia sessions, run with full clinical fidelity, for families who want to enroll. No cost to the school. Families pay directly. You get an evidence-based reading intervention running in your building, delivered by a credentialed literacy interventionist. Your students get what Lexia was always supposed to deliver.</div>
+        </div>
+        <div class="ps-row">
+          <div class="ps-label">The Close</div>
+          <div class="ps-content">"The program is Lexia. The breakthrough is making sure it's done right — for every child whose family wants it. I think you might agree they deserve that."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-talking -->
+
+
+<!-- ══════════════════════════════════════════
+     TAB 3 · OBJECTIONS
+══════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-objections">
+  <div class="section-header">
+    <div class="section-kicker">Ready Responses</div>
+    <div class="section-title">Top 10 Objections</div>
+    <div class="section-desc">Know the answer, not the script. The goal is confident, empathetic, and clinical — not combative.</div>
+  </div>
+
+  <div class="obj-item">
+    <div class="obj-head">
+      <div class="obj-num">1</div>
+      <div class="obj-q">"The teacher says my child is doing fine / meeting expectations."</div>
+      <span class="obj-chev">▾</span>
+    </div>
+    <div class="obj-body">'Meeting expectations' means keeping pace with the group average — it doesn't mean full mastery, and it doesn't tell you whether your child is reaching their own potential. Smart kids often compensate beautifully until Grade 4. Then the pictures disappear, the vocabulary explodes, and what looked like fine starts looking different. <em>Biology doesn't wait for the report card.</em></div>
+  </div>
+
+  <div class="obj-item">
+    <div class="obj-head">
+      <div class="obj-num">2</div>
+      <div class="obj-q">"Haven't they fixed the Ontario reading curriculum?"</div>
+      <span class="obj-chev">▾</span>
+    </div>
+    <div class="obj-body">Yes — genuinely. I was part of pushing for that change, so I mean it when I say it matters. But the curriculum changing is step one of about ten. Teachers are being trained right now, schools are adapting right now, and your child is in the classroom right now. The curriculum is improving. Implementation takes years. <em>Don't leave your child's reading mastery to the implementation timeline.</em></div>
+  </div>
+
+  <div class="obj-item">
+    <div class="obj-head">
+      <div class="obj-num">3</div>
+      <div class="obj-q">"Can't the school handle this?"</div>
+      <span class="obj-chev">▾</span>
+    </div>
+    <div class="obj-body">Teachers are doing heroic work under real constraints — that's not the issue. The architecture is. The school runs on a schedule — a conveyor belt that can't stop for an individual child. It's designed for group coverage. Reading requires individual mastery. We don't move to the next step until the current one is fully wired. That's not something a classroom of 30 can promise.</div>
+  </div>
+
+  <div class="obj-item">
+    <div class="obj-head">
+      <div class="obj-num">4</div>
+      <div class="obj-q">"I've heard mixed things about Lexia." / Advocacy-community scepticism</div>
+      <span class="obj-chev">▾</span>
+    </div>
+    <div class="obj-body">The criticism is almost always about how schools implement it — not the tool. When Lexia is applied without clinical oversight and fidelity, it underdelivers. That's exactly what we're solving. We're not selling software. <em>The program is Lexia. The breakthrough is Radical</em> — the clinical layer that makes it work the way it was designed.</div>
+  </div>
+
+  <div class="obj-item">
+    <div class="obj-head">
+      <div class="obj-num">5</div>
+      <div class="obj-q">"This seems expensive."</div>
+      <span class="obj-chev">▾</span>
+    </div>
+    <div class="obj-body">It's less than most tutoring — and it's solving a different problem. Tutoring patches content week by week. We build the underlying architecture: the reading code itself. <em>An ounce of early work is worth a pound of remediation later.</em> And the window where this is most effective — and most efficient to build — is right now.</div>
+  </div>
+
+  <div class="obj-item">
+    <div class="obj-head">
+      <div class="obj-num">6</div>
+      <div class="obj-q">"My child might be too young."</div>
+      <span class="obj-chev">▾</span>
+    </div>
+    <div class="obj-body">The younger, the better. JK and SK are the ideal years — the brain is most receptive, the wiring is fastest, there's nothing to undo. You're not starting too early. Early is literally the point. <em>Biology doesn't wait.</em></div>
+  </div>
+
+  <div class="obj-item">
+    <div class="obj-head">
+      <div class="obj-num">7</div>
+      <div class="obj-q">"I think we might have missed the window."</div>
+      <span class="obj-chev">▾</span>
+    </div>
+    <div class="obj-body">The window doesn't slam shut — it narrows. Grades 1 through 3, we can still build this properly and efficiently. Grade 4 and beyond with a struggling reader, we have a track for that too. <em>When the friction disappears, the confidence appears</em> — at any age. Right now is always better than later.</div>
+  </div>
+
+  <div class="obj-item">
+    <div class="obj-head">
+      <div class="obj-num">8</div>
+      <div class="obj-q">"We already tried tutoring."</div>
+      <span class="obj-chev">▾</span>
+    </div>
+    <div class="obj-body">Tutoring and Radical Reading are solving different problems. Tutoring patches content week by week. We build the underlying code. If the code has gaps, tutoring is working around them without closing them — which is why it often helps in the moment but doesn't compound. <em>Stop tutoring. Start wiring.</em></div>
+  </div>
+
+  <div class="obj-item">
+    <div class="obj-head">
+      <div class="obj-num">9</div>
+      <div class="obj-q">"How is this different from other reading apps?"</div>
+      <span class="obj-chev">▾</span>
+    </div>
+    <div class="obj-body">Most reading apps are digital candy — engaging, but not building anything structural. Lexia Core5 is digital nutrition. It's a clinical-grade adaptive tool used in 20,000 schools globally — rigorous, data-driven, and designed to build the actual neurological architecture of reading, not just reinforce what a child already knows. Plus a real literacy interventionist watching the data. Not an algorithm. Not a notification. An expert.</div>
+  </div>
+
+  <div class="obj-item">
+    <div class="obj-head">
+      <div class="obj-num">10</div>
+      <div class="obj-q">"How will I know it's actually working?"</div>
+      <span class="obj-chev">▾</span>
+    </div>
+    <div class="obj-body">Lexia generates real-time data — progress tracked session by session, skill by skill, with a dashboard parents can see. But most families notice something before the dashboard tells them: the way their child approaches an unfamiliar word changes. The hesitation shortens. <em>When the friction disappears, the confidence appears.</em> That shift shows up in how they carry themselves around books before it shows up in their grades.</div>
+  </div>
+
+</div><!-- /tab-objections -->
+
+
+<!-- ══════════════════════════════════════════
+     TAB 4 · BRAND VISION
+══════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-vision">
+  <div class="section-header">
+    <div class="section-kicker">Brand Foundation</div>
+    <div class="section-title">What Makes Us Radical?</div>
+    <div class="section-desc">Three versions for three contexts. All of them are true. Use the one that fits the room.</div>
+  </div>
+
+  <div class="vision-cards">
+
+    <div class="vis-card">
+      <div class="vis-label">Version A — The Mastery Manifesto · For parents and broader audiences</div>
+      <div class="vis-text">
+        <p>Most reading programs aim to get your child to grade level. We think that's the wrong goal.</p>
+        <p>Every child has a reading potential — a ceiling that's uniquely their own, determined by their intelligence, their language, their drive. Our job is to wire their reading brain completely, precisely, and in the window when it works best, so that ceiling is never artificially capped by a gap the school didn't have time to close.</p>
+        <p>We're not here for the children the system has flagged. We're here for every child. Because every child deserves to read to the full height of their own ability — not just the best a stretched system could manage for them.</p>
+        <p>The science exists. The window is open. Radical Reading is what happens when you refuse to leave either one to chance.</p>
+      </div>
+    </div>
+
+    <div class="vis-card">
+      <div class="vis-label">Version B — Short and Declarative · Talks, intros, social media</div>
+      <div class="vis-text">
+        <p>What makes us radical? The standard we hold.</p>
+        <p>Not grade level. Not 'meeting expectations.' Not 'doing fine.'</p>
+        <p>Full mastery. Every child. In the window when the brain is built for it.</p>
+        <p>The system teaches for the group. We build for the individual. The science of reading tells us exactly how to wire a young brain for its full reading potential — and the critical window to do it is JK to Grade 3.</p>
+        <p>We built Radical Reading because that window doesn't wait for the system to get there. And neither should your child.</p>
+      </div>
+    </div>
+
+    <div class="vis-card">
+      <div class="vis-label">Version D — Lark's Voice · About page, personal introductions, professional contexts</div>
+      <div class="vis-text">
+        <p>I spent years fighting for the children the system had given up on — the ones with diagnoses, the ones on waitlists, the ones whose parents had been told to wait and see until it was too late to do anything but remediate.</p>
+        <p>But the longer I was in those rooms, the more I saw something the system wasn't saying out loud: the gap doesn't start with the struggling children. It starts with every child who didn't get their reading brain properly wired in the early years.</p>
+        <p>Radical Reading isn't for flagged children. It's for every child.</p>
+        <p>Because individual mastery — the full expression of each child's reading potential — is not a luxury for kids who fall behind. It's a right. The science of reading tells us exactly how to deliver it, and the window to do it right is short.</p>
+        <p>I stopped waiting for the system to act on that. That's what makes us radical.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section-header">
+    <div class="section-kicker">Compressed Version</div>
+    <div class="section-title">The Deployable Soundbite</div>
+    <div class="section-desc">When you have ten seconds, not sixty.</div>
+  </div>
+
+  <div class="qr-card" style="max-width:580px;">
+    <div class="qr-label">Brand Vision — Compressed</div>
+    <div class="qr-text">"The school says wait and see. Science says act now. We built something for parents who agree with the science."</div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section-header" style="margin-bottom:14px;">
+    <div class="section-kicker">On the Stat</div>
+    <div class="section-title" style="font-size:20px;">Using the 60% Figure</div>
+  </div>
+  <div class="ctx-card open">
+    <div class="ctx-head" style="cursor:default;">
+      <div class="ctx-icon parent">📊</div>
+      <div>
+        <div class="ctx-title">How to cite it confidently</div>
+        <div class="ctx-sub">Framing note for Lark — not for public distribution</div>
+      </div>
+    </div>
+    <div class="ctx-body" style="display:block;">
+      <div class="qa-block">
+        <div class="qa-q">The framing to use</div>
+        <div class="qa-a">"Up to 60% of children don't achieve reading mastery by Grade 4." This is grounded in NAEP data (North America's largest standardized literacy assessment), which defines mastery as NAEP Proficient — demonstrated competency over grade-level material. In 2024, only 32% of Grade 4 students reached that bar. The 60% figure is conservative.</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">If challenged with Ontario EQAO numbers</div>
+        <div class="qa-a">"EQAO measures whether students are meeting Ontario curriculum expectations — that's the floor. NAEP Proficient measures actual reading mastery — the ability to handle what Grade 4 and beyond actually demands. Those are genuinely different bars. Even by EQAO's own measure, nearly 1 in 3 Ontario Grade 3 students isn't meeting the standard — and that's before we get to the mastery question."</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">The companion stat worth adding</div>
+        <div class="qa-a">"95% of children have the brain capacity to become strong readers. When they don't get there, the failure is almost always in the instruction — not the child." (Source: Harvard researcher Catherine Snow.) This removes shame and makes the problem feel entirely solvable — which it is.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-vision -->
+
+</div><!-- /main -->
+
+<!-- ══ FOOTER ══ -->
+<div class="doc-footer">
+  <span>© Radical Reading Co. · radicalreading.co · Internal use only</span>
+  <span>Messaging Cheat Sheet · May 2026</span>
+</div>
+
+<script>
+// ── TAB SWITCHING
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + target).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// ── SOUNDBITE FILTER
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const theme = btn.dataset.theme;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.sb-card').forEach(card => {
+      if (theme === 'all' || card.dataset.theme === theme) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// ── CONTEXT ACCORDIONS (talking points)
+document.querySelectorAll('.ctx-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const card = head.closest('.ctx-card');
+    card.classList.toggle('open');
+  });
+});
+
+// ── OBJECTIONS ACCORDION
+document.querySelectorAll('.obj-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const item = head.closest('.obj-item');
+    item.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{padding:20px 4px 32px;max-width:780px;margin:0 auto}
+.doc-title{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:5px}
+.doc-head{font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px}
+.doc-sub{font-size:13px;color:var(--color-text-secondary);margin-bottom:18px;line-height:1.5}
+.view-toggle{display:flex;margin-bottom:18px;border:1px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);overflow:hidden;width:fit-content}
+.vt-btn{font-size:12px;font-weight:500;padding:7px 18px;background:none;border:none;cursor:pointer;color:var(--color-text-secondary);transition:all .15s;letter-spacing:.02em;white-space:nowrap}
+.vt-btn.active{background:var(--color-background-secondary);color:var(--color-text-primary)}
+.legends{display:none;gap:20px;flex-wrap:wrap;margin-bottom:16px;padding:11px 14px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);align-items:flex-start}
+.working .legends{display:flex}
+.leg-group{display:flex;flex-direction:column;gap:5px}
+.leg-label{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:2px}
+.leg-row{display:flex;flex-wrap:wrap;gap:4px}
+.track-lens-ui{display:none;margin-bottom:18px}
+.lens .track-lens-ui{display:block}
+.track-sel{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.ts-btn{font-size:11px;font-weight:500;letter-spacing:.05em;padding:6px 14px;border-radius:20px;border:1.5px solid transparent;cursor:pointer;transition:all .15s;background:none}
+.track-card{border-radius:var(--border-radius-lg);border:1.5px solid;padding:14px 16px;margin-bottom:4px}
+.tc-top{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
+.tc-name{font-size:15px;font-weight:500}
+.tc-desc{font-size:12px;color:var(--color-text-secondary)}
+.tc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.tc-field{display:flex;flex-direction:column;gap:3px}
+.tc-label{font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-tertiary)}
+.tc-value{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+.tc-cta{padding-top:10px;border-top:1px solid var(--color-border-tertiary)}
+.tc-cta .tc-value{font-size:13px;font-weight:500;color:var(--color-text-primary);line-height:1.5}
+.arc-label{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:9px;padding-left:2px}
+.pillar{border-radius:var(--border-radius-lg);border:1px solid var(--color-border-tertiary);margin-bottom:11px;overflow:hidden;transition:opacity .2s}
+.pillar-head{padding:13px 18px 11px;display:flex;align-items:flex-start;gap:13px}
+.pillar-num{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;min-width:26px;padding-top:2px}
+.pillar-name{font-size:16px;font-weight:500;color:var(--color-text-primary);line-height:1.3;margin-bottom:2px}
+.pillar-tag{font-size:13px;color:var(--color-text-secondary);line-height:1.4;font-style:italic}
+.sub-list{padding:10px 18px 13px 58px;list-style:none}
+.sub-list li{font-size:13px;color:var(--color-text-secondary);line-height:1.55;padding:7px 0 7px 8px;border-top:1px solid var(--color-border-tertiary);border-left:3px solid transparent;margin-left:-8px;transition:opacity .2s,border-color .2s,background .2s}
+.sub-list li:first-child{border-top:none;padding-top:2px}
+.arg-row{display:flex;gap:10px}
+.sub-num{font-size:11px;font-weight:500;color:var(--color-text-tertiary);min-width:28px;padding-top:2px;flex-shrink:0}
+.arg-body{flex:1}
+.arg-text{font-size:13px;color:var(--color-text-secondary);line-height:1.55}
+.arg-text strong{font-weight:500;color:var(--color-text-primary)}
+.work-meta{margin-top:7px;display:none;flex-wrap:wrap;gap:5px;align-items:center}
+.working .work-meta,.lens .work-meta{display:flex}
+.track-badges{display:flex;gap:4px;flex-wrap:wrap}
+.working .track-badges{display:flex}
+.lens .track-badges{display:none}
+.ev-sep{width:1px;height:14px;background:var(--color-border-tertiary);margin:0 2px;align-self:center;flex-shrink:0}
+.working .ev-sep{display:block}
+.lens .ev-sep{display:none}
+.badge{font-size:10px;font-weight:500;letter-spacing:.03em;padding:2px 8px;border-radius:20px;white-space:nowrap;display:inline-block}
+.b-IGNITE{background:#E6F1FB;color:#185FA5}
+.b-SURGE{background:#EAF3DE;color:#3B6D11}
+.b-BRIDGE{background:#FAEEDA;color:#854F0B}
+.b-REWIRE{background:#FCEBEB;color:#A32D2D}
+.b-stat{background:#FAEEDA;color:#854F0B}
+.b-analogy{background:#EEEDFE;color:#534AB7}
+.b-clinical{background:#E1F5EE;color:#085041}
+.b-Lark{background:#FAECE7;color:#993C1D}
+.b-concept{background:var(--color-background-secondary);color:var(--color-text-secondary);border:1px solid var(--color-border-tertiary)}
+.ev-chip{cursor:pointer;border:none;font-family:var(--font-sans)}
+.ev-chip:hover{opacity:.75}
+.ev-chip.active{outline:2px solid currentColor;outline-offset:1px}
+.entry-badge{font-size:9px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:4px;display:inline-block;margin-bottom:4px}
+.ev-drawer{margin-top:8px;padding:9px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border-left:2px solid var(--color-border-secondary)}
+.ev-type-label{font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:4px}
+.ev-content{font-size:12px;color:var(--color-text-secondary);line-height:1.65}
+.divider{height:1px;background:var(--color-border-tertiary);margin:18px 0 15px}
+.doc-note{font-size:11px;color:var(--color-text-tertiary);line-height:1.6;padding:9px 13px;border-left:2px solid var(--color-border-secondary);margin-top:18px}
+</style>
+
+<div class="wrap framework" id="fw">
+<div class="doc-title">Radical Reading Co. · Internal</div>
+<div class="doc-head">Definitive Pitch Framework</div>
+<div class="doc-sub">Universal story arc — 6 pillars, 4 sub-arguments. Track-agnostic spine.</div>
+
+<div class="view-toggle">
+  <button class="vt-btn active" onclick="setView('framework')">Framework</button>
+  <button class="vt-btn" onclick="setView('working')">Working</button>
+  <button class="vt-btn" onclick="setView('lens')">Track Lens</button>
+</div>
+
+<div class="legends">
+  <div class="leg-group">
+    <div class="leg-label">Track emphasis</div>
+    <div class="leg-row">
+      <span class="badge b-IGNITE">IGNITE</span><span class="badge b-SURGE">SURGE</span><span class="badge b-BRIDGE">BRIDGE</span><span class="badge b-REWIRE">REWIRE</span>
+    </div>
+  </div>
+  <div class="leg-group">
+    <div class="leg-label">Evidence type — click to expand</div>
+    <div class="leg-row">
+      <span class="badge b-stat">stat</span><span class="badge b-analogy">analogy</span><span class="badge b-clinical">clinical</span><span class="badge b-Lark">Lark</span><span class="badge b-concept">concept</span>
+    </div>
+  </div>
+</div>
+
+<div class="track-lens-ui">
+  <div class="track-sel" id="track-sel"></div>
+  <div id="track-card"></div>
+</div>
+
+<div id="pillars"></div>
+<div class="doc-note">Framework v1.2 · May 2026 · Arc + arguments only — evidence in Messaging Cheat Sheet</div>
+</div>
+
+<script>
+const tracks={
+  IGNITE:{color:'#185FA5',bg:'#E6F1FB',border:'#185FA5',
+    desc:'Starting out in JK–SK · The Architect',
+    entry:'2.1',entryLabel:'P2.1 — the wet cement window; SK is prime time',
+    frame:'Aspiration · optimization',
+    p4:'Lead with 4.3 (Silent Squandering) then 4.4 — fear arguments are secondary for this parent',
+    cta:'Install the wiring at the ideal age — blank slate, perfect start, don\'t leave it to chance'},
+  SURGE:{color:'#3B6D11',bg:'#EAF3DE',border:'#3B6D11',
+    desc:'Doing "fine" in Grades 1–3 · The Achiever',
+    entry:'4.3',entryLabel:'P4.3 — "fine is a floor, not a ceiling"',
+    frame:'Aspiration · ceiling removal',
+    p4:'Lead with 4.3 (Silent Squandering) + 4.4 (Compound interest) — Grade 4 Wall as insurance, not alarm',
+    cta:'Remove the ceiling — go from fine to full potential in 15 minutes a day'},
+  BRIDGE:{color:'#854F0B',bg:'#FAEEDA',border:'#854F0B',
+    desc:'Something feels off in Grades 1–3 · The Worrier',
+    entry:'3.4',entryLabel:'P3.4 — validation: the instructional casualty reframe',
+    frame:'Validation · urgent hope',
+    p4:'Lead with 4.1 (Matthew Effect) + 4.2 (Grade 4 Wall) — fear first, pivot fast to solvability',
+    cta:'Find the gaps in the data, close them fast, get them surging'},
+  REWIRE:{color:'#A32D2D',bg:'#FCEBEB',border:'#A32D2D',
+    desc:'Struggling in Grades 2–4 · The Fighter',
+    entry:'1.4',entryLabel:'P1.4 — your child is not broken',
+    frame:'Relief · rescue',
+    p4:'Lead with fear urgently (4.1, 4.2) — but pivot to solvability fast; despair is never on-brand',
+    cta:'Assess what\'s happening, rewire what\'s broken, restore the confidence that should have been there all along'}
+};
+
+const pillars=[
+{num:'P1',name:'The Science',tag:'Reading is engineered, not developed',accent:'#0F6E56',bg:'rgba(29,158,117,.07)',
+args:[
+{n:'1.1',text:'Speaking is wired by nature; reading is a code that must be deliberately installed — the foundational reframe that makes everything else make sense',
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'analogy',c:'"We are born wired to talk and walk. We are not born wired to read." The reframe: speaking is biological instinct; reading is a ~5,000-year-old technology the brain must be deliberately rewired for.'},
+{t:'concept',c:'Until a parent accepts this reframe, none of the other arguments land. This is the door opener — the one argument that must work before anything else can.'}]},
+{n:'1.2',text:'The Science of Reading tells us exactly how to build it: sequential, systematic, one circuit at a time with mastery before progression — the piano-in-a-classroom-of-30 problem',
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'analogy',c:'Imagine teaching piano to 30 kids simultaneously in one room. That\'s what classroom reading instruction requires — one teacher, one pace, 30 different brains at 30 different points.'},
+{t:'concept',c:'SoR isn\'t just a diagnosis of the problem — it\'s a precise prescription: explicit, systematic, sequential phonics instruction, each skill fully mastered before the next is introduced.'}]},
+{n:'1.3',text:'Automaticity is the real destination — effortless fluency that frees the brain for comprehension, confidence, and love of reading',
+tracks:['SURGE','IGNITE'],
+ev:[{t:'clinical',c:'When decoding becomes automatic, working memory load drops to near zero. Cognitive bandwidth shifts entirely to comprehension and meaning-making. This is when reading stops being work.'},
+{t:'concept',c:'"When the friction disappears, the confidence appears." Cause and effect in six words. The mechanism, not the aspiration, is the argument.'}]},
+{n:'1.4',text:'95% of children have the neurological capacity to get there — when they don\'t, the failure is almost always in the instruction, not the child',
+tracks:['BRIDGE','REWIRE'],
+ev:[{t:'stat',c:'95%: Harvard researcher Catherine Snow. Removes shame, installs agency. The failure is instructional, not neurological — which means it is fixable, rapidly, with the right approach.'},
+{t:'Lark',c:'"Your child isn\'t broken. They are an instructional casualty." Core reframe for BRIDGE and REWIRE parents who have been told to wait and see.'}]}
+]},
+{num:'P2',name:'The Window',tag:'Biology has a deadline',accent:'#BA7517',bg:'rgba(239,159,39,.08)',
+args:[
+{n:'2.1',text:'JK to Grade 3 is the neuroplasticity prime window — the brain is wet cement; the younger the start, the deeper the wiring',
+tracks:['IGNITE'],
+ev:[{t:'clinical',c:'JK–Grade 3: highest-yield window for phonological pathway formation. Neural pathways built in this window are more durable, more automatic, and harder to displace with compensatory habits.'},
+{t:'analogy',c:'"The brain is wet cement. What you build in JK–Grade 3 sets permanently. Waiting is not neutral — it is a choice to pour concrete on a messier foundation."'}]},
+{n:'2.2',text:'The Silent Slide — gaps form quietly and early; by the time most parents see them, they have been compounding for years',
+tracks:['BRIDGE','REWIRE'],
+ev:[{t:'Lark',c:'Blog: "The Silent Slide: Why Early Reading Struggles Often Go Unnoticed." The child appears fine — compensating with memorization, picture cues, context guessing. The gap is invisible until Grade 4.'},
+{t:'concept',c:'The silence is the danger. A struggling child who is also a coper hides the gap from teachers and parents. The mask comes off at Grade 4 when strategies stop working.'}]},
+{n:'2.3',text:'After Grade 3, reading stops being taught and starts being required — the subject shift is the cliff',
+tracks:['BRIDGE','REWIRE','SURGE'],
+ev:[{t:'concept',c:'Before Grade 4: learning to read. After Grade 4: reading to learn. Comprehension demands, vocabulary load, and text complexity all spike simultaneously. A child without automaticity hits this hard.'},
+{t:'stat',c:'Up to 60% of Grade 4 students are not proficient readers. (NAEP / EQAO data). The cliff is real, and most families don\'t see it coming.'}]},
+{n:'2.4',text:'The second-best time is now — urgency grounded in biology, not anxiety; not about blame, about timing',
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'Lark',c:'"The best time to start was JK. The second-best time is now." Removes guilt, installs forward motion. The window is narrowing, not closed — a reason to act, not despair.'},
+{t:'concept',c:'System change takes years. Childhood happens now. This urgency is biological and honest — not manufactured. That distinction matters for the brand.'}]}
+]},
+{num:'P3',name:'The Gap',tag:'The system is structurally unable to do this for any child',accent:'#534AB7',bg:'rgba(127,119,221,.08)',
+args:[
+{n:'3.1',text:'The conveyor belt — the curriculum moves at a fixed pace regardless of the individual; this structural failure hits advanced and struggling kids equally',
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'analogy',c:'The conveyor belt cannot stop for one child without stopping for all 30. A child who needs more time gets a gap. A child who needs more challenge gets bored. Both lose — invisibly.'},
+{t:'concept',c:'Coverage vs. mastery: reading is the one subject that cannot afford gaps — but the system is architecturally designed to create them. This is not incompetence; it is geometry.'}]},
+{n:'3.2',text:'One teacher, 30 children — individualized mastery is mathematically impossible; teachers are heroes, but the system design fails every individual child',
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'concept',c:'This is not a teacher failure — it is a structural one. A skilled, dedicated teacher with 30 children cannot deliver the individualized, sequential, mastery-based instruction that reading requires. The math simply does not work.'},
+{t:'analogy',c:'Imagine a doctor seeing 30 patients simultaneously with one prescription for all of them. That\'s what one-pace classroom reading asks of a teacher. The heroes are real. The constraint is structural.'}]},
+{n:'3.3',text:'The instructional approach problem — Ontario is mid-transition from Balanced Literacy; even improving schools are delivering structured literacy inconsistently',
+tracks:['BRIDGE','REWIRE'],
+ev:[{t:'Lark',c:'Lark contributed directly to Ontario\'s Right to Read inquiry and OHRC report. She helped rewrite the curriculum — and watched implementation falter. She knows the gap from the inside.'},
+{t:'clinical',c:'Ontario now mandates structured literacy — but fidelity varies sharply by school and teacher. A child\'s reading outcome is currently a postcode lottery. Radical removes the lottery.'}]},
+{n:'3.4',text:'The instructional casualty — most struggling readers were taught incompletely or incorrectly; the child is not broken, the delivery was',
+tracks:['BRIDGE','REWIRE'],
+ev:[{t:'Lark',c:'"Your child isn\'t broken. They are an instructional casualty." Light REWIRE: casualty of bad instruction, correction rapid (3–6 months). Dark REWIRE: true hardware issue, longer road.'},
+{t:'concept',c:'Guessing and compensation strategies — picture cues, context, memorization — mask the gap until Grade 4, when they stop working and the cracks become undeniable.'}]}
+]},
+{num:'P4',name:'The Stakes',tag:"Every child deserves their best, not the system's best",accent:'#993C1D',bg:'rgba(216,90,48,.08)',
+args:[
+{n:'4.1',text:'The Matthew Effect — reading compounds in both directions; early gaps widen automatically without intervention; early strength builds on itself',
+tracks:['BRIDGE','REWIRE'],
+ev:[{t:'concept',c:'Stanovich (1986): strong early readers read more, build vocabulary faster, widen the gap automatically. Weak readers avoid reading, fall further behind. The divergence is self-perpetuating and accelerating.'},
+{t:'stat',c:'Children who are poor readers at Grade 1 end have a ~90% chance of remaining poor readers at Grade 4. (Juel, 1988). Gaps do not self-correct — they compound.'}]},
+{n:'4.2',text:'The Grade 4 Wall — where compensation strategies collapse and the divergence becomes visible, urgent, and much harder to fix',
+tracks:['BRIDGE','REWIRE','SURGE'],
+ev:[{t:'concept',c:'The Wall: curriculum shifts from "learning to read" to "reading to learn." A child relying on guessing hits this hard and visibly — for the first time, their strategy stops working.'},
+{t:'stat',c:'~30% of Ontario Grade 3s don\'t meet the EQAO standard. Before we even ask the mastery question — what\'s possible, not just what\'s passing.'}]},
+{n:'4.3',text:'The Silent Squandering — the cost is not only failure; it is the child who is "fine" on paper but nowhere near their ceiling',
+tracks:['SURGE','IGNITE'],
+ev:[{t:'Lark',c:'"Silent squandering" — Lark\'s term. The Coaster: B\'s, doesn\'t love reading, probably memorizing not decoding. The school says fine. We say: let\'s build their skills so they love reading.'},
+{t:'concept',c:'"Don\'t set your child up for average. Wire them for potential." Meeting expectations is a floor, not a ceiling. The aspiration argument for parents whose children appear fine.'}]},
+{n:'4.4',text:'Literacy is compound interest — it starts with words, but it ends with the world; this is about life trajectory, not reading class',
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'concept',c:'"It starts with words. But it ends with the world." Best as a closing line. The contrast between the small (words) and the enormous (the world) is emotionally resonant and stays.'},
+{t:'analogy',c:'"Reading is not a subject. It is the foundation of critical thinking and modern life." Every subject, career, and civic participation depends on it. Reading is the operating system.'}]}
+]},
+{num:'P5a',name:'The Tool',tag:'Lexia is what the science points to',accent:'#185FA5',bg:'rgba(55,138,221,.08)',
+args:[
+{n:'5a.1',text:'Lexia is purpose-built on SoR principles — born from the science, not retrofitted to it; the tool the research community designed and the professional world adopted',
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'clinical',c:'Developed through Johns Hopkins and Boston Children\'s Hospital. 20,000+ schools. 3.7M kids last year. 20 gold-standard studies. ESSA Strong. #1 SoR expert choice. Vetted by Ontario Right to Read / OHRC.'},
+{t:'concept',c:'Lexia wasn\'t adapted to the science after the fact. It was built from SoR principles from day one — the science in software form. That\'s a categorically different and stronger claim.'}]},
+{n:'5a.2',text:'The adaptive engine solves the piano problem — responds to each child\'s exact responses in real time; individual SoR precision at scale, which no classroom can deliver',
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'clinical',c:'Assessment Without Testing®: real-time tracking, flags potential challenges years before the school system would. Wobble → structured instruction sub-path. Master → instant acceleration. No gap left.'},
+{t:'concept',c:'The piano problem, solved. 30 kids in a room → one pace. Lexia → each child\'s own pace, own path, in real time. This is the mechanism that makes SoR precision possible at home.'}]},
+{n:'5a.3',text:'Data-driven precision — every session generates rich clinical data; parents see real progress, we see wobbles the moment they happen, confidence comes from evidence not hope',
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'clinical',c:'Lexia generates granular data on every interaction — skill by skill, session by session. This is the clinical infrastructure that makes individualized intervention possible and progress visible.'},
+{t:'concept',c:'School report cards are vague. Our monthly reports are granular. Parents stop guessing whether progress is happening — they see exactly what has been mastered and what comes next.'}]},
+{n:'5a.4',text:'Digital nutrition vs. digital candy — a professional clinical instrument categorically different from anything in the consumer market; screen time that builds rather than erodes',
+tracks:['IGNITE','SURGE'],
+ev:[{t:'analogy',c:'"Most screen time sedates. Lexia builds." 15–20 min/day, 4–5 days/week. Short intense daily bursts build pathways faster than long weekly sessions. Then back to being an analog kid.'},
+{t:'concept',c:'Only educational organizations can license Lexia directly. Radical brings institutional-grade clinical software to individual families — a genuine access story, not just a product.'}]}
+]},
+{num:'P5b',name:'The Layer',tag:'Radical makes Lexia work',accent:'#3B6D11',bg:'rgba(99,153,34,.08)',
+args:[
+{n:'5b.1',text:'Fidelity is the whole game — Lexia is designed to be guided by experts; without oversight, outcomes are inconsistent; that is the gap Radical fills',
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'Lark',c:'"In education, fidelity is the ability to deliver a program the way it was intended. I founded Radical Reading to give parents a way to bypass the uneven results of the school system."'},
+{t:'concept',c:'The software is the instrument. Fidelity is what makes it play in tune. Lexia without expert oversight is a clinical tool without a clinician — possible to run, but structurally underperforming.'}]},
+{n:'5b.2',text:'If Lexia is the rocketship, Radical is mission control — data in, human response out; step-by-step expert guidance at every stage',
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'analogy',c:'"If Lexia is the rocketship, Radical is your mission control." Clear, memorable, accurate — the roles are complementary, neither works without the other at full power.'},
+{t:'concept',c:'The Radical Boost: when Lexia flags a stuck point, Radical deploys a targeted 1:1 session to spot-weld the exact loose wire and restore momentum. The safety net that prevents wobbles becoming gaps.'}]},
+{n:'5b.3',text:"Your child's success is our only focus — clinical precision at Radical's ratio versus a teacher managing 30",
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'concept',c:'Every child, every week: we review the data. We see wobbles the moment they happen and act before they become gaps. A teacher managing 30 cannot do this structurally. We can — it is our only job.'},
+{t:'stat',c:'Private tutoring: $80/hr+, general, no data, once a week. Radical: $119/month, adaptive daily learning, granular monthly reports, precision clinical intervention when needed.'}]},
+{n:'5b.4',text:'Lark built this from the inside — TDSB, credentialed interventionist, Right to Read / OHRC — she knows exactly where the system breaks and designed Radical around those breaks',
+tracks:['IGNITE','SURGE','BRIDGE','REWIRE'],
+ev:[{t:'Lark',c:'TDSB teacher. Credentialed literacy interventionist. Contributor to Ontario\'s Right to Read inquiry and OHRC report. She helped rewrite the curriculum — then built Radical because the system still can\'t move at the speed of childhood.'},
+{t:'concept',c:'"System change takes years. Childhood happens now." The origin story of Radical Reading in one line — and the most honest version of why this exists.'}]}
+]}
+];
+
+let currentTrack='IGNITE';
+
+function fmt(text){
+  const i=text.indexOf(' — ');
+  if(i>0) return`<strong>${text.slice(0,i)}</strong> — ${text.slice(i+3)}`;
+  return text;
+}
+
+function renderPillars(){
+  let out='';
+  pillars.forEach((p,pi)=>{
+    if(pi===0) out+=`<div class="arc-label">The arc — pillars 1–4</div>`;
+    if(pi===4) out+=`<div class="divider"></div><div class="arc-label">The solution — pillars 5a + 5b</div>`;
+    out+=`<div class="pillar" id="p${pi}">
+      <div class="pillar-head" style="background:${p.bg}">
+        <div class="pillar-num" style="color:${p.accent}">${p.num}</div>
+        <div><div class="pillar-name">${p.name}</div><div class="pillar-tag">${p.tag}</div></div>
+      </div><ul class="sub-list">`;
+    p.args.forEach((a,ai)=>{
+      const uid=`${pi}-${ai}`;
+      const trackBadges=a.tracks.map(t=>`<span class="badge b-${t}">${t}</span>`).join('');
+      const evChips=a.ev.map((e,ei)=>`<button class="badge b-${e.t} ev-chip" onclick="toggleDrawer('${uid}-${ei}',this)">${e.t}</button>`).join('');
+      const drawers=a.ev.map((e,ei)=>`<div class="ev-drawer" id="dr-${uid}-${ei}" style="display:none"><div class="ev-type-label">${e.t}</div><div class="ev-content">${e.c}</div></div>`).join('');
+      out+=`<li id="li-${uid}" data-tracks="${a.tracks.join(',')}" data-argnum="${a.n}">
+        <div class="arg-row"><span class="sub-num">${a.n}</span>
+          <div class="arg-body">
+            <div id="eb-${uid}" style="display:none"></div>
+            <div class="arg-text">${fmt(a.text)}</div>
+            <div class="work-meta">
+              <div class="track-badges">${trackBadges}</div>
+              <span class="ev-sep"></span>
+              <div style="display:flex;gap:4px;flex-wrap:wrap">${evChips}</div>
+            </div>
+            ${drawers}
+          </div>
+        </div>
+      </li>`;
+    });
+    out+=`</ul></div>`;
+  });
+  document.getElementById('pillars').innerHTML=out;
+}
+
+function renderTrackSelector(){
+  const sel=document.getElementById('track-sel');
+  sel.innerHTML=Object.entries(tracks).map(([k,v])=>
+    `<button class="ts-btn${k===currentTrack?' active':''}" data-track="${k}"
+      style="border-color:${v.border};color:${v.color};${k===currentTrack?`background:${v.bg}`:'background:none'}"
+      onclick="setTrack('${k}')">${k}</button>`
+  ).join('');
+}
+
+function renderTrackCard(tid){
+  const t=tracks[tid];
+  document.getElementById('track-card').innerHTML=`
+    <div class="track-card" style="border-color:${t.border};background:${t.bg}20">
+      <div class="tc-top">
+        <span class="tc-name" style="color:${t.color}">${tid}</span>
+        <span class="tc-desc">${t.desc}</span>
+      </div>
+      <div class="tc-grid">
+        <div class="tc-field"><div class="tc-label">Entry point</div><div class="tc-value">${t.entryLabel}</div></div>
+        <div class="tc-field"><div class="tc-label">Emotional frame</div><div class="tc-value">${t.frame}</div></div>
+      </div>
+      <div class="tc-field" style="margin-bottom:10px"><div class="tc-label">P4 weight</div><div class="tc-value">${t.p4}</div></div>
+      <div class="tc-cta"><div class="tc-label">CTA</div><div class="tc-value">${t.cta}</div></div>
+    </div>`;
+}
+
+function applyLensWeighting(tid){
+  const t=tracks[tid];
+  document.querySelectorAll('.sub-list li').forEach(li=>{
+    const argTracks=li.dataset.tracks.split(',');
+    const argNum=li.dataset.argnum;
+    const isPrimary=argTracks.includes(tid);
+    const isEntry=argNum===t.entry;
+    const ebDiv=li.querySelector('[id^="eb-"]');
+    if(isEntry){
+      li.style.borderLeftColor=t.color;
+      li.style.background=t.bg+'30';
+      li.style.opacity='1';
+      if(ebDiv){
+        ebDiv.style.display='block';
+        ebDiv.innerHTML=`<span class="entry-badge" style="background:${t.bg};color:${t.color};border:1px solid ${t.border}">↳ entry point</span>`;
+      }
+    } else if(isPrimary){
+      li.style.borderLeftColor=t.color+'88';
+      li.style.background='';
+      li.style.opacity='1';
+      if(ebDiv) ebDiv.style.display='none';
+    } else {
+      li.style.borderLeftColor='transparent';
+      li.style.background='';
+      li.style.opacity='0.38';
+      if(ebDiv) ebDiv.style.display='none';
+    }
+  });
+}
+
+function clearLensWeighting(){
+  document.querySelectorAll('.sub-list li').forEach(li=>{
+    li.style.borderLeftColor='transparent';
+    li.style.background='';
+    li.style.opacity='1';
+    const ebDiv=li.querySelector('[id^="eb-"]');
+    if(ebDiv) ebDiv.style.display='none';
+  });
+}
+
+function setTrack(tid){
+  currentTrack=tid;
+  document.querySelectorAll('.ts-btn').forEach(b=>{
+    const isActive=b.dataset.track===tid;
+    const tv=tracks[b.dataset.track];
+    b.classList.toggle('active',isActive);
+    b.style.background=isActive?tv.bg:'none';
+  });
+  renderTrackCard(tid);
+  applyLensWeighting(tid);
+  document.querySelectorAll('.ev-drawer').forEach(d=>d.style.display='none');
+  document.querySelectorAll('.ev-chip').forEach(b=>b.classList.remove('active'));
+}
+
+function setView(v){
+  document.getElementById('fw').className='wrap '+v;
+  document.querySelectorAll('.vt-btn').forEach((b,i)=>{
+    b.classList.toggle('active',['framework','working','lens'][i]===v);
+  });
+  document.querySelectorAll('.ev-drawer').forEach(d=>d.style.display='none');
+  document.querySelectorAll('.ev-chip').forEach(b=>b.classList.remove('active'));
+  if(v==='lens'){renderTrackSelector();renderTrackCard(currentTrack);applyLensWeighting(currentTrack);}
+  else clearLensWeighting();
+}
+
+function toggleDrawer(uid,btn){
+  const dr=document.getElementById('dr-'+uid);
+  const isOpen=dr.style.display!=='none';
+  document.querySelectorAll('.ev-drawer').forEach(d=>d.style.display='none');
+  document.querySelectorAll('.ev-chip').forEach(b=>b.classList.remove('active'));
+  if(!isOpen){dr.style.display='block';btn.classList.add('active');}
+}
+
+renderPillars();
+</script>
